@@ -1,0 +1,22 @@
+// Footer
+
+.site-footer {
+	margin-top: grid(10);
+	p {
+		text-align: center;
+		font: 12px/2 $font-display;
+		margin: -#{grid(6)} 0 grid(10);
+	}
+	.mobile-logo {
+		width: 35px;
+	}
+
+	@include media-md {
+		p {
+			margin: 0;
+		}
+		.mobile-logo {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+  <!--[if IE 9 ]> <html lang="en" class="no-js ie9 lt-ie10"> <![endif]-->
+  <!--[if gt IE 9]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+  {% include '/partials/_head' %}
+
+  <body class="{% if bodyClass is defined %}{{ bodyClass }}{% endif %} page-{{ segment(1) ? segment(1) : 'home' }}" {% if bodyId is defined %}id="{{ bodyId }}"{% endif %}>
+    <div id="breakpoint-indicator"></div>
+
+    <nav class="site-nav" role="navigation">
+
+      <div class="top-nav">
+        <div class="search-open nav-content">
+          Search <svg class="icon-search"><use xlink:href="#icon-search" /></svg>
+        </div>
+        <ul class="primary-nav">
+          <li class="{{ active('/work/', 'url', 'current') }}">
+            <a href="/work/">work</a>
+          </li>
+          <li class="{{ active('/community/', 'url', 'current') }}">
+            <a href="/community/">community</a>
+          </li>
+          <li class="{{ active('/about/', 'url', 'current') }}">
+            <a href="/about/">about</a>
+          </li>
+          <li class="{{ active('/news/', 'url', 'current') }}">
+            <a href="/news/">news+events</a>
+          </li>
+          <li class="{{ active('/resources/', 'url', 'current') }}">
+            <a href="/resources/">resources</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <div class="nav-open"><svg class="icon-hamburger"><use xlink:href="#icon-hamburger" /></svg></div>
+
+    <div class="main-wrapper">
+      <main class="site-main" role="main">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+
+    {% include '/partials/_footer' %}
+
+  </body>
+</html>

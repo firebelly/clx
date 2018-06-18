@@ -1,0 +1,21 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+
+# Build
+node_modules
+*.js.map
+*.css.map
+
+# Letsencrypt
+.well-known
+
+# Fabfile
+*.pyc
+
+# Bower
+bower_components
+
+# Licensed fonts
+assets/fonts
