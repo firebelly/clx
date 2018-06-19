@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bf5223486fc8c1653147af61f8dec87",
+    "content-hash": "f36b086a7b0a666eab4653ad12541d0d",
     "packages": [
         {
             "name": "barrelstrength/sprout-active",
@@ -391,56 +391,6 @@
             "time": "2018-04-30T10:33:04+00:00"
         },
         {
-            "name": "craftcms/ckeditor",
-            "version": "1.0.0-beta.2",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/185f6064cc135d717cf7b43c93aff2063ce399f1",
-                "reference": "185f6064cc135d717cf7b43c93aff2063ce399f1",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^3.0.0-RC1"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "CKEditor",
-                "handle": "ckeditor",
-                "changelogUrl": "https://raw.githubusercontent.com/craftcms/ckeditor/master/CHANGELOG.md",
-                "downloadUrl": "https://github.com/craftcms/ckeditor/archive/master.zip"
-            },
-            "autoload": {
-                "psr-4": {
-                    "craft\\ckeditor\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pixel & Tonic",
-                    "homepage": "https://pixelandtonic.com/"
-                }
-            ],
-            "description": "Edit rich text content in Craft CMS using CKEditor.",
-            "keywords": [
-                "ckeditor",
-                "cms",
-                "craftcms",
-                "html",
-                "yii2"
-            ],
-            "support": {
-                "email": "support@craftcms.com",
-                "issues": "https://github.com/craftcms/ckeditor/issues?state=open",
-                "source": "https://github.com/craftcms/ckeditor",
-                "docs": "https://github.com/craftcms/ckeditor",
-                "rss": "https://github.com/craftcms/ckeditor/commits/master.atom"
-            },
-            "time": "2018-01-15T18:06:22+00:00"
-        },
-        {
             "name": "craftcms/cms",
             "version": "3.0.12",
             "dist": {
@@ -598,6 +548,56 @@
                 "plugin"
             ],
             "time": "2017-07-25T13:26:24+00:00"
+        },
+        {
+            "name": "craftcms/redactor",
+            "version": "2.1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/7d72a873e12ea7c92a8a6d00e025e303089d504e",
+                "reference": "7d72a873e12ea7c92a8a6d00e025e303089d504e",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC15"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Redactor",
+                "handle": "redactor",
+                "changelogUrl": "https://raw.githubusercontent.com/craftcms/redactor/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/craftcms/redactor/archive/master.zip"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\redactor\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Edit rich text content in Craft CMS using Redactor by Imperavi.",
+            "keywords": [
+                "cms",
+                "craftcms",
+                "html",
+                "redactor",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/redactor/issues?state=open",
+                "source": "https://github.com/craftcms/redactor",
+                "docs": "https://github.com/craftcms/redactor",
+                "rss": "https://github.com/craftcms/redactor/commits/master.atom"
+            },
+            "time": "2018-05-15T21:58:54+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -2374,6 +2374,52 @@
             "time": "2017-10-10T16:40:59+00:00"
         },
         {
+            "name": "tde/craftplugin-geoaddress",
+            "version": "v1.0.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tdeNL/craftplugin-geoaddress/zipball/ae2c454c42d4ed9b0ff7ee0468f0333b9cfac5cb",
+                "reference": "ae2c454c42d4ed9b0ff7ee0468f0333b9cfac5cb",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "TDE - Geo Address Fields",
+                "handle": "geoaddress",
+                "schemaVersion": "1.0.1",
+                "hasCpSettings": true,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/tdeNL/craftplugin-geoaddress/master/CHANGELOG.md",
+                "components": {
+                    "geoAddressService": "TDE\\GeoAddress\\services\\GeoAddressService"
+                },
+                "class": "TDE\\GeoAddress\\GeoAddress"
+            },
+            "autoload": {
+                "psr-4": {
+                    "TDE\\GeoAddress\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TDE",
+                    "homepage": "http://www.tde.nl"
+                }
+            ],
+            "description": "Geo Address fields for Craft Sections",
+            "support": {
+                "docs": "https://github.com/tdeNL/craftplugin-geoaddress/blob/master/README.md",
+                "issues": "https://github.com/tdeNL/craftplugin-geoaddress/issues"
+            },
+            "time": "2018-05-23T11:22:07+00:00"
+        },
+        {
             "name": "topshelfcraft/wordsmith",
             "version": "3.0.2",
             "dist": {
@@ -3206,9 +3252,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "craftcms/ckeditor": 10
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
