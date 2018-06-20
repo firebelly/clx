@@ -120,7 +120,7 @@ gulp.task('svgs', function() {
     .pipe(gulp.dest('web/assets/dist/svgs/'))
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename({suffix: '-defs'}))
-    .pipe(gulp.dest('web/assets/dist/svgs/defs/'));
+    .pipe(gulp.dest('web/assets/dist/'));
 });
 
 
