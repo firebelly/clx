@@ -1,0 +1,11 @@
+<article class="search-article">
+	{% set entryType = entry.type.name ?? 'News' %}
+	{% switch entryType %}
+		{% case "News" %}
+			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+			<p class="excerpt">{{ entry.excerpt ? entry.excerpt : entry.body | chop(limit=20, unit='w', append='…') }}</p>
+		{% case "Events" %}
+			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+			<p class="excerpt">{{ entry.excerpt ? entry.excerpt : entry.body | chop(limit=20, unit='w', append='…') }}</p>
+	{% endswitch %}
+</article>

@@ -1,5 +1,5 @@
 {
-	"formatting": ["p","h3"],
+	"formatting": ["p","h2","h3"],
   "buttons": ["formatting", "bold", "italic", "link", "lists", "html"],
   "toolbarFixed": true
 }
