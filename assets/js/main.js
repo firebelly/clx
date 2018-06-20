@@ -5,28 +5,17 @@
 
 // Good Design for Good Reason for Good Namespace
 var CLX = (function($) {
+  var breakpointIndicatorString,
+      breakpoint_lg,
+      breakpoint_md,
+      breakpoint_sm,
+      breakpoint_xs;
 
   /**
    * Initialize all functions
    */
   function _init() {
-    _injectSvgDefs();
     _initNewsletterForm();
-  }
-
-  /**
-   * Pull in svg-defs.svg to body for <use> tags
-   */
-  function _injectSvgDefs() {
-    var ajax = new XMLHttpRequest();
-    ajax.open('GET', 'assets/dist/svgs-defs.svg', true);
-    ajax.send();
-    ajax.onload = function(e) {
-      var div = document.createElement('div');
-      div.classList.add('hidden');
-      div.innerHTML = ajax.responseText;
-      document.body.insertBefore(div, document.body.childNodes[0]);
-    };
   }
 
   /**
@@ -67,12 +56,32 @@ var CLX = (function($) {
     });
   }
 
+  /**
+   * Called in quick succession as window is resized
+   */
+  function _resize() {
+    // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
+    breakpointIndicatorString = window.getComputedStyle(
+      document.querySelector('#breakpoint-indicator'), ':after'
+    ).getPropertyValue('content')
+    .replace(/['"]+/g, '');
+
+    // Determine current breakpoint
+    breakpoint_lg = breakpointIndicatorString === 'lg';
+    breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
+    breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
+    breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
+  }
+
+
   // Public functions
   return {
-    init: _init
+    init: _init,
+    resize: _resize
   };
 
 })(jQuery);
 
-// Fire up the mothership
+// Fire up the mothership & zigzag
 jQuery(document).ready(CLX.init);
+jQuery(window).on('resize', CLX.resize);
