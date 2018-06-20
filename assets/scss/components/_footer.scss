@@ -7,7 +7,7 @@
 		font: 12px/2 $font-display;
 		margin: -#{grid(6)} 0 grid(10);
 	}
-	.mobile-logo {
+	.footer-logo {
 		width: 35px;
 	}
 
@@ -15,8 +15,8 @@
 		p {
 			margin: 0;
 		}
-		.mobile-logo {
-			display: none;
-		}
+		// .footer-logo {
+		// 	display: none;
+		// }
 	}
 }
