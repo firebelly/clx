@@ -52,7 +52,7 @@ gulp.task('scripts', function() {
 
 // revision files for production assets
 gulp.task('rev', function() {
-  return gulp.src(['web/assets/dist/**/*.css', 'web/assets/dist/**/*.js'])
+  return gulp.src(['web/assets/dist/**/*.{css,js,jpg,png,svg,gif}'])
     .pipe(rev())
     .pipe(gulp.dest('web/assets/dist'))
     .pipe(rev.manifest())
