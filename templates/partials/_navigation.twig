@@ -1,0 +1,43 @@
+{% set nav = [
+  {"href": "/work/", "name": "Work", "children":
+    [
+      {"href": "/work/#programs", "name": "Programs"},
+      {"href": "/work/#impact", "name": "Impact"},
+      {"href": "/work/#work-with-clx", "name": "Work With CLX"},
+    ]
+  },
+  {"href": "/community/", "name": "Community"},
+  {"href": "/about/", "name": "About", "children":
+    [
+      {"href": "/about/#mission", "name": "Mission"},
+      {"href": "/about/#approach", "name": "Approach"},
+      {"href": "/about/#team", "name": "Team"},
+      {"href": "/about/#board", "name": "Board"},
+      {"href": "/about/#supporters", "name": "Supporters"},
+    ]
+  },
+  {"href": "/news-events/news/", "name": "News+Events"},
+  {"href": "/resources/", "name": "Resources"},
+] %}
+
+{% import _self as navigation %}
+
+{% macro menu_links(items, outside, inside) %}
+{% spaceless %}
+  {% import _self as navigation %}
+    {% for item in items %}
+      <{{inside}}>
+        <a href="{{ item.href }}"{% if item.children is defined %}class="dropdown"{% endif %}>{{ item.name }}</a>
+        {% if item.children is defined %}
+          <{{outside}}>
+            {{ navigation.menu_links(item.children, outside, inside) }}
+          </{{outside}}>
+        {% endif %}
+      </{{inside}}>
+    {% endfor %}
+{% endspaceless %}
+{% endmacro %}
+
+<ul class="primary-nav">
+  {{ navigation.menu_links(nav, 'ul', 'li') }}
+</ul>
