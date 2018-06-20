@@ -14,12 +14,12 @@
 
   <link rel="stylesheet" href="{{ rev('css/main.css') }}">
   <link rel="shortcut icon" type="image/ico" href="{{ rev('images/favicon.png') }}">
-  <script src="{{ rev('css/modernizr.custom.js') }}"></script>
+  <script src="{{ rev('js/modernizr.custom.js') }}"></script>
 
   <!-- Inject SVGs Defs for SVG icon use -->
   <script>
     var ajax = new XMLHttpRequest();
-    ajax.open("GET", "{{ rev('svgs/defs/svgs-defs.svg') }}", true);
+    ajax.open("GET", "{{ rev('svgs-defs.svg') }}", true);
     ajax.send();
     ajax.onload = function(e) {
       var div = document.createElement("div");
