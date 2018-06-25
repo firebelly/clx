@@ -25,6 +25,9 @@ gulp.task('styles', function() {
     ])
     .pipe(gulpif(!isProduction, sourcemaps.init()))
     .pipe(sass())
+    .on('error', notify.onError(function (error) {
+       return 'Styles error!' + error;
+    }))
     .pipe(autoprefixer())
     .pipe(gulpif(isProduction, cssnano()))
     .pipe(gulp.dest('web/assets/dist/css'))
@@ -42,7 +45,10 @@ gulp.task('scripts', function() {
     .pipe(include())
     .pipe(concat('main.js'))
     .pipe(gulpif(!isProduction, sourcemaps.init()))
-    .pipe(uglify().on('error', gutil.log))
+    .pipe(uglify())
+    .on('error', notify.onError(function (error) {
+       return 'Styles error!' + error;
+    }))
     .pipe(gulp.dest('web/assets/dist/js'))
     .pipe(gulpif(!isProduction, sourcemaps.write('maps')))
     .pipe(gulpif(!isProduction, gulp.dest('web/assets/dist/js')))
@@ -71,7 +77,7 @@ gulp.task('copy', function() {
 gulp.task('watch', ['build'], function() {
   // Init BrowserSync
   browserSync.init({
-    proxy: 'aei-craft.localhost',
+    proxy: 'clx.localhost',
     notify: false,
     open: false
   });
