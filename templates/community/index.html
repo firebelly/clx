@@ -1,4 +1,55 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% if category is defined %}
+
+  {% paginate craft.entries({
+    section: 'members',
+    relatedTo: category,
+    with: [
+      'memberType',
+      'memberImage'
+    ]
+  }).orderBy('featured DESC, postDate DESC').limit(8) as paginationInfo, memberEntries %}
+
+{% else %}
+
+  {% paginate craft.entries({
+    section: 'members',
+    with: [
+      'memberType',
+      'memberImage'
+    ]
+  }).orderBy('featured DESC, postDate DESC').limit(8) as paginationInfo, memberEntries %}
+
+{% endif %}
+
 {% block content %}
+  <div class="text-header">
+    <h4 class="subhead">Our Community</h4>
+    {{ entry.statement }}
+  </div>
+
+  <div class="members">
+    {% for member in memberEntries %}
+      <article>
+        {% set memberImage = member.memberImage[0] ?? null %}
+        {% if memberImage %}
+          {% set grayImage = craft.imager.transformImage(memberImage, {
+            width: 800,
+            height: 800,
+            effects: { grayscale: true, gamma: 1.5 }
+          }) %}
+          <div class="image-wrap">
+            <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+          </div>
+        {% endif %}
+        <h4>
+          {% if member.personName %}
+            {{ member.personName }}{{ member.organizationName ? '<br>' : '' }}
+          {% endif %}
+          {{ member.organizationName }}
+        </h4>
+      </article>
+    {% endfor %}
+  </div>
 {% endblock %}

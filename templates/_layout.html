@@ -7,40 +7,38 @@
   <body class="{% if bodyClass is defined %}{{ bodyClass }} {% endif %}page-{{ segment(1) ? segment(1) : 'home' }}"{% if bodyId is defined %} id="{{ bodyId }}"{% endif %}>
     <div id="breakpoint-indicator"></div>
     <div class="body-wrapper">
-      <svg class="icon bg-x" aria-hidden="true" role="presentation" viewBox="0 0 1527 1507"><use xlink:href="#bg-x"/></svg>
-      <svg class="icon icon-C" aria-hidden="true" role="presentation" viewBox="0 0 87 94"><use xlink:href="#icon-C"/></svg>
-      <svg class="icon icon-L" aria-hidden="true" role="presentation" viewBox="0 0 52 128"><use xlink:href="#icon-L"/></svg>
-      <svg class="icon icon-X" aria-hidden="true" role="presentation" viewBox="0 0 81 81"><use xlink:href="#icon-X"/></svg>
 
-      <header class="site-header" role="banner">
-        <div class="wrap">
-          <svg class="icon icon-logo" aria-hidden="true" role="presentation" viewBox="0 0 240 60"><use xlink:href="#icon-logo"/></svg>
-          <nav class="site-nav" role="navigation"></nav>
-        </div>
-      </header>
+      <div class="clx-elements">
+        <svg class="icon bg-x" aria-hidden="true" role="presentation" viewBox="0 0 1527 1507"><use xlink:href="#bg-x"/></svg>
+        <svg class="icon icon-C" aria-hidden="true" role="presentation" viewBox="0 0 87 94"><use xlink:href="#icon-C"/></svg>
+        <svg class="icon icon-L" aria-hidden="true" role="presentation" viewBox="0 0 52 128"><use xlink:href="#icon-L"/></svg>
+        <svg class="icon icon-X" aria-hidden="true" role="presentation" viewBox="0 0 81 81"><use xlink:href="#icon-X"/></svg>
+      </div>
 
-      <nav class="site-nav" role="navigation">
-
-        <div class="top-nav">
-          <div class="search-open nav-content">
-            Search <svg class="icon-search"><use xlink:href="#icon-search" /></svg>
+      <div class="page-wrapper">
+        <header class="site-header" role="banner">
+          <div class="wrap">
+            <svg class="icon icon-logo" aria-hidden="true" role="presentation" viewBox="0 0 240 60"><use xlink:href="#icon-logo"/></svg>
+            <nav class="site-nav" role="navigation">
+              <div class="top-nav">
+                <div class="search-open nav-content">
+                  Search <svg class="icon-search"><use xlink:href="#icon-search" /></svg>
+                </div>
+                {% include '/partials/_navigation' %}
+              </div>
+            </nav>
           </div>
+        </header>
+        <main class="site-main" role="main">
+          <div class="wrap">
+            {% block content %}{% endblock %}
+          </div>
+        </main>
+      </div>{# /.page-wrapper #}
 
-          {% include '/partials/_navigation' %}
-
-        </div>
-
-      </nav>
-
-      <div class="nav-open"><svg class="icon-hamburger"><use xlink:href="#icon-hamburger" /></svg></div>
-
-      <main class="site-main" role="main">
-        <div class="wrap">
-          {% block content %}{% endblock %}
-        </div>
-      </main>
-
+      {% block footerimage %}{% endblock %}
       {% include '/partials/_footer' %}
-    </div>
+
+    </div>{# /.body-wrapper #}
   </body>
 </html>
