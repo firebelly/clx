@@ -1,0 +1,10 @@
+{% if stats %}
+<ul class="stats">
+  {% for stat in stats %}
+    <li>
+      <span class="stat-figure">{{ stat.statFigure }}</span>
+      <span class="stat-label">{{ stat.statLabel }}</span>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

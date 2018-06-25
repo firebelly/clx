@@ -23,7 +23,7 @@
     ajax.send();
     ajax.onload = function(e) {
       var div = document.createElement("div");
-      div.className += "svgs-defs";
+      div.className += "svg-defs hidden";
       div.innerHTML = ajax.responseText;
       document.body.insertBefore(div, document.body.childNodes[0]);
     }
