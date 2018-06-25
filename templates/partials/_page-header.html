@@ -6,8 +6,13 @@
   position: '20% 65%',
   effects: { grayscale: true, gamma: 1.5 }
 }) %}
+
 <div class="page-header">
   <div class="image-wrap">
     <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+  </div>
+  <div class="page-header-info">
+    <h4 class="subhead">{{ pageHeader.headerTitle }}</h4>
+    {{ pageHeader.statement }}
   </div>
 </div>
