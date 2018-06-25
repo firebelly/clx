@@ -10,12 +10,12 @@
 }
 
 // Smooth text
-%smooth {
+@mixin smooth {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Aspect ratio padding mixin
+// Aspect ratio padding mixin (e.g. @include aspect-ratio(192,180);)
 @mixin aspect-ratio($width, $height) {
   display: block;
   background-size: cover;

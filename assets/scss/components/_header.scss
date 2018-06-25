@@ -2,7 +2,11 @@
 
 .site-header {
 	position: relative;
-	height: grid(10);
+	height: grid(25);
+	overflow: hidden;
+}
+
+.clx-elements {
 }
 
 .bg-x {
@@ -44,6 +48,7 @@
 		display: block;
 		position: fixed;
 		height: auto;
+		z-index: 1000;
 	}
 	.icon-C {
 		width: 90px;

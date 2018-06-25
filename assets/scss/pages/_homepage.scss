@@ -2,3 +2,12 @@
 
 .page-home {
 }
+.featured {
+	@include clearfix;
+	.article-info,
+	.article-image {
+		width: 50%;
+		float: left;
+		padding: 0 $global-padding;
+	}
+}

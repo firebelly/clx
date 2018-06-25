@@ -15,10 +15,20 @@ body {
 body {
   color: $black;
   font: 18px/1.388888889 $font-regular;
-  background: $gray1;
-  padding: $global-padding;
+  background: $gray;
   position: relative;
 }
+.body-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.page-wrapper {
+  // padding: $global-padding;
+  @include clearfix;
+}
+// .site-main {
+//   @include clearfix;
+// }
 
 // Default link styles
 a {
@@ -50,6 +60,7 @@ address {
   font-style: normal;
 }
 
+// Site alerts
 .alert {
   background: $black;
   color: $white;
@@ -68,4 +79,54 @@ address {
     padding: grid(3);
     margin-left: columns(2);
   }
+}
+
+
+// General button styles
+.button {
+  transition: border .2s;
+  padding: 10px 32px;
+  font: 16px/1.5625 $font-display;
+  color: $black;
+  display: inline-block;
+  border: 1px solid $black;
+  border-radius: 3px;
+}
+// Hover events on no-touch
+.no-touchevents {
+  .button:hover {
+    border: 1px solid $red;
+  }
+}
+
+.stats {
+  .stat-figure {
+    font: bold 72px/1.138888889 $font-display;
+  }
+  .stat-label {
+    @include type-details;
+  }
+}
+
+.post-meta {
+  @include clearfix;
+  ul,
+  ol,
+  p {
+    @include type-details;
+  }
+  @include media-md {
+    li {
+      float: left;
+      width: 33%;
+      padding-right: $global-padding;
+    }
+  }
+}
+
+.return-crumb {
+  border-top: 4px dashed $blue2;
+  margin-top: grid(4);
+  padding: grid(8) 0 0;
+  @include type-subhead;
 }

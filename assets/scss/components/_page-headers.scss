@@ -1,20 +1,40 @@
-.image-wrap {
-  overflow: hidden;
-  position: relative;
-  padding-bottom: 100%;
-  height: 0;
-  // $landscape-padding: 66.66%;
-  // $portrait-padding: 133.33%;
+// Page headers
 
+.image-wrap {
   .image {
-    position: absolute;
-    background-size: cover;
-    background-position: center center;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    @include aspect-ratio(500,500);
   }
   @include media-md {
+  }
+}
+.page-header {
+  position: relative;
+  .page-header-info {
+    position: relative;
+  }
+
+  @include media-md {
+    .page-header-info {
+      position: relative;
+      margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(2)} - #{$global-padding});
+      padding: grid(10) 0 0;
+    }
+
+    .image-wrap {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(#{columns(3)} - #{$global-padding});
+      .image {
+        @include aspect-ratio(650,835);
+      }
+    }
+  }
+}
+.text-header {
+  @include media-md {
+    margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+    padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
   }
 }
