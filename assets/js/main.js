@@ -24,6 +24,9 @@ var CLX = (function($) {
   function _initNewsletterForm() {
     $('form.newsletter').each(function() {
       var $form = $(this);
+      $form.find('input').on('focus change', function() {
+        $form.addClass('interacted');
+      });
       $form.on('submit', function(e) {
         e.preventDefault();
         if ($form.hasClass('working')) {

@@ -13,37 +13,57 @@ form {
 
   input[type=text],
   input[type=email] {
-    background: $white;
-    border: 1px solid $white;
+    background: none;
+    border: none;
+    border-bottom: 1px dashed $dk-gray;
     transition: border .2s;
-    border-radius: 3px;
-    padding: 10px 18px;
-    color: $black;
+    padding: 10px 0;
+    color: $white;
     font: 16px/1.375 $font-display;
     &:focus {
       outline: 0;
-      border: 1px solid $red;
+      border-bottom: 1px dashed $red;
     }
     &::placeholder {
-      color: lighten($black,50%);
+      color: $dk-gray;
     }
 
     width: 100%;
     margin-bottom: grid(3);
 
     @include media-md {
-      width: calc(50% - 12px);
-      float: left;
-      &:nth-child(odd) {
-        float: right;
+      &.half {
+        width: calc(50% - 12px);
+        float: left;
+        &:nth-child(odd) {
+          float: right;
+        }
       }
+    }
+  }
+
+  // Hide org until interacted
+  input[name=ORGNAME] {
+    display: none;
+  }
+  &.interacted {
+    input[name=ORGNAME] {
+      display: block;
     }
   }
 
   // Form buttons
   .actions {
     margin-top: grid(2);
-    text-align: center;
+  }
+  input[type=submit] {
+    border: none;
+    background: none;
+    padding: 0;
+    color: $white;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   // Feedback from submitting form
@@ -75,23 +95,5 @@ form {
       margin: grid(5) 0;
       display: block;
     }
-  }
-}
-
-// General button styles
-.button {
-  background: $red;
-  transition: background .2s;
-  padding: 10px 32px;
-  font: 16px/1.5625 $font-display;
-  color: $white;
-  display: inline-block;
-  border: none;
-  border-radius: 3px;
-}
-// Hover events on no-touch
-.no-touchevents {
-  form:not(.working) .button:hover {
-    background: $dk-blue;
   }
 }
