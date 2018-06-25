@@ -1,6 +1,4 @@
 <?php
-return array(
-
+return [
   'countries' => ['USA'],
-
-);
+];

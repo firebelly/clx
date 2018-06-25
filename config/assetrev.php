@@ -1,7 +1,5 @@
 <?php
-return array(
-
+return [
   'manifestPath' => 'web/assets/dist/rev-manifest.json',
   'assetUrlPrefix' => '/assets/dist/',
-
-);
+];
