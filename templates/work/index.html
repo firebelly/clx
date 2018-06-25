@@ -1,5 +1,45 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% set programs = craft.entries().section('programs') %}
+
 {% block content %}
 	{% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+
+	<div id="our-programs">
+		<ul>
+			{% for program in programs.all() %}
+				<li class="program">
+					<article>
+						<h2>{{ program.title }}</h2>
+						<div class="user-content">
+						  <p class="excerpt">{{ program.excerpt ? program.excerpt : program.body | chop(limit=20, unit='w', append='…') }}</p>
+						  <a href="{{ program.getUrl() }}" class="button">Read More</a>
+						</div>
+					</article>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div id="our-impact">
+		<h4 class="subhead">Our Impact</h4>
+		{{ entry.ourImpact.impactStatement }}
+		{% include 'partials/_stats' with { stats: entry.ourImpact.stats } %}
+
+		<div id="work-with-us">
+			<h4 class="subhead">Work With Us</h4>
+			{{ entry.workWithUs.prompt }}
+			<ul class="links">
+				{% for link in entry.workWithUs.links %}
+					<li>
+						<a class="arrow" href="{{ link.linkUrl }}">{{ link.linkText }} &rarr;</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+
+{% block footerimage %}
+	{% include 'partials/_footer-image' with { footerImage: entry.footerImage } %}
 {% endblock %}

@@ -6,9 +6,9 @@
 // Helpers and Variables
 @import "helpers/mixins";
 @import "helpers/variables";
+@import "helpers/grid";
 @import "helpers/typography";
 @import "helpers/utility";
-@import "helpers/grid";
 
 // Vendor
 
@@ -21,3 +21,5 @@
 
 // Pages
 @import "pages/homepage";
+@import "pages/work";
+@import "pages/community";
