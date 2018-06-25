@@ -2,13 +2,13 @@
   <svg class="icon footer-logo" aria-hidden="true" role="presentation" viewBox="0 0 35 185"><use xlink:href="#mobile-logo"/></svg>
   <div class="wrap">
     <div class="newsletter footer-block">
+      <h3>Newsletter</h3>
       <div id="newsletter-form">
           <div class="summary" id="mc_embed_signup">
           <form action="https://hivechicago.us8.list-manage.com/subscribe/post-json?u=e780bf1ac3ee92a79b8222e20&amp;id=4da4104577&amp;c=?" method="post" name="mc-embedded-subscribe-form" class="newsletter">
             <fieldset>
-              <h4>Register to join the movement and be notified when the site launches!</h4>
-              <input type="text" name="FNAME" placeholder="First name*" required>
-              <input type="text" name="LNAME" placeholder="Last name*" required>
+              <input class="half" type="text" name="FNAME" placeholder="First name*" required>
+              <input class="half" type="text" name="LNAME" placeholder="Last name*" required>
               <input type="text" name="ORGNAME" placeholder="Organization (optional)">
               <input type="email" name="EMAIL" placeholder="Email address*" required>
             </fieldset>
@@ -16,7 +16,7 @@
             <div class="status"></div>
 
             <div class="actions">
-              <input class="button" name="subscribe" id="mc-embedded-subscribe" type="submit" value="Notify Me">
+              <input name="subscribe" id="mc-embedded-subscribe" type="submit" value="Submit &rarr;">
             </div>
 
             <!-- die bots --><div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e780bf1ac3ee92a79b8222e20_4da4104577" tabindex="-1" value=""></div>
@@ -26,18 +26,21 @@
     </div>
 
     <div class="donate footer-block">
+      <h3>Donate</h3>
       {{ siteOptions.footerInfo.donate }}
     </div>
 
     <div class="contacts footer-block">
+      <h3>Contacts</h3>
       {{ siteOptions.footerInfo.contacts }}
     </div>
 
     <div class="social footer-block">
+      <h3>Social</h3>
       <ul>
         {% for socialLink in siteOptions.footerInfo.socialLinks %}
           <li>
-            <a href="{{ socialLink.socialUrl }}" target="_blank"><svg class="icon icon-{{ socialLink.socialNetwork|lower }}"><use xlink:href="#icon-{{ socialLink.socialNetwork|lower }}" /></svg> {{ socialLink.socialNetwork }}</a>
+            <a href="{{ socialLink.socialUrl }}" target="_blank"><svg class="icon icon-{{ socialLink.socialNetwork|lower }}"><use xlink:href="#icon-{{ socialLink.socialNetwork|lower }}" /></svg>{{ socialLink.socialNetwork }}</a>
           </li>
         {% endfor %}
       </ul>
