@@ -41,7 +41,9 @@
 
 {% block content %}
 
-  <h2>{{ entry.homepageMessaging.tagline1 }}</h2>
+  <div class="text-header">
+    <h2>{{ entry.homepageMessaging.tagline1 }}</h2>
+  </div>
 
   {% if featuredPrograms %}
     {% for featuredProgram in featuredPrograms.all() %}
@@ -75,37 +77,38 @@
     {% endfor %}
   {% endif %}
 
-  <h1>{{ entry.homepageMessaging.tagline2 }}</h1>
-
-  {{ entry.homepageMessaging.statement }}
+  <div class="text-header">
+    <h1>{{ entry.homepageMessaging.tagline2|nl2br }}</h1>
+    {{ entry.homepageMessaging.statement }}
+  </div>
 
   {% if featuredNewsPost %}
     {% set postImage = featuredNewsPost.newsEventImage[0] ?? null %}
     <article class="featured news">
-
-      {% if postImage %}
-        {% set grayImage = craft.imager.transformImage(postImage, {
-          width: 1000,
-          height: 1000,
-          mode: 'crop',
-          position: '20% 65%',
-          effects: { grayscale: true, gamma: 1.5 }
-        }) %}
-        <div class="article-image">
-          <div class="image-wrap">
-            <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
-          </div>
+      <div class="grid">
+        <div class="article-info">
+          <h4 class="subhead"><span>News</span> {{ featuredNewsPost.newsTopics[0] ? ' / '~featuredNewsPost.newsTopics[0].title : '' }}</h4>
+          <h3><a href="{{ featuredNewsPost.getUrl() }}">{{ featuredNewsPost.title }}</a></h3>
+          <p class="read-more">
+            <a href="{{ featuredNewsPost.getUrl() }}" class="button">Read More</a>
+          </p>
         </div>
-      {% endif %}
 
-      <div class="article-info">
-        <h4 class="subhead"><span>News</span> {{ featuredNewsPost.newsTopics[0] ? ' / '~featuredNewsPost.newsTopics[0].title : '' }}</h4>
-        <h3><a href="{{ featuredNewsPost.getUrl() }}">{{ featuredNewsPost.title }}</a></h3>
-        <p class="read-more">
-          <a href="{{ featuredNewsPost.getUrl() }}" class="button">Read More</a>
-        </p>
+        {% if postImage %}
+          {% set grayImage = craft.imager.transformImage(postImage, {
+            width: 1000,
+            height: 1000,
+            mode: 'crop',
+            position: '20% 65%',
+            effects: { grayscale: true, gamma: 1.5 }
+          }) %}
+          <div class="article-image">
+            <div class="image-wrap">
+              <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+            </div>
+          </div>
+        {% endif %}
       </div>
-
     </article>
   {% endif %}
 

@@ -4,10 +4,39 @@
 }
 .featured {
   @include clearfix;
-  .article-info,
-  .article-image {
-    width: 50%;
-    float: left;
-    padding: 0 $global-padding;
+  &.news {
+    // Reorder image / post info on smaller screens
+    @include max-screen($breakpoint-md) {
+      .grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .article-image {
+        order: 1;
+      }
+      .article-info {
+        order: 2;
+      }
+    }
+  }
+  @include media-md {
+    .article-info,
+    .article-image {
+      width: 50%;
+      float: left;
+      padding: 0 $global-padding;
+    }
+  }
+}
+.secondary-featured {
+
+  @include media-md {
+    padding: grid(10) 0;
+    margin-left: calc(#{columns(2)} - #{$global-padding});
+    article {
+      width: 50%;
+      float: left;
+      padding: 0 columns(1) grid(6) 0;
+    }
   }
 }
