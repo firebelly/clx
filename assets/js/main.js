@@ -16,6 +16,12 @@ var CLX = (function($) {
    */
   function _init() {
     _initNewsletterForm();
+
+    // Selects that jump to URLs
+    $(document).on('change', 'select.jumpSelect', function(e) {
+      var jumpTo = $(this).find(':selected').val();
+      location.href = jumpTo;
+    });
   }
 
   /**
