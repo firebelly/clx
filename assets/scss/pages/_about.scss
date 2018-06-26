@@ -1,10 +1,29 @@
 // About
 
 .page-about {
-  background: $red;
-  .team {}
+	background: $red;
+	.page-header {
+		color: $gray;
+	}
+	.our-approach {
+		background: $red;
+	}
+	.our-values {
+		margin: grid(10) 0 0;
+		ul.values {
+			@include clearfix;
+			li {
+				font: 30px/1.33 $font-regular;
+				float: left;
+				width: 33%;
+			}
+			margin-bottom: grid(10);
+		}
+	}
+	.our-team {
+		background: $gray;
+	}
 
   @include media-md {
-    .team {}
   }
 }
