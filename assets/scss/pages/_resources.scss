@@ -1,0 +1,14 @@
+// Resources
+
+.page-resources {
+	background: $orange;
+	.page-header {
+		color: $gray;
+	}
+	.single-entry {
+		background: $orange;
+	}
+
+  @include media-md {
+  }
+}

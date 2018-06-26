@@ -1,4 +1,47 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% if entry is not defined %}
+  {% set entry = craft.entries.section('resourcesIndex').first() %}
+{% endif %}
+
+{% if category is defined %}
+
+  {% paginate craft.entries({
+    section: 'resources',
+    relatedTo: category,
+    with: [
+      'resourceFiles'
+    ]
+  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, resourceEntries %}
+
+{% else %}
+
+  {% paginate craft.entries({
+    section: 'resources',
+    with: [
+      'resourceFiles'
+    ]
+  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, resourceEntries %}
+
+{% endif %}
+
+
 {% block content %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+  <div class="single-entry">
+    <h4 class="subhead">Resource category dropdown</h4>
+    {% for resourceEntry in resourceEntries %}
+      <article>
+        <h3><a href="{{ resourceEntry.getUrl() }}">{{ resourceEntry.title }}</a></h3>
+        <p class="excerpt">{{ resourceEntry.excerpt ? resourceEntry.excerpt : resourceEntry.body | chop(limit=20, unit='w', append='…') }}</p>
+        <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="arrow">Learn More &rarr;</a></p>
+      </article>
+    {% endfor %}
+
+  </div>
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
 {% endblock %}
