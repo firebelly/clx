@@ -1,0 +1,10 @@
+// About
+
+.page-about {
+  background: $red;
+  .team {}
+
+  @include media-md {
+    .team {}
+  }
+}

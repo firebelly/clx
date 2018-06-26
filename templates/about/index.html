@@ -1,4 +1,69 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% set ourTeamCategory = craft.categories().find('Our Team').one() %}
+{% set ourTeam = craft.entries({
+  section: 'people',
+  relatedTo: ourTeamCategory,
+  with: [
+    'personImage',
+  ]
+}) %}
+
+{% set ourBoardCategory = craft.categories().find('Our Board').one() %}
+{% set ourBoard = craft.entries({
+  section: 'people',
+  relatedTo: ourBoardCategory,
+  with: [
+    'personImage',
+  ]
+}) %}
+
+{% set ourSupportersCategory = craft.categories().find('Our Supporters').one() %}
+{% set ourSupporters = craft.entries({
+  section: 'people',
+  relatedTo: ourSupportersCategory,
+  with: [
+    'personImage',
+  ]
+}) %}
+
+
 {% block content %}
+	{% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+	<div id="our-approach">
+		<h4 class="subhead">Our Impact</h4>
+		{{ entry.statement }}
+		{{ entry.body }}
+		<p><a href="/work/" class="button">Our Work</a></p>
+
+		<div class="our-values">
+			<h4 class="subhead">We Value</h4>
+			<ul class="values">
+			{% for value in entry.values %}
+				<li>{{ value }}</li>
+			{% endfor %}
+			</ul>
+			<a href="{{ valuesLink }}" class="arrow">Learn more about our values &rarr;</a>
+		</div>
+	</div>
+
+	<div id="our-team">
+		{{ entry.ourTeam.title }}
+
+		<h4 class="subhead">Our Team</h4>
+		<ul class="people">
+			{% for person in ourTeam.all() %}
+				<li>
+					<article>
+						<h2>{{ person.title }}</h2>
+						<div class="user-content">
+						  <p class="excerpt">{{ person.excerpt ? person.excerpt : person.body | chop(limit=20, unit='w', append='…') }}</p>
+						  <a href="{{ person.getUrl() }}" class="button">Read More</a>
+						</div>
+					</article>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
 {% endblock %}
