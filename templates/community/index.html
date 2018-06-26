@@ -9,7 +9,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(8) as paginationInfo, memberEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, memberEntries %}
 
 {% else %}
 
@@ -19,7 +19,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(8) as paginationInfo, memberEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, memberEntries %}
 
 {% endif %}
 
@@ -29,10 +29,10 @@
     {{ entry.statement }}
   </div>
 
-  <div class="members">
-    {% for member in memberEntries %}
+  <div class="center-content members">
+    {% for memberEntry in memberEntries %}
       <article>
-        {% set memberImage = member.memberImage[0] ?? null %}
+        {% set memberImage = memberEntry.memberImage[0] ?? null %}
         {% if memberImage %}
           {% set grayImage = craft.imager.transformImage(memberImage, {
             width: 800,
@@ -40,15 +40,15 @@
             effects: { grayscale: true, gamma: 1.5 }
           }) %}
           <div class="image-wrap">
-            <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+            <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></a>
           </div>
         {% endif %}
-        <h4>
-          {% if member.personName %}
-            {{ member.personName }}{{ member.organizationName ? '<br>' : '' }}
+        <h4><a href="{{ memberEntry.getUrl() }}">
+          {% if memberEntry.personName %}
+            {{ memberEntry.personName }}{{ memberEntry.organizationName ? '<br>' : '' }}
           {% endif %}
-          {{ member.organizationName }}
-        </h4>
+          {{ memberEntry.organizationName }}
+        </a></h4>
       </article>
     {% endfor %}
   </div>

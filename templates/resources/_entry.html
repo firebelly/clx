@@ -1,0 +1,23 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set bodyClass = 'single' %}
+{% set resourceType = entry.resourceType.first() %}
+
+{% block content %}
+  <article class="single-entry single-resource">
+    <h4 class="crumb subhead"><a href="/resources/">Resources</a> {% if resourceType %} / <a href="{{ resourceType.getUrl() }}">{{ resourceType.title }}</a>{% endif %}</h4>
+    <h1>{{ entry.title }}</h1>
+    {{ entry.statement }}
+    <div class="user-content">
+      {{ entry.body }}
+    </div>
+    {% include 'partials/_post-meta' with { postMeta: entry.postMeta } %}
+    <div class="return-crumb">
+      <a class="arrow" href="/resources/">&larr; Back to Resources</a>
+    </div>
+  </article>
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
+{% endblock %}

@@ -26,10 +26,10 @@
 {% spaceless %}
   {% import _self as navigation %}
     {% for item in items %}
-      <{{inside}}>
-        <a href="{{ item.href }}"{% if item.children is defined %}class="dropdown"{% endif %}>{{ item.name }}</a>
+      <{{inside}}{% if item.children is defined %} class="dropdown"{% endif %}>
+        <a href="{{ item.href }}">{{ item.name }}</a>
         {% if item.children is defined %}
-          <{{outside}}>
+          <{{outside}} class="children">
             {{ navigation.menu_links(item.children, outside, inside) }}
           </{{outside}}>
         {% endif %}

@@ -1,4 +1,24 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set bodyClass = 'single' %}
+{% set newsTopic = entry.newsTopics.first() %}
 
 {% block content %}
+	<article class="single-entry single-news">
+		<h4 class="crumb subhead"><a href="/news-events/news/">News</a> {% if newsTopic %} / <a href="{{ newsTopic.getUrl() }}">{{ newsTopic.title }}</a>{% endif %}</h4>
+		<h1>{{ entry.title }}</h1>
+		{{ entry.statement }}
+		{% include 'partials/_stats' with { stats: entry.stats } %}
+		<div class="user-content">
+			{{ entry.body }}
+		</div>
+		{% if entry.tags %}
+			<ul class="tags">
+				{% for tag in entry.tags %}
+					<a href="/news-events/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		<h4 class="subhead">Share</h4>
+		<h4 class="subhead">Related Posts</h4>
+	</article>
 {% endblock %}

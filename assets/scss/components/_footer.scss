@@ -1,71 +1,71 @@
 // Footer
 
 .site-footer {
-	background: $black;
-	color: $white;
-	padding: $global-padding;
+  background: $black;
+  color: $white;
+  padding: $global-padding;
 
-	@include clearfix;
-	@include type-details;
+  @include clearfix;
+  @include type-display;
 
-	a {
-		color: $white;
-	}
-	ul,
-	p {
-		@include type-details;
-		line-height: 2;
-	}
-	.footer-logo {
-		width: 35px;
-	}
-	h3 {
-		@include type-subhead;
-		color: $red;
-		margin: grid(8) 0 grid(4);
-	}
-	.icon {
-		vertical-align: baseline;
-		width: 16px;
-		height: 16px;
-		fill: $white;
-		margin-right: grid(2);
-	}
+  a {
+    color: $white;
+  }
+  ul,
+  p {
+    @include type-display;
+    line-height: 2;
+  }
+  .footer-logo {
+    width: 35px;
+  }
+  h3 {
+    @include type-subhead;
+    color: $red;
+    margin: grid(8) 0 grid(4);
+  }
+  .icon {
+    vertical-align: baseline;
+    width: 16px;
+    height: 16px;
+    fill: $white;
+    margin-right: grid(2);
+  }
 
-	@include media-md {
-		position: relative;
-		padding: grid(10) 0 0 columns(1);
-		margin-left: calc(#{columns(1)} - #{$global-padding});
-		h3 {
-			margin: 0 0 grid(5);
-		}
-		.footer-logo {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-		}
-		.footer-block {
-			width: 50%;
-			float: left;
-			padding: 0 columns(1) grid(6) 0;
-			&:nth-child(odd) {
-				clear: left;
-			}
-		}
-	}
+  @include media-md {
+    position: relative;
+    padding: grid(10) 0 0 columns(1);
+    margin-left: calc(#{columns(1)} - #{$global-padding});
+    h3 {
+      margin: 0 0 grid(5);
+    }
+    .footer-logo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .footer-block {
+      width: 50%;
+      float: left;
+      padding: 0 columns(1) grid(6) 0;
+      &:nth-child(odd) {
+        clear: left;
+      }
+    }
+  }
 }
 
 .footer-image {
-	z-index: -1;
-	position: relative;
-	margin-top: -#{grid(10)};
-	@include media-md {
-		padding: 0;
-		margin-left: calc(#{columns(1)} - #{$global-padding});
-		.image-wrap {
-			.image {
-		    @include aspect-ratio(1240,570);
-			}
-		}
-	}
+  z-index: -1;
+  position: relative;
+  margin-top: -#{grid(10)};
+  @include media-md {
+    padding: 0;
+    margin-left: calc(#{columns(1)} - #{$global-padding});
+    .image-wrap {
+      .image {
+        @include aspect-ratio(1240,570);
+      }
+    }
+  }
 }

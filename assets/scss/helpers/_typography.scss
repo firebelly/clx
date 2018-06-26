@@ -34,7 +34,7 @@ $font-display: 'Space Mono', monospace;
 $font-header: 'gt-sectra-regular', serif;
 $font-regular: 'gt-sectra-regular', serif;
 
-@mixin type-details {
+@mixin type-display {
   font: 16px/1.375 $font-display;
   @include smooth;
 }

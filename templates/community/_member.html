@@ -2,21 +2,21 @@
 {% set bodyClass = 'single' %}
 
 {% block content %}
-  <article class="single-entry single-program">
-    <h4 class="crumb subhead"><a href="/work/">Work<a> / <a href="/work/#our-programs">Our Programs</a></h4>
+  <article class="single-entry single-member">
+    <h4 class="crumb subhead"><a href="/community/">Community</a> / Member</h4>
     <h1>{{ entry.title }}</h1>
     {{ entry.statement }}
-    {% include 'partials/_stats' with { stats: entry.stats } %}
     <div class="user-content">
       {{ entry.body }}
     </div>
     {% include 'partials/_post-meta' with { postMeta: entry.postMeta } %}
     <div class="return-crumb">
-      <a class="arrow" href="/work/#our-programs">&larr; Our Programs</a>
+      <a class="arrow" href="/community/">&larr; All Community Members</a>
     </div>
   </article>
 {% endblock %}
 
 {% block footerimage %}
-  {% include 'partials/_footer-image' with { footerImage: entry.footerImage } %}
+  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
 {% endblock %}

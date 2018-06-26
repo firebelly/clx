@@ -17,7 +17,7 @@
     .page-header-info {
       position: relative;
       margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(2)} - #{$global-padding});
-      padding: grid(10) 0 0;
+      padding: grid(10) 0;
     }
 
     .image-wrap {

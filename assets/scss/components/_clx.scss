@@ -1,0 +1,48 @@
+// CLX elements
+
+.bg-x {
+  fill: none;
+  stroke: $white;
+  position: absolute;
+  top: grid(8);
+  left: 0;
+  z-index: -1;
+  width: 1500px;
+  @include media-md {
+    width: 106%;
+    height: auto;
+  }
+}
+
+.icon-C,
+.icon-L,
+.icon-X {
+  display: none;
+}
+
+@include media-md {
+  .icon-C,
+  .icon-L,
+  .icon-X {
+    display: block;
+    position: fixed;
+    height: auto;
+    z-index: 1000;
+  }
+  .icon-C {
+    width: 90px;
+    top: 100px;
+    left: 40px;
+  }
+  .icon-L {
+    width: 50px;
+    right: 4%;
+    top: 80px;
+  }
+  .icon-X {
+    width: 80px;
+    bottom: 80px;
+    right: 4%;
+    fill: $red;
+  }
+}

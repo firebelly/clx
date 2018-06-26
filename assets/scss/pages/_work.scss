@@ -1,64 +1,52 @@
 // Work
 
 .page-work {
-	background: $blue;
-	#our-impact {
-		background: $gray;
-	}
-	#work-with-us {
-		border-top: 1px dotted $black;
-		padding-top: grid(8);
-		margin-top: grid(10);
-	}
+  background: $blue;
+  #our-impact {
+    background: $gray;
+  }
+  #work-with-us {
+    border-top: 1px dotted $black;
+    padding-top: grid(8);
+    margin-top: grid(10);
+  }
+  .single-program {
+    background: $blue;
+  }
 
-	@include media-md {
-		#our-programs {
-			background: $blue;
-			margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(1)} + #{$global-padding});
-			padding: grid(10) 0 0 calc(#{columns(1)} - #{$global-padding * 2});
-		}
-		.program {
-			h2 {
-				margin: 0 0 grid(2);
-			}
-			padding: 0 0 grid(6);
-			margin-bottom: grid(5);
-			border-bottom: 1px dashed $black;
-			&:last-of-type {
-				border-bottom: none;
-			}
-		}
+  @include media-md {
+    #our-programs {
+      background: $blue;
+      margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(1)} + #{$global-padding});
+      padding: grid(10) 0 0 calc(#{columns(1)} - #{$global-padding * 2});
+    }
+    .program {
+      h2 {
+        margin: 0 0 grid(2);
+      }
+      padding: 0 0 grid(6);
+      margin-bottom: grid(5);
+      border-bottom: 1px dashed $black;
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
 
-		#our-impact {
-			margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
-			padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
-		}
+    #our-impact {
+      margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+      padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
+    }
 
-		#work-with-us {
-			.links {
-				@include type-details;
-				a {
-					display: block;
-					float: left;
-					width: 50%;
-					padding: grid(1) grid(2) grid(1) 0;
-				}
-			}
-		}
-	}
-}
-
-// Single programs
-.single-program {
-	background: $blue;
-	.stats {
-		padding: grid(4) 0 grid(8);
-	}
-	.post-meta {
-		padding-top: grid(2);
-	}
-	@include media-md {
-		margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
-		padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
-	}
+    #work-with-us {
+      .links {
+        @include type-display;
+        a {
+          display: block;
+          float: left;
+          width: 50%;
+          padding: grid(1) grid(2) grid(1) 0;
+        }
+      }
+    }
+  }
 }

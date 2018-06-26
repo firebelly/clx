@@ -16,6 +16,12 @@ var CLX = (function($) {
    */
   function _init() {
     _initNewsletterForm();
+
+    // Selects that jump to URLs
+    $(document).on('change', 'select.jumpSelect', function(e) {
+      var jumpTo = $(this).find(':selected').val();
+      location.href = jumpTo;
+    });
   }
 
   /**
@@ -52,7 +58,7 @@ var CLX = (function($) {
               $form.find('.status').addClass('error').text('Error: There was an error subscribing. Please try again.');
             })
             .always(function() {
-              $form.removeClass('working').find('input[name=subscribe]').val('Notify Me');
+              $form.removeClass('working').find('input[name=subscribe]').val('Submit');
             });
         }
       });
