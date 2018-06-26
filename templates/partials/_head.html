@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
   <link rel="canonical" href="{{ siteUrl }}">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700" rel="stylesheet">
 
   <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
   {% if mainImage is defined %}
