@@ -70,7 +70,6 @@ form {
   .status {
     font: 16px/1.5625 $font-display;
     color: $red;
-    text-align: center;
     display: none;
     &.error {
       margin: grid(2) 0 grid(4);

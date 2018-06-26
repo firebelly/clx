@@ -1,9 +1,15 @@
 // Resources
 
 .page-resources {
+	.bg-x {
+		stroke: rgba($black,0.2);
+	}
 	background: $orange;
 	.page-header {
 		color: $gray;
+	}
+	.return-crumb {
+		border-color: rgba($black,0.2);
 	}
 	.single-entry {
 		background: $orange;

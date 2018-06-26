@@ -58,7 +58,7 @@ var CLX = (function($) {
               $form.find('.status').addClass('error').text('Error: There was an error subscribing. Please try again.');
             })
             .always(function() {
-              $form.removeClass('working').find('input[name=subscribe]').val('Notify Me');
+              $form.removeClass('working').find('input[name=subscribe]').val('Submit');
             });
         }
       });
