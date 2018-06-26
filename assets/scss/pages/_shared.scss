@@ -1,0 +1,22 @@
+// Single entries (members, programs)
+.single-entry {
+  .stats {
+    padding: grid(4) 0 grid(8);
+  }
+  .post-meta {
+    padding-top: grid(2);
+  }
+
+  @include media-md {
+    margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+    padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
+  }
+}
+
+.center-content {
+  @include clearfix;
+
+  @include media-md {
+    margin: 0 calc(#{columns(1)} - #{$global-padding * 2}) 0 calc(#{columns(1)} - #{$global-padding});
+  }
+}

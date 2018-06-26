@@ -104,7 +104,7 @@ address {
     font: bold 72px/1.138888889 $font-display;
   }
   .stat-label {
-    @include type-details;
+    @include type-display;
   }
 }
 
@@ -113,7 +113,7 @@ address {
   ul,
   ol,
   p {
-    @include type-details;
+    @include type-display;
   }
   @include media-md {
     li {
@@ -124,9 +124,14 @@ address {
   }
 }
 
+// Back to xxx footer crumbs
 .return-crumb {
   border-top: 4px dashed $blue2;
   margin-top: grid(4);
   padding: grid(8) 0 0;
   @include type-subhead;
+}
+
+time {
+  @include type-display;
 }

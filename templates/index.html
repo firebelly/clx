@@ -2,142 +2,142 @@
 
 {% set tag = craft.tags.search('featured-program').first() %}
 {% set featuredPrograms = craft.entries({
-	section: 'news',
-	relatedTo: tag,
-	with: [
-		'newsEventImage',
-		'newsTopics',
-	]
+  section: 'news',
+  relatedTo: tag,
+  with: [
+    'newsEventImage',
+    'newsTopics',
+  ]
 }).orderBy('featured DESC, postDate DESC').limit(5) %}
 {% set featuredProgramsIds = featuredPrograms.ids() %}
 {% set featuredProgramsIdsString = featuredProgramsIds | join(', not ') %}
 
 {% set featuredNewsPost = craft.entries({
-	section: 'news',
-	featured: 1,
-	with: [
-		'newsEventImage',
-		'newsTopics',
-	]
+  section: 'news',
+  featured: 1,
+  with: [
+    'newsEventImage',
+    'newsTopics',
+  ]
 }).id('and, not '~featuredProgramsIdsString).orderBy('RAND()').one() %}
 
 {% set upcomingEvent = craft.entries({
-	section: 'events',
-	featured: 1,
-	with: [
-		'newsEventImage',
-		'eventTypes',
-	]
+  section: 'events',
+  featured: 1,
+  with: [
+    'newsEventImage',
+    'eventTypes',
+  ]
 }).orderBy('featured DESC, dateStart DESC').one() %}
 
 {% set recentAnnouncement = craft.entries({
-	section: 'events',
-	featured: 1,
-	with: [
-		'newsEventImage',
-		'eventTypes',
-	]
+  section: 'events',
+  featured: 1,
+  with: [
+    'newsEventImage',
+    'eventTypes',
+  ]
 }).id('not ' ~ upcomingEvent.id).orderBy('featured DESC, dateStart DESC').one() %}
 
 {% block content %}
 
-	<h2>{{ entry.homepageMessaging.tagline1 }}</h2>
+  <h2>{{ entry.homepageMessaging.tagline1 }}</h2>
 
-	{% if featuredPrograms %}
-		{% for featuredProgram in featuredPrograms.all() %}
-			{% set postImage = featuredProgram.newsEventImage[0] ?? null %}
-			<article class="featured program">
+  {% if featuredPrograms %}
+    {% for featuredProgram in featuredPrograms.all() %}
+      {% set postImage = featuredProgram.newsEventImage[0] ?? null %}
+      <article class="featured program">
 
-				{% if postImage %}
-					{% set grayImage = craft.imager.transformImage(postImage, {
-					  width: 1000,
-					  height: 1000,
-					  mode: 'crop',
-					  position: '20% 65%',
-					  effects: { grayscale: true, gamma: 1.5 }
-					}) %}
-					<div class="article-image">
-						<div class="image-wrap">
-						  <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
-						</div>
-					</div>
-				{% endif %}
+        {% if postImage %}
+          {% set grayImage = craft.imager.transformImage(postImage, {
+            width: 1000,
+            height: 1000,
+            mode: 'crop',
+            position: '20% 65%',
+            effects: { grayscale: true, gamma: 1.5 }
+          }) %}
+          <div class="article-image">
+            <div class="image-wrap">
+              <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+            </div>
+          </div>
+        {% endif %}
 
-				<div class="article-info">
-					<h4 class="subhead"><span>{{ tag.title }}</span></h4>
-					<h3><a href="{{ featuredProgram.getUrl() }}">{{ featuredProgram.title }}</a></h3>
-					<p class="read-more">
-						<a href="{{ featuredProgram.getUrl() }}" class="button">Read More</a>
-					</p>
-				</div>
+        <div class="article-info">
+          <h4 class="subhead"><span>{{ tag.title }}</span></h4>
+          <h3><a href="{{ featuredProgram.getUrl() }}">{{ featuredProgram.title }}</a></h3>
+          <p class="read-more">
+            <a href="{{ featuredProgram.getUrl() }}" class="button">Read More</a>
+          </p>
+        </div>
 
-			</article>
-		{% endfor %}
-	{% endif %}
+      </article>
+    {% endfor %}
+  {% endif %}
 
-	<h1>{{ entry.homepageMessaging.tagline2 }}</h1>
+  <h1>{{ entry.homepageMessaging.tagline2 }}</h1>
 
-	{{ entry.homepageMessaging.statement }}
+  {{ entry.homepageMessaging.statement }}
 
-	{% if featuredNewsPost %}
-		{% set postImage = featuredNewsPost.newsEventImage[0] ?? null %}
-		<article class="featured news">
+  {% if featuredNewsPost %}
+    {% set postImage = featuredNewsPost.newsEventImage[0] ?? null %}
+    <article class="featured news">
 
-			{% if postImage %}
-				{% set grayImage = craft.imager.transformImage(postImage, {
-				  width: 1000,
-				  height: 1000,
-				  mode: 'crop',
-				  position: '20% 65%',
-				  effects: { grayscale: true, gamma: 1.5 }
-				}) %}
-				<div class="article-image">
-					<div class="image-wrap">
-					  <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
-					</div>
-				</div>
-			{% endif %}
+      {% if postImage %}
+        {% set grayImage = craft.imager.transformImage(postImage, {
+          width: 1000,
+          height: 1000,
+          mode: 'crop',
+          position: '20% 65%',
+          effects: { grayscale: true, gamma: 1.5 }
+        }) %}
+        <div class="article-image">
+          <div class="image-wrap">
+            <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+          </div>
+        </div>
+      {% endif %}
 
-			<div class="article-info">
-				<h4 class="subhead"><span>News</span> {{ featuredNewsPost.newsTopics[0] ? ' / '~featuredNewsPost.newsTopics[0].title : '' }}</h4>
-				<h3><a href="{{ featuredNewsPost.getUrl() }}">{{ featuredNewsPost.title }}</a></h3>
-				<p class="read-more">
-					<a href="{{ featuredNewsPost.getUrl() }}" class="button">Read More</a>
-				</p>
-			</div>
+      <div class="article-info">
+        <h4 class="subhead"><span>News</span> {{ featuredNewsPost.newsTopics[0] ? ' / '~featuredNewsPost.newsTopics[0].title : '' }}</h4>
+        <h3><a href="{{ featuredNewsPost.getUrl() }}">{{ featuredNewsPost.title }}</a></h3>
+        <p class="read-more">
+          <a href="{{ featuredNewsPost.getUrl() }}" class="button">Read More</a>
+        </p>
+      </div>
 
-		</article>
-	{% endif %}
+    </article>
+  {% endif %}
 
-	<div class="secondary-featured">
+  <div class="secondary-featured">
 
-		{% if upcomingEvent %}
-			<article class="upcoming event">
-				<div class="article-info">
-					<h4 class="subhead">Upcoming Event</h4>
-					<h3><a href="{{ upcomingEvent.getUrl() }}">{{ upcomingEvent.title }}</a></h3>
-					<p class="excerpt">{{ upcomingEvent.excerpt ? upcomingEvent.excerpt : upcomingEvent.body | chop(limit=20, unit='w', append='…') }}</p>
-					<p class="read-more">
-						<a href="{{ upcomingEvent.getUrl() }}" class="arrow">Learn More &rarr;</a>
-					</p>
-				</div>
-			</article>
-		{% endif %}
+    {% if upcomingEvent %}
+      <article class="upcoming event">
+        <div class="article-info">
+          <h4 class="subhead">Upcoming Event</h4>
+          <h3><a href="{{ upcomingEvent.getUrl() }}">{{ upcomingEvent.title }}</a></h3>
+          <p class="excerpt">{{ upcomingEvent.excerpt ? upcomingEvent.excerpt : upcomingEvent.body | chop(limit=20, unit='w', append='…') }}</p>
+          <p class="read-more">
+            <a href="{{ upcomingEvent.getUrl() }}" class="arrow">Learn More &rarr;</a>
+          </p>
+        </div>
+      </article>
+    {% endif %}
 
-		{% if recentAnnouncement %}
-			<article class="upcoming event">
-				<div class="article-info">
-					<h4 class="subhead">Recent Announcement</h4>
-					<h3><a href="{{ recentAnnouncement.getUrl() }}">{{ recentAnnouncement.title }}</a></h3>
-					<p class="excerpt">{{ recentAnnouncement.excerpt ? recentAnnouncement.excerpt : recentAnnouncement.body | chop(limit=20, unit='w', append='…') }}</p>
-					<p class="read-more">
-						<a href="{{ recentAnnouncement.getUrl() }}" class="arrow">Learn More &rarr;</a>
-					</p>
-				</div>
-			</article>
-		{% endif %}
+    {% if recentAnnouncement %}
+      <article class="upcoming event">
+        <div class="article-info">
+          <h4 class="subhead">Recent Announcement</h4>
+          <h3><a href="{{ recentAnnouncement.getUrl() }}">{{ recentAnnouncement.title }}</a></h3>
+          <p class="excerpt">{{ recentAnnouncement.excerpt ? recentAnnouncement.excerpt : recentAnnouncement.body | chop(limit=20, unit='w', append='…') }}</p>
+          <p class="read-more">
+            <a href="{{ recentAnnouncement.getUrl() }}" class="arrow">Learn More &rarr;</a>
+          </p>
+        </div>
+      </article>
+    {% endif %}
 
-	</div>
+  </div>
 
 
 {% endblock %}

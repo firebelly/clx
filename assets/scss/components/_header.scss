@@ -1,69 +1,59 @@
 // Header
 
 .site-header {
-	position: relative;
-	height: grid(25);
-	overflow: hidden;
-}
+  position: relative;
+  height: 90px;
+  overflow: hidden;
 
-.clx-elements {
-}
-
-.bg-x {
-	fill: none;
-	stroke: $white;
-	position: absolute;
-	top: grid(8);
-	left: 0;
-	z-index: -1;
-	width: 1500px;
-	@include media-md {
-		width: 106%;
-		height: auto;
-	}
+  @include media-md {
+    margin: grid(8) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
+  }
 }
 
 .icon-logo {
-	fill: $black;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 245px;
+  fill: $black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 245px;
 
-	@include media-md {
-		left: 160px;
-	}
+  @include media-md {
+    left: 0;
+  }
 }
 
-.icon-C,
-.icon-L,
-.icon-X {
-	display: none;
+.icon-search {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+.icon-hamburger {
+  display: none;
 }
 
-@include media-md {
-	.icon-C,
-	.icon-L,
-	.icon-X {
-		display: block;
-		position: fixed;
-		height: auto;
-		z-index: 1000;
-	}
-	.icon-C {
-		width: 90px;
-		top: 100px;
-		left: 40px;
-	}
-	.icon-L {
-		width: 50px;
-		right: 4%;
-		top: 80px;
-	}
-	.icon-X {
-		width: 80px;
-		bottom: 80px;
-		right: 4%;
-		fill: $red;
-	}
+.site-nav {
+  margin-top: grid(4);
+  a {
+    @include type-subhead;
+    padding: grid(2);
+  }
+  ul {
+    text-align: right;
+    li {
+      display: inline-block;
+    }
+  }
+  ul.children {
+    display: none;
+    text-align: left;
+    li {
+      display: block;
+    }
+    a {
+      display: block;
+      font: 30px/1.5 $font-regular;
+    }
+  }
 }

@@ -14,12 +14,15 @@
 
 // Components
 @import "components/base";
+@import "components/clx";
 @import "components/header";
 @import "components/forms";
 @import "components/footer";
 @import "components/page-headers";
 
 // Pages
+@import "pages/shared";
 @import "pages/homepage";
 @import "pages/work";
 @import "pages/community";
+@import "pages/news";

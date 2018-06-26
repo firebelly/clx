@@ -1,25 +1,30 @@
 // Community
 
 .page-community {
-	background: $blue;
-	.members {
-	}
+  .return-crumb {
+    border: none;
+  }
+  .single-member {
+    background: $gray;
+  }
 
-	@include media-md {
-		.members {
-			margin: 0 calc(#{columns(1)} - #{$global-padding * 2}) 0 calc(#{columns(1)} - #{$global-padding});
-			article {
-				.image {
-			    @include aspect-ratio(320,215);
-				}
-				float: left;
-				width: 33.3%;
-				padding-right: $global-padding;
-				margin-bottom: grid(4);
-				&:nth-child(3n+1) {
-					clear: left;
-				}
-			}
-		}
-	}
+  .members {
+  }
+
+  @include media-md {
+    .members {
+      article {
+        .image {
+          @include aspect-ratio(320,215);
+        }
+        float: left;
+        width: 33.3%;
+        padding-right: $global-padding;
+        margin-bottom: grid(4);
+        &:nth-child(3n+1) {
+          clear: left;
+        }
+      }
+    }
+  }
 }
