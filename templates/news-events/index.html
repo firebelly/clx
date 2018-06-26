@@ -2,11 +2,11 @@
 
 {% set newsOrEvents = segment(2) %}
 {% if entry is not defined %}
-  {% set entry = craft.entries.section(newsOrEvents ~ 'Index').first() %}
+  {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}
 
 {% if tag is defined %}
-  {% set tag = craft.tags.slug(tag).first() %}
+  {% set tag = craft.tags.slug(tag).one() %}
   {# todo: 404 on no tag matches #}
   {% paginate craft.entries({
     section: newsOrEvents,
@@ -51,7 +51,7 @@
       <li>
         <select name="filter" class="jumpSelect">
           <option value="#">Filter by {{ newsOrEvents == 'news' ? 'Topic' : 'Event Type' }}</option>
-          {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics') %}
+          {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics').all() %}
             <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
           {% endfor %}
         </select>

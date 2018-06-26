@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set tag = craft.tags.search('featured-program').first() %}
+{% set tag = craft.tags.search('featured-program').one() %}
 {% set featuredPrograms = craft.entries({
   section: 'news',
   relatedTo: tag,

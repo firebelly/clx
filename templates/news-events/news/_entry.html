@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
-{% set newsTopic = entry.newsTopics.first() %}
+{% set newsTopic = entry.newsTopics.one() %}
 
 {% block content %}
 	<article class="single-entry single-news">
@@ -13,7 +13,7 @@
 		</div>
 		{% if entry.tags %}
 			<ul class="tags">
-				{% for tag in entry.tags %}
+				{% for tag in entry.tags.all() %}
 					<a href="/news-events/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
 				{% endfor %}
 			</ul>

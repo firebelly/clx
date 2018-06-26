@@ -1,7 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% if entry is not defined %}
-  {% set entry = craft.entries.section('resourcesIndex').first() %}
+  {% set entry = craft.entries.section('resourcesIndex').one() %}
 {% endif %}
 
 {% if category is defined %}

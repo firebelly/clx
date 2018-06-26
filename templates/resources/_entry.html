@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
-{% set resourceType = entry.resourceType.first() %}
+{% set resourceType = entry.resourceType.one() %}
 
 {% block content %}
   <article class="single-entry single-resource">

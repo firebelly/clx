@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
-{% set eventType = entry.eventTypes.first() %}
+{% set eventType = entry.eventTypes.one() %}
 
 {% block content %}
   <article class="single-entry single-event">

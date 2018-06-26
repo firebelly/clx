@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set ourTeamCategory = craft.categories.slug('our-team').first() %}
+{% set ourTeamCategory = craft.categories.slug('our-team').one() %}
 {% set ourTeam = craft.entries({
   section: 'people',
   relatedTo: ourTeamCategory,
@@ -9,7 +9,7 @@
   ]
 }) %}
 
-{% set ourBoardCategory = craft.categories.slug('our-board').first() %}
+{% set ourBoardCategory = craft.categories.slug('our-board').one() %}
 {% set ourBoard = craft.entries({
   section: 'people',
   relatedTo: ourBoardCategory,
@@ -18,7 +18,7 @@
   ]
 }) %}
 
-{% set ourSupportersCategory = craft.categories.slug('our-supporters').first() %}
+{% set ourSupportersCategory = craft.categories.slug('our-supporters').one() %}
 {% set ourSupporters = craft.entries({
   section: 'people',
   relatedTo: ourSupportersCategory,
@@ -40,7 +40,7 @@
       <div class="our-values">
         <h4 class="subhead">We Value</h4>
         <ul class="values">
-        {% for value in entry.weValue %}
+        {% for value in entry.weValue.all() %}
           <li>{{ value.valueText|nl2br }}</li>
         {% endfor %}
         </ul>
