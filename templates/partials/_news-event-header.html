@@ -1,0 +1,5 @@
+{% if newsEventPost.type.name == 'News' %}
+  <h4 class="subhead"><a href="/news-events/news/"><span>News</span></a> {% if newsEventPost.newsTopics|length %} / <a href="{{ newsEventPost.newsTopics[0].getUrl() }}">{{ newsEventPost.newsTopics[0].title }}</a>{% endif %}</h4>
+{% else %}
+  <h4 class="subhead"><a href="/news-events/events/"><span>Events</span></a> {% if newsEventPost.eventTypes|length %} / <a href="{{ newsEventPost.eventTypes[0].getUrl() }}">{{ newsEventPost.eventTypes[0].title }}</a>{% endif %}</h4>
+{% endif %}

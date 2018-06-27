@@ -1,25 +1,22 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set tag = craft.tags.search('featured-program').one() %}
-{% set featuredPrograms = craft.entries({
-  section: 'news',
-  relatedTo: tag,
-  with: [
-    'newsEventImage',
-    'newsTopics',
-  ]
-}).orderBy('featured DESC, postDate DESC').limit(5) %}
-{% set featuredProgramsIds = featuredPrograms.ids() %}
-{% set featuredProgramsIdsString = featuredProgramsIds | join(', not ') %}
+{% if entry.homepageFeaturedPosts.secondFeature|length %}
+  {% set secondFeature = entry.homepageFeaturedPosts.secondFeature.one() %}
+{% else %}
+  {% set secondFeature = craft.entries({
+    section: 'news',
+    featured: 1,
+  }).orderBy('RAND()').one() %}
+{% endif %}
 
-{% set featuredNewsPost = craft.entries({
-  section: 'news',
-  featured: 1,
-  with: [
-    'newsEventImage',
-    'newsTopics',
-  ]
-}).id('and, not '~featuredProgramsIdsString).orderBy('RAND()').one() %}
+{% if entry.homepageFeaturedPosts.thirdFeature|length %}
+  {% set thirdFeature = entry.homepageFeaturedPosts.thirdFeature.one() %}
+{% else %}
+  {% set thirdFeature = craft.entries({
+    section: 'news',
+    featured: 1,
+  }).id('not ' ~ secondFeature.id).orderBy('RAND()').one() %}
+{% endif %}
 
 {% set upcomingEvent = craft.entries({
   section: 'events',
@@ -30,25 +27,17 @@
   ]
 }).orderBy('featured DESC, dateStart DESC').one() %}
 
-{% set recentAnnouncement = craft.entries({
-  section: 'events',
-  featured: 1,
-  with: [
-    'newsEventImage',
-    'eventTypes',
-  ]
-}).id('not ' ~ upcomingEvent.id).orderBy('featured DESC, dateStart DESC').one() %}
-
 {% block content %}
 
   <div class="text-header">
     <h1>{{ entry.homepageMessaging.tagline1 }}</h1>
   </div>
 
-  {% if featuredPrograms %}
+  {% if entry.homepageFeaturedPosts.featuredCarousel|length %}
     <div class="featured-carousel">
-    {% for featuredProgram in featuredPrograms.all() %}
-      {% set postImage = featuredProgram.newsEventImage[0] ?? null %}
+    {% for featuredPost in entry.homepageFeaturedPosts.featuredCarousel.all() %}
+      {% set postType = featuredPost.type.name %}
+      {% set postImage = featuredPost.newsEventImage[0] ?? null %}
       <article class="featured program grid">
 
         {% if postImage %}
@@ -67,10 +56,10 @@
         {% endif %}
 
         <div class="article-info one-half">
-          <h4 class="subhead"><span>{{ tag.title }}</span></h4>
-          <h3><a href="{{ featuredProgram.getUrl() }}">{{ featuredProgram.title }}</a></h3>
+          {% include 'partials/_news-event-header' with { newsEventPost: featuredPost } %}
+          <h3><a href="{{ featuredPost.getUrl() }}">{{ featuredPost.title }}</a></h3>
           <p class="read-more">
-            <a href="{{ featuredProgram.getUrl() }}" class="button">Read More</a>
+            <a href="{{ featuredPost.getUrl() }}" class="button">Read More</a>
           </p>
         </div>
 
@@ -84,19 +73,19 @@
     {{ entry.homepageMessaging.statement }}
   </div>
 
-  {% if featuredNewsPost %}
-    {% set postImage = featuredNewsPost.newsEventImage[0] ?? null %}
+  {% if secondFeature %}
     <article class="featured news">
       <div class="grid">
         <div class="article-info one-half">
-          <h4 class="subhead"><a href="/news-events/news/"><span>News</span></a> {% if featuredNewsPost.newsTopics[0] %} / <a href="{{ featuredNewsPost.newsTopics[0].getUrl() }}">{{ featuredNewsPost.newsTopics[0].title }}</a>{% endif %}</h4>
-          <h3><a href="{{ featuredNewsPost.getUrl() }}">{{ featuredNewsPost.title }}</a></h3>
+          <h4 class="subhead"><a href="/news-events/news/"><span>News</span></a> {% if secondFeature.newsTopics|length %} / <a href="{{ secondFeature.newsTopics[0].getUrl() }}">{{ secondFeature.newsTopics[0].title }}</a>{% endif %}</h4>
+          <h3><a href="{{ secondFeature.getUrl() }}">{{ secondFeature.title }}</a></h3>
           <p class="read-more">
-            <a href="{{ featuredNewsPost.getUrl() }}" class="button">Read More</a>
+            <a href="{{ secondFeature.getUrl() }}" class="button">Read More</a>
           </p>
         </div>
 
-        {% if postImage %}
+        {% if secondFeature.newsEventImage|length %}
+          {% set postImage = secondFeature.newsEventImage.one() %}
           {% set grayImage = craft.imager.transformImage(postImage, {
             width: 1000,
             height: 1000,
@@ -129,20 +118,19 @@
       </article>
     {% endif %}
 
-    {% if recentAnnouncement %}
+    {% if thirdFeature %}
       <article class="upcoming event">
         <div class="article-info">
-          <h4 class="subhead">Recent Announcement</h4>
-          <h3><a href="{{ recentAnnouncement.getUrl() }}">{{ recentAnnouncement.title }}</a></h3>
-          <p class="excerpt">{{ recentAnnouncement.excerpt ? recentAnnouncement.excerpt : recentAnnouncement.body | chop(limit=20, unit='w', append='…') }}</p>
+          {% include 'partials/_news-event-header' with { newsEventPost: thirdFeature } %}
+          <h3><a href="{{ thirdFeature.getUrl() }}">{{ thirdFeature.title }}</a></h3>
+          <p class="excerpt">{{ thirdFeature.excerpt ? thirdFeature.excerpt : thirdFeature.body | chop(limit=20, unit='w', append='…') }}</p>
           <p class="read-more">
-            <a href="{{ recentAnnouncement.getUrl() }}" class="arrow">Learn More &rarr;</a>
+            <a href="{{ thirdFeature.getUrl() }}" class="arrow">Learn More &rarr;</a>
           </p>
         </div>
       </article>
     {% endif %}
 
   </div>
-
 
 {% endblock %}

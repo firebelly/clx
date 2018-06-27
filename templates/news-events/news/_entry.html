@@ -1,10 +1,9 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
-{% set newsTopic = entry.newsTopics.one() %}
 
 {% block content %}
 	<article class="single-entry single-news">
-		<h4 class="crumb subhead"><a href="/news-events/news/">News</a> {% if newsTopic %} / <a href="{{ newsTopic.getUrl() }}">{{ newsTopic.title }}</a>{% endif %}</h4>
+		{% include 'partials/_news-event-header' with { newsEventPost: entry } %}
 		<h1>{{ entry.title }}</h1>
 		{{ entry.statement }}
 		{% include 'partials/_stats' with { stats: entry.stats } %}
