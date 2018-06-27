@@ -1,5 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% set mode = craft.request.getParam('mode') ?? 'grid' %}
+
 {% if category is defined %}
 
   {% paginate craft.entries({
