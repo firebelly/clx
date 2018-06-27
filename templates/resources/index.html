@@ -27,7 +27,7 @@
 
 
 {% block content %}
-  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#bdb83d' } %}
   <div class="single-entry">
     <h4 class="subhead">Resource category dropdown</h4>
     {% for resourceEntry in resourceEntries %}
@@ -43,5 +43,5 @@
 
 {% block footerimage %}
   {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
-  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage, gradientColor: '#bdb83d' } %}
 {% endblock %}
