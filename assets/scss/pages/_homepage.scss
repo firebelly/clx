@@ -1,42 +1,75 @@
 // Homepage
 
 .page-home {
+  // .page-wrapper {
+  //   padding: 0;
+  // }
 }
 .featured {
   @include clearfix;
-  &.news {
-    // Reorder image / post info on smaller screens
-    @include max-screen($breakpoint-md) {
-      .grid {
-        display: flex;
-        flex-direction: column;
-      }
-      .article-image {
-        order: 1;
-      }
-      .article-info {
-        order: 2;
-      }
-    }
-  }
+
   @include media-md {
+    padding: 0 $global-padding;
+    width: 100%;
+
     .article-info,
     .article-image {
-      width: 50%;
-      float: left;
       padding: 0 $global-padding;
+    }
+    .article-info h3 {
+      // Keep title readable
+      max-width: 450px;
+    }
+
+    // Reversed image/info featured post
+    &.news {
+      padding-left: calc(#{columns(1)} - #{3 * $global-padding});
+      .article-info {
+        padding: 0 0 0 #{2 * $global-padding};
+      }
+      .article-image {
+        padding: 0 $global-padding 0 0;
+      }
     }
   }
 }
+
+// Small screen only styles
+@include max-screen($breakpoint-md) {
+  // Break out featured posts from global padding
+  .featured-carousel {
+    margin: 0 -#{$global-padding};
+    .article-info {
+      margin: 0 $global-padding;
+    }
+  }
+  // Reorder article-image & article-info on smaller screens
+  .featured.news {
+    margin: 0 -#{$mobile-inset};
+    .grid {
+      display: flex;
+      flex-direction: column;
+    }
+    .article-image {
+      order: 1;
+    }
+    .article-info {
+      margin: 0 $mobile-inset;
+      order: 2;
+    }
+  }
+}
+
+// Bottom of page upcoming event + secondary feature
 .secondary-featured {
 
   @include media-md {
     padding: grid(10) 0;
     margin-left: calc(#{columns(2)} - #{$global-padding});
     article {
-      width: 50%;
-      float: left;
-      padding: 0 columns(1) grid(6) 0;
+     width: 50%;
+     float: left;
+     padding: 0 columns(1) grid(6) 0;
     }
   }
 }

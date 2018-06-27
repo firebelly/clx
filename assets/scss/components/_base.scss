@@ -10,11 +10,11 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
 }
 body {
   color: $black;
   font: 18px/1.388888889 $font-regular;
+  overflow-x: hidden;
   background: $gray;
   position: relative;
 }
@@ -23,8 +23,12 @@ body {
   overflow: hidden;
 }
 .page-wrapper {
-  // padding: $global-padding;
+  padding: $global-padding;
   @include clearfix;
+
+  @include media-md {
+    padding: 0;
+  }
 }
 // .site-main {
 //   @include clearfix;

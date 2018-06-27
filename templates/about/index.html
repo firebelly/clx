@@ -62,7 +62,6 @@
               <h2>{{ person.title }}</h2>
               <div class="user-content">
                 <p class="excerpt">{{ person.excerpt ? person.excerpt : person.body | chop(limit=20, unit='w', append='…') }}</p>
-                <a href="{{ person.getUrl() }}" class="button">Read More</a>
               </div>
             </article>
           </li>
