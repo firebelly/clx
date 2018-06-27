@@ -1,7 +1,7 @@
 {% if stats %}
-<ul class="stats">
+<ul class="stats grid">
   {% for stat in stats %}
-    <li>
+    <li class="one-third">
       <span class="stat-figure">{{ stat.statFigure }}</span>
       <span class="stat-label">{{ stat.statLabel }}</span>
     </li>

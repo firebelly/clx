@@ -24,6 +24,7 @@ body {
 }
 .page-wrapper {
   padding: $global-padding;
+  padding-bottom: 0;
   @include clearfix;
 
   @include media-md {
@@ -103,15 +104,20 @@ address {
   }
 }
 
+// Sitewide stats (used in various areas)
 .stats {
   .stat-figure {
     font: bold 72px/1.138888889 $font-display;
+    display: block;
   }
   .stat-label {
+    display: block;
     @include type-display;
+    margin-bottom: grid(5);
   }
 }
 
+// Post meta columns at the bottom of several areas (contact, social, links)
 .post-meta {
   @include clearfix;
   ul,
@@ -119,6 +125,7 @@ address {
   p {
     @include type-display;
   }
+
   @include media-md {
     li {
       float: left;
@@ -136,6 +143,7 @@ address {
   @include type-subhead;
 }
 
+// Post date for news posts
 time {
   @include type-display;
 }
