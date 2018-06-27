@@ -19,5 +19,5 @@
 
 {% block footerimage %}
   {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
-  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage, gradientColor: '#bdb83d' } %}
 {% endblock %}

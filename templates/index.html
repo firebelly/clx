@@ -30,7 +30,7 @@
 {% block content %}
 
   <div class="text-header">
-    <h1>{{ entry.homepageMessaging.tagline1 }}</h1>
+    <h1>{{ entry.homepageMessaging.tagline1|nl2br }}</h1>
   </div>
 
   {% if entry.homepageFeaturedPosts.featuredCarousel|length %}
@@ -41,16 +41,15 @@
       <article class="featured program grid">
 
         {% if postImage %}
-          {% set grayImage = craft.imager.transformImage(postImage, {
+          {% set treatedImage = craft.imager.transformImage(postImage, {
             width: 1000,
             height: 1000,
             mode: 'crop',
-            position: '20% 65%',
             effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
           }) %}
           <div class="article-image one-half">
             <div class="image-wrap">
-              <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+              <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
             </div>
           </div>
         {% endif %}
@@ -86,16 +85,15 @@
 
         {% if secondFeature.newsEventImage|length %}
           {% set postImage = secondFeature.newsEventImage.one() %}
-          {% set grayImage = craft.imager.transformImage(postImage, {
+          {% set treatedImage = craft.imager.transformImage(postImage, {
             width: 1000,
             height: 1000,
             mode: 'crop',
-            position: '20% 65%',
             effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
           }) %}
           <div class="article-image one-half">
             <div class="image-wrap">
-              <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+              <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
             </div>
           </div>
         {% endif %}

@@ -34,13 +34,13 @@
       <article>
         {% set memberImage = memberEntry.memberImage[0] ?? null %}
         {% if memberImage %}
-          {% set grayImage = craft.imager.transformImage(memberImage, {
+          {% set treatedImage = craft.imager.transformImage(memberImage, {
             width: 800,
             height: 800,
-            effects: { grayscale: true, gamma: 1.5 }
+            effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
           }) %}
           <div class="image-wrap">
-            <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></a>
+            <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
           </div>
         {% endif %}
         <h4><a href="{{ memberEntry.getUrl() }}">

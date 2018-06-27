@@ -3,7 +3,7 @@
 {% endif %}
 
 {% set headerImage = pageHeader.image.one() %}
-{% set grayImage = craft.imager.transformImage(headerImage, {
+{% set treatedImage = craft.imager.transformImage(headerImage, {
   width: 1000,
   height: 1000,
   mode: 'crop',
@@ -13,7 +13,7 @@
 
 <div class="page-header">
   <div class="image-wrap">
-    <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+    <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
   </div>
   <div class="page-header-info">
     <h4 class="subhead">{{ pageHeader.headerTitle }}</h4>

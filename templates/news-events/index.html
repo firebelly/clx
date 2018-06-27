@@ -71,13 +71,13 @@
         <article>
           {% set newsEventImage = newsEventEntry.newsEventImage[0] ?? null %}
           {% if newsEventImage %}
-            {% set grayImage = craft.imager.transformImage(newsEventImage, {
+            {% set treatedImage = craft.imager.transformImage(newsEventImage, {
               width: 960,
               height: 600,
-              effects: { grayscale: true, gamma: 1.5 }
+              effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
             }) %}
             <div class="image-wrap">
-              <a href="{{ newsEventEntry.getUrl() }}" class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></a>
+              <a href="{{ newsEventEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
             </div>
           {% endif %}
           <time datetime="{{ newsEventEntry.postDate|date('Y-m-d') }}">

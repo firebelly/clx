@@ -3,7 +3,7 @@
 {% endif %}
 
 {% if footerImage|length %}
-  {% set grayImage = craft.imager.transformImage(footerImage.one(), {
+  {% set treatedImage = craft.imager.transformImage(footerImage.one(), {
     width: 1600,
     height: 1600,
     effects: { modulate: [100, 0, 100], clut: 'gradient:' ~ gradientColor ~ '-' ~ '#ffffff' }
@@ -11,7 +11,7 @@
 
   <div class="footer-image">
     <div class="image-wrap">
-      <div class="image" style="background-image: url({{ grayImage ? grayImage.getUrl() : '' }});"></div>
+      <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
     </div>
   </div>
 {% endif %}
