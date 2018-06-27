@@ -28,7 +28,7 @@
 }) %}
 
 {% block content %}
-  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c' } %}
   <div class="single-entry our-approach">
 
     <div id="our-approach">
@@ -60,9 +60,7 @@
           <li>
             <article>
               <h2>{{ person.title }}</h2>
-              <div class="user-content">
-                <p class="excerpt">{{ person.excerpt ? person.excerpt : person.body | chop(limit=20, unit='w', append='…') }}</p>
-              </div>
+              <h2>{{ person.title }}</h2>
             </article>
           </li>
         {% endfor %}
@@ -70,4 +68,9 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage, gradientColor: '#ff6e5c' } %}
 {% endblock %}

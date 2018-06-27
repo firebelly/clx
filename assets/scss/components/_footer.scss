@@ -59,12 +59,14 @@
   z-index: -1;
   position: relative;
   margin-top: -#{grid(10)};
+
   @include media-md {
     padding: 0;
     margin-left: calc(#{columns(1)} - #{$global-padding});
     .image-wrap {
       .image {
         @include aspect-ratio(1240,570);
+        background-position: center 30%;
       }
     }
   }

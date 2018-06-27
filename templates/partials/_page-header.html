@@ -1,10 +1,14 @@
+{% if gradientColor is not defined %}
+  {% set gradientColor = '#222222' %}
+{% endif %}
+
 {% set headerImage = pageHeader.image.one() %}
 {% set grayImage = craft.imager.transformImage(headerImage, {
   width: 1000,
   height: 1000,
   mode: 'crop',
   position: '20% 65%',
-  effects: { grayscale: true, gamma: 1.5 }
+  effects: { modulate: [100, 0, 100], clut: 'gradient:' ~ gradientColor ~ '-' ~ '#ffffff' }
 }) %}
 
 <div class="page-header">
