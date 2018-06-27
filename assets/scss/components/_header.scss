@@ -3,10 +3,9 @@
 .site-header {
   position: relative;
   height: 90px;
-  overflow: hidden;
 
   @include media-md {
-    margin: grid(8) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
+    margin: grid(11) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
   }
 }
 
@@ -26,7 +25,7 @@
   width: 18px;
   height: 18px;
   position: absolute;
-  top: 0;
+  top: -30px;
   right: 20px;
 }
 .icon-hamburger {
@@ -34,10 +33,13 @@
 }
 
 .site-nav {
-  margin-top: grid(4);
+  margin-top: 5px;
   a {
     @include type-subhead;
     padding: grid(2);
+  }
+  .active a {
+    color: $red;
   }
   ul {
     text-align: right;

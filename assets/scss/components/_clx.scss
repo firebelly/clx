@@ -4,7 +4,7 @@
   fill: none;
   stroke: $white;
   position: absolute;
-  top: grid(8);
+  top: grid(11);
   left: 0;
   z-index: -1;
   width: 1500px;
@@ -36,18 +36,28 @@
   }
   .icon-C {
     width: 90px;
-    top: 100px;
+    top: 120px;
     left: 40px;
   }
   .icon-L {
     width: 50px;
-    right: 4%;
-    top: 80px;
+    right: 3.5%;
+    top: 110px;
   }
   .icon-X {
     width: 80px;
     bottom: 80px;
-    right: 4%;
+    right: 3.5%;
     fill: $red;
+  }
+
+  // Adjust for adminbar
+  .logged-in {
+    .icon-C {
+      top: 170px;
+    }
+    .icon-L {
+      top: 160px;
+    }
   }
 }

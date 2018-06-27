@@ -1,6 +1,17 @@
 // Community
 
 .page-community {
+  .icon-L {
+    top: 160px;
+    right: 6%;
+    transform: rotate(180deg);
+  }
+  &.logged-in {
+    .icon-L {
+      top: 210px;
+    }
+  }
+
   .return-crumb {
     border: none;
   }

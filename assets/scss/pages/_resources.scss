@@ -1,10 +1,18 @@
 // Resources
 
 .page-resources {
+	background: $orange;
+	.site-nav .active a {
+		color: $white;
+	}
 	.bg-x {
 		stroke: #A9A640;
 	}
-	background: $orange;
+	.icon-L {
+		right: 8%;
+		transform: rotate(-90deg);
+	}
+
 	.page-header {
 		color: $gray;
 	}

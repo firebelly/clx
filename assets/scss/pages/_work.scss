@@ -2,6 +2,14 @@
 
 .page-work {
   background: $blue;
+  .bg-x {
+    stroke: #ACE3FE;
+  }
+  .icon-L {
+    right: 8%;
+    transform: rotate(-90deg);
+  }
+
   #our-impact {
     background: $blue3;
   }

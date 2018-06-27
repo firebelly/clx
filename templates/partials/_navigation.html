@@ -26,7 +26,7 @@
 {% spaceless %}
   {% import _self as navigation %}
     {% for item in items %}
-      <{{inside}}{% if item.children is defined %} class="dropdown"{% endif %}>
+      <{{inside}} class="{% if item.children is defined %}dropdown {% endif %}{% if item.href in craft.app.request.absoluteUrl %}active{% endif %}">
         <a href="{{ item.href }}">{{ item.name }}</a>
         {% if item.children is defined %}
           <{{outside}} class="children">

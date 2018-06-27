@@ -2,8 +2,15 @@
 
 .page-about {
 	background: $red;
+	.site-nav .active a {
+		color: $white;
+	}
 	.bg-x {
 		stroke: #F95B56;
+	}
+	.icon-L {
+		right: 8%;
+		transform: rotate(-90deg);
 	}
 	// .page-header {
 	// 	color: $gray;
