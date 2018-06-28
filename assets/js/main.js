@@ -45,6 +45,7 @@ var CLX = (function($) {
       // Mobile support for ul.children
       if (Modernizr.touchevents && $li.hasClass('dropdown')) {
         e.preventDefault();
+        $('.site-nav li').not($li).removeClass('open');
         $li.toggleClass('open');
         return;
       }
