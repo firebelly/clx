@@ -67,6 +67,7 @@
   // Allow scrolling if open nav is taller than screen
   .site-nav {
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   // Mobile nav is open!
@@ -94,7 +95,7 @@
 
   // Mobile nav styles
   .site-nav {
-    padding: grid(19) $global-padding $global-padding $global-padding;
+    padding: grid(13) $global-padding $global-padding $global-padding;
     text-transform: uppercase;
     li {
       font: bold 24px/1.4 $font-display;
@@ -121,6 +122,9 @@
       margin: grid(4) 0 0;
       max-height: 300px;
     }
+  }
+  &.logged-in .site-nav {
+    padding-top: grid(19);
   }
 }
 
