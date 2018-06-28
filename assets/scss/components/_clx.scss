@@ -24,6 +24,9 @@
     }
   }
 }
+.icon-X {
+  fill: $red;
+}
 
 // Mobile CLX
 @include max-screen($breakpoint-nav) {

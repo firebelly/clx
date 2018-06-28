@@ -2,8 +2,10 @@
 
 .page-about {
 	background: $red;
-	// Small screen headers have colored-background h2
+
+	// Mobile-only styles
 	@include max-screen($breakpoint-md) {
+		// Small screen headers have colored-background h2
 	  .page-header .page-header-info h2 {
 	    background: $red;
 	  }
@@ -15,6 +17,9 @@
 	.icon-L {
 		right: 8%;
 		transform: rotate(-90deg);
+	}
+	.icon-X {
+		fill: $white;
 	}
 	// .page-header {
 	// 	color: $gray;
@@ -31,8 +36,6 @@
 			@include clearfix;
 			li {
 				font: 30px/1.33 $font-regular;
-				float: left;
-				width: 33%;
 			}
 			margin-bottom: grid(10);
 		}
@@ -44,6 +47,12 @@
   @include media-md {
   	.site-nav li.active>a {
   		color: $white;
+  	}
+  	.our-values {
+  		ul.values li {
+  			float: left;
+  			width: 33%;
+  		}
   	}
   }
 }
