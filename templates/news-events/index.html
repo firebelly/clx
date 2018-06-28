@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set newsOrEvents = segment(2) %}
+{% set newsOrEvents = segment(2) == '' ? 'News' : segment(2) %}
 {% if entry is not defined %}
   {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}

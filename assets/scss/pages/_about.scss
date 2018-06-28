@@ -2,9 +2,13 @@
 
 .page-about {
 	background: $red;
-	.site-nav .active a {
-		color: $white;
+	// Small screen headers have colored-background h2
+	@include max-screen($breakpoint-md) {
+	  .page-header .page-header-info h2 {
+	    background: $red;
+	  }
 	}
+
 	.bg-x {
 		stroke: #F95B56;
 	}
@@ -38,5 +42,8 @@
 	}
 
   @include media-md {
+  	.site-nav li.active>a {
+  		color: $white;
+  	}
   }
 }

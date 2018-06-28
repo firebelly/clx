@@ -20,20 +20,16 @@ body {
 }
 .body-wrapper {
   position: relative;
-  overflow: hidden;
 }
 .page-wrapper {
-  padding: $global-padding;
-  padding-bottom: 0;
   @include clearfix;
+  position: relative;
+  padding: $global-padding $global-padding 0 $global-padding;
 
   @include media-md {
     padding: 0;
   }
 }
-// .site-main {
-//   @include clearfix;
-// }
 
 // Default link styles
 a {

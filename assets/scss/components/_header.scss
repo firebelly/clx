@@ -2,60 +2,204 @@
 
 .site-header {
   position: relative;
-  height: 90px;
+  min-height: 90px;
 
   @include media-md {
     margin: grid(11) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
   }
 }
 
+// Desktop-only logomark
 .icon-logo {
   fill: $black;
   position: absolute;
   top: 0;
   left: 0;
   width: 245px;
+  display: none;
 
   @include media-md {
-    left: 0;
+    display: block;
   }
 }
 
+// Magnify icon
 .icon-search {
   width: 18px;
   height: 18px;
   position: absolute;
   top: -30px;
   right: 20px;
-}
-.icon-hamburger {
   display: none;
+
+  @include media-md {
+    display: block;
+  }
 }
 
-.site-nav {
-  margin-top: 5px;
-  a {
-    @include type-subhead;
-    padding: grid(2);
+// Mobile nav styles
+@include max-screen($breakpoint-md) {
+  // Hamburger and X buttons
+  .mobile-nav-close,
+  .mobile-nav-toggle {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
   }
-  .active a {
-    color: $red;
-  }
-  ul {
-    text-align: right;
-    li {
-      display: inline-block;
-    }
-  }
-  ul.children {
+  // Hide X button by default
+  .mobile-nav-close {
     display: none;
-    text-align: left;
-    li {
+  }
+  // Red bg + site nav are fixed to full viewport
+  .site-nav,
+  .mobile-nav-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+  // Allow scrolling if open nav is taller than screen
+  .site-nav {
+    overflow-y: auto;
+  }
+
+  // Mobile nav is open!
+  &.mobile-nav-open {
+    // Keep body from scrolling underneath
+    position: fixed;
+    overflow-y: hidden;
+    // Now site nav
+    .site-nav {
       display: block;
     }
-    a {
+    // Hide hamburger
+    .mobile-nav-toggle {
+      display: none;
+    }
+    // Show X button
+    .mobile-nav-close {
       display: block;
-      font: 30px/1.5 $font-regular;
+    }
+    .mobile-nav-bg {
+      background: $red;
+      display: block;
+    }
+  }
+
+  // Mobile nav styles
+  .site-nav {
+    padding: grid(19) $global-padding $global-padding $global-padding;
+    text-transform: uppercase;
+    li {
+      font: bold 24px/1.4 $font-display;
+      letter-spacing: .1em;
+      margin: 0 0 grid(4);
+    }
+    // Child menus, hidden at start
+    ul.children {
+      max-height: 0;
+      overflow: hidden;
+      transition: all .5s;
+      li {
+        font: 25px/1.4 $font-regular;
+        text-transform: none;
+        letter-spacing: 0;
+        margin: 0;
+        a {
+          color: $white;
+        }
+      }
+    }
+    // Slide out child menu
+    li.open ul.children {
+      margin: grid(4) 0 0;
+      max-height: 300px;
+    }
+  }
+}
+
+// Desktop nav
+@include media-md {
+  .mobile-nav-close,
+  .mobile-nav-toggle,
+  .mobile-nav-bg {
+    display: none;
+  }
+  .site-nav {
+    margin-top: 5px;
+    // Hide the "Search" faux-nav-item that's just for mobile
+    .nav-search {
+      display: none;
+    }
+    ul {
+      text-align: right;
+      li {
+        display: inline-block;
+        position: relative;
+        padding: grid(1) grid(.5);
+        margin: grid(1) grid(1.5) 0;
+        @include type-subhead;
+        border-bottom: 2px dashed transparent;
+        &:hover {
+          border-color: $black;
+        }
+        a {
+          display: block;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        &.active>a {
+          color: $red;
+        }
+        // Child menus, hidden at start
+        ul.children {
+          margin: 0;
+          padding: grid(3) 0 0;
+          visibility: hidden;
+          opacity: 0;
+          min-width: 5rem;
+          position: absolute;
+          transition: all 0.5s ease;
+          left: 0;
+          display: none;
+          text-align: left;
+          z-index: 100;
+          li {
+            margin: 0;
+            clear: both;
+            width: 100%;
+            font: 30px/1.4 $font-regular;
+            letter-spacing: 0;
+            margin: 0;
+            padding: 0;
+            border: none;
+            a {
+              margin: 0;
+              text-transform: none;
+              white-space: nowrap;
+              &:hover {
+                color: $red;
+              }
+            }
+          }
+        }
+        // On hover and focus, show child menus
+        &:hover > ul,
+        &:focus-within > ul,
+        ul:hover,
+        ul:focus {
+           visibility: visible;
+           opacity: 1;
+           display: block;
+        }
+      }
     }
   }
 }

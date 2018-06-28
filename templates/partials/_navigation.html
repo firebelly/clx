@@ -1,23 +1,30 @@
+{# Static dropdown nav menu #}
 {% set nav = [
   {"href": "/work/", "name": "Work", "children":
     [
-      {"href": "/work/#programs", "name": "Programs"},
-      {"href": "/work/#impact", "name": "Impact"},
-      {"href": "/work/#work-with-clx", "name": "Work With CLX"},
+      {"href": "/work/#our-programs", "name": "Programs"},
+      {"href": "/work/#our-impact", "name": "Impact"},
+      {"href": "/work/#work-with-us", "name": "Work With CLX"},
     ]
   },
   {"href": "/community/", "name": "Community"},
   {"href": "/about/", "name": "About", "children":
     [
-      {"href": "/about/#mission", "name": "Mission"},
-      {"href": "/about/#approach", "name": "Approach"},
-      {"href": "/about/#team", "name": "Team"},
-      {"href": "/about/#board", "name": "Board"},
-      {"href": "/about/#supporters", "name": "Supporters"},
+      {"href": "/about/#our-mission", "name": "Mission"},
+      {"href": "/about/#our-approach", "name": "Approach"},
+      {"href": "/about/#our-team", "name": "Team"},
+      {"href": "/about/#our-board", "name": "Board"},
+      {"href": "/about/#our-supporters", "name": "Supporters"},
     ]
   },
-  {"href": "/news-events/news/", "name": "News+Events"},
+  {"href": "/news-events/", "name": "News+Events", "children":
+    [
+      {"href": "/news-events/news/", "name": "News"},
+      {"href": "/news-events/events/", "name": "Events"},
+    ]
+  },
   {"href": "/resources/", "name": "Resources"},
+  {"href": "/search/", "name": "Search"},
 ] %}
 
 {% import _self as navigation %}
@@ -26,10 +33,10 @@
 {% spaceless %}
   {% import _self as navigation %}
     {% for item in items %}
-      <{{inside}} class="{% if item.children is defined %}dropdown {% endif %}{% if item.href in craft.app.request.absoluteUrl %}active{% endif %}">
-        <a href="{{ item.href }}">{{ item.name }}</a>
+      <{{inside}} class="nav-{{ item.name|lower }}{% if item.children is defined %} dropdown{% endif %}{% if item.href in craft.app.request.absoluteUrl %} active{% endif %}">
+        <a href="{{ item.href }}"{% if item.children is defined %} aria-haspopup="true"{% endif %}>{{ item.name }}{% if item.children is defined %}&darr;{% endif %}</a>
         {% if item.children is defined %}
-          <{{outside}} class="children">
+          <{{outside}} class="children" aria-label="submenu">
             {{ navigation.menu_links(item.children, outside, inside) }}
           </{{outside}}>
         {% endif %}
@@ -41,4 +48,3 @@
 <ul class="primary-nav">
   {{ navigation.menu_links(nav, 'ul', 'li') }}
 </ul>
-<div class="nav-open"><svg class="icon-hamburger"><use xlink:href="#icon-hamburger" /></svg></div>

@@ -3,6 +3,7 @@
 
 //=include "../bower_components/jquery/dist/jquery.js"
 //=include "../bower_components/flickity/dist/flickity.pkgd.min.js"
+//=include "../bower_components/jquery.easing/js/jquery.easing.min.js"
 
 // Good Design for Good Reason for Good Namespace
 var CLX = (function($) {
@@ -10,13 +11,56 @@ var CLX = (function($) {
       breakpoint_lg,
       breakpoint_md,
       breakpoint_sm,
-      breakpoint_xs;
+      breakpoint_xs,
+      page_at;
 
   /**
    * Initialize all functions
    */
   function _init() {
     _initNewsletterForm();
+    page_at = window.location.pathname;
+
+    $('.mobile-nav-toggle,.mobile-nav-close').on('click', function(e) {
+      e.preventDefault();
+      $('body').toggleClass('mobile-nav-open');
+    });
+
+    // Nav behavior
+    $('.site-nav a').on('click', function(e) {
+      var $this = $(this);
+      var $li = $this.parents('li:first');
+      var href = $this.attr('href');
+      var hrefSplit = href.split('#');
+
+      // Mobile support for ul.children
+      if (Modernizr.touchevents && $li.hasClass('dropdown')) {
+        e.preventDefault();
+        $li.toggleClass('open');
+        return;
+      }
+
+      // Close mobile nav
+      $('body').removeClass('mobile-nav-open');
+
+      // Just scroll down to section if anchor link on same page
+      if (hrefSplit.length && page_at == hrefSplit[0] && hrefSplit[0] != '#') {
+        e.preventDefault();
+        e.target.blur();
+        _scrollBody('#' + hrefSplit[1], 500);
+      }
+
+    });
+
+    $(window).on('load',function() {
+      // Setting body-wrapper height and overflow:hidden after page load to avoid Chrome's odd behavior of determining height from absolute position items (causing layout issues)
+      var footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() : 0;
+      $('.body-wrapper').height($('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight).css('overflow','hidden');
+      // Scroll down to hash after page load
+      // if (window.location.hash) {
+      //   _scrollBody(window.location.hash, 500);
+      // }
+    });
 
     // Homepage
     if ($('body.page-home').length) {
@@ -80,6 +124,13 @@ var CLX = (function($) {
         }
       });
     });
+  }
+
+  function _scrollBody(el, duration) {
+    var headerOffset = 0;
+    if ($(el).length) {
+      $('html, body').animate({scrollTop: $(el).offset().top + headerOffset}, duration, 'easeInOutSine');
+    }
   }
 
   /**

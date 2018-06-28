@@ -4,6 +4,7 @@
   background: $black;
   color: $white;
   padding: $global-padding;
+  position: relative;
 
   @include clearfix;
   @include type-display;
@@ -33,7 +34,6 @@
   }
 
   @include media-md {
-    position: relative;
     padding: grid(10) 0 0 columns(1);
     margin-left: calc(#{columns(1)} - #{$global-padding});
     h3 {
@@ -56,7 +56,6 @@
 }
 
 .footer-image {
-  z-index: -1;
   position: relative;
   margin-top: -#{grid(10)};
 
