@@ -2,12 +2,6 @@
 
 .page-resources {
   background: $orange;
-  // Small screen headers have colored-background h2
-  @include max-screen($breakpoint-md) {
-    .page-header .page-header-info h2 {
-      background: $orange;
-    }
-  }
 
   .bg-x {
     stroke: #A9A640;
@@ -27,6 +21,15 @@
     background: $orange;
   }
 
+  // Mobile-only styles
+  @include max-screen($breakpoint-md) {
+    // Small screen headers have colored-background h2
+    .page-header .page-header-info h2 {
+      background: $orange;
+    }
+  }
+
+  // Desktop styles
   @include media-md {
     .site-nav li.active>a {
       color: $white;

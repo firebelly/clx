@@ -11,12 +11,14 @@
   .members {
   }
 
+  // Mobile-only styles
   @include max-screen($breakpoint-md) {
     .icon-L {
       transform: rotate(180deg);
     }
   }
 
+  // Desktop styles
   @include media-md {
     .icon-L {
       top: 160px;
