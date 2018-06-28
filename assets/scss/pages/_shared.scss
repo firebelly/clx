@@ -25,3 +25,8 @@
     margin: 0 calc(#{columns(1)} - #{$global-padding * 2}) 0 calc(#{columns(1)} - #{$global-padding});
   }
 }
+
+.read-more {
+  @include type-display;
+  margin-bottom: 0;
+}

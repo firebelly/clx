@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set mode = craft.request.getParam('mode') ?? 'grid' %}
+{% set mode = craft.app.request.getParam('mode') ?? 'grid' %}
 
 {% if category is defined %}
 
@@ -37,8 +37,8 @@
         {% set memberImage = memberEntry.memberImage[0] ?? null %}
         {% if memberImage %}
           {% set treatedImage = craft.imager.transformImage(memberImage, {
-            width: 800,
-            height: 800,
+            width: 500,
+            height: 500,
             effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
           }) %}
           <div class="image-wrap">

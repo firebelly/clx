@@ -20,6 +20,18 @@
   .single-entry {
     background: $orange;
   }
+  .primary-resources {
+    margin-bottom: grid(6);
+  }
+  .other-resources {
+    h3,
+    p {
+      margin: 0 0 grid(2);
+    }
+    article {
+      margin-bottom: grid(4);
+    }
+  }
 
   // Mobile-only styles
   @include max-screen($breakpoint-md) {

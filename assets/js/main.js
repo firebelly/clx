@@ -106,6 +106,8 @@ var CLX = (function($) {
       footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() - 80 : 0;
       adminBarHeight = $('#adminbar').length ? $('#adminbar').outerHeight() : 0;
       $('.body-wrapper').height($('.site-header').outerHeight() + $('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight + adminBarHeight).css('overflow','hidden');
+    } else {
+      $('.body-wrapper').css('height','');
     }
   }
 

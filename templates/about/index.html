@@ -30,38 +30,78 @@
 {% block content %}
   <div id="our-mission"></div>
   {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c' } %}
-  <div class="single-entry our-approach">
+  <div class="single-entry our-approach" id="our-approach">
 
-    <div id="our-approach">
-      <h4 class="subhead">Our Approach</h4>
-      <h1>{{ entry.ourApproach.tagline }}</h1>
-      {{ entry.ourApproach.statement }}
-      <p><a href="/work/" class="button">Our Work</a></p>
+    <h4 class="subhead">Our Approach</h4>
+    <h1>{{ entry.ourApproach.tagline }}</h1>
+    {{ entry.ourApproach.statement }}
+    <p><a href="/work/" class="button">Our Work</a></p>
 
-      <div class="our-values">
-        <h4 class="subhead">We Value</h4>
-        <ul class="values">
-        {% for value in entry.weValue.all() %}
-          <li>{{ value.valueText|nl2br }}</li>
-        {% endfor %}
-        </ul>
-        <a href="/about/values/" class="arrow">Learn more about our values &rarr;</a>
-      </div>
+    <div class="our-values">
+      <h4 class="subhead">We Value</h4>
+      <ul class="values">
+      {% for value in entry.weValue.all() %}
+        <li>{{ value.valueText|nl2br }}</li>
+      {% endfor %}
+      </ul>
+      <a href="/about/values/" class="arrow">Learn more about our values &rarr;</a>
     </div>
 
   </div>
-  <div class="single-entry our-team">
+  <div class="single-entry people">
 
-    <div id="our-team">
-      {{ entry.peopleStatement }}
+    {{ entry.peopleStatement }}
 
+    <div class="people-group" id="our-team">
       <h4 class="subhead">Our Team</h4>
-      <ul class="people">
+      <ul class="grid">
         {% for person in ourTeam.all() %}
-          <li>
+          <li class="one-third">
             <article>
-              <h2>{{ person.title }}</h2>
-              <h2>{{ person.title }}</h2>
+              {% set personImage = person.personImage[0] ?? null %}
+              {% if personImage %}
+                {% set treatedImage = craft.imager.transformImage(personImage, {
+                  width: 600,
+                  height: 600,
+                  effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+                }) %}
+                <div class="image-wrap">
+                  <div class="image modal-popup" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});" data-id="{{ person.id }}"></div>
+                </div>
+              {% endif %}
+              <h3>{{ person.personName }}</h3>
+              <h4>{{ person.personTitle }}</h4>
+              <div class="bio">{{ person.body }}</div>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="people-group" id="our-board">
+      <h4 class="subhead">Our Board</h4>
+      <ul class="grid">
+        {% for person in ourBoard.all() %}
+          <li class="one-third">
+            <article>
+              <h3>{{ person.personName }}</h3>
+              <h4>{{ person.personTitle }}</h4>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="people-group" id="our-supporters">
+      <h4 class="subhead">Our Supporters</h4>
+      <ul class="grid">
+        {% for person in ourSupporters.all() %}
+          <li class="one-third">
+            <article>
+              <h3>{{ person.organizationName }}</h3>
+              {% if person.personName %}
+                <h4>{{ person.personName }}</h4>
+              {% endif %}
             </article>
           </li>
         {% endfor %}

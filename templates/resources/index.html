@@ -4,40 +4,36 @@
   {% set entry = craft.entries.section('resourcesIndex').one() %}
 {% endif %}
 
-{% if category is defined %}
+{% set primaryResourcesCat = craft.categories.group('resourceTypes').slug('primary-resources').one() %}
+{% set primaryResources = craft.entries({
+  section: 'resources',
+  relatedTo: primaryResourcesCat,
+}) %}
 
-  {% paginate craft.entries({
-    section: 'resources',
-    relatedTo: category,
-    with: [
-      'resourceFiles'
-    ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, resourceEntries %}
-
-{% else %}
-
-  {% paginate craft.entries({
-    section: 'resources',
-    with: [
-      'resourceFiles'
-    ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, resourceEntries %}
-
-{% endif %}
-
+{% set otherResources = craft.entries.section('resources').id('and, not '~primaryResources.ids() | join(', not ')) %}
 
 {% block content %}
   {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#bdb83d' } %}
   <div class="single-entry">
-    <h4 class="subhead">Resource category dropdown</h4>
-    {% for resourceEntry in resourceEntries %}
-      <article>
-        <h3><a href="{{ resourceEntry.getUrl() }}">{{ resourceEntry.title }}</a></h3>
-        <p class="excerpt">{{ resourceEntry.excerpt ? resourceEntry.excerpt : resourceEntry.body | chop(limit=20, unit='w', append='…') }}</p>
-        <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="arrow">Learn More &rarr;</a></p>
-      </article>
-    {% endfor %}
+    <div class="primary-resources">
+      {% for resourceEntry in primaryResources.all() %}
+        <article>
+          <h1><a href="{{ resourceEntry.getUrl() }}">{{ resourceEntry.title }}</a></h1>
+          <p class="excerpt">{{ resourceEntry.excerpt ? resourceEntry.excerpt : resourceEntry.body | chop(limit=20, unit='w', append='…') }}</p>
+          <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="button">Learn More</a></p>
+        </article>
+      {% endfor %}
+    </div>
 
+    <div class="other-resources grid">
+      {% for resourceEntry in otherResources.all() %}
+        <article class="one-half">
+          <h3><a href="{{ resourceEntry.getUrl() }}">{{ resourceEntry.title }}</a></h3>
+          <p class="excerpt">{{ resourceEntry.excerpt ? resourceEntry.excerpt : resourceEntry.body | chop(limit=20, unit='w', append='…') }}</p>
+          <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="arrow">Learn More &rarr;</a></p>
+        </article>
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}
 
