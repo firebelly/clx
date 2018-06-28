@@ -1,17 +1,6 @@
 // Community
 
 .page-community {
-  .icon-L {
-    top: 160px;
-    right: 6%;
-    transform: rotate(180deg);
-  }
-  &.logged-in {
-    .icon-L {
-      top: 205px;
-    }
-  }
-
   .return-crumb {
     border: none;
   }
@@ -22,7 +11,23 @@
   .members {
   }
 
+  @include max-screen($breakpoint-md) {
+    .icon-L {
+      transform: rotate(180deg);
+    }
+  }
+
   @include media-md {
+    .icon-L {
+      top: 160px;
+      right: 6%;
+      transform: rotate(180deg);
+    }
+    &.logged-in {
+      .icon-L {
+        top: 205px;
+      }
+    }
     .members {
       article {
         .image {

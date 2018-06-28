@@ -4,7 +4,7 @@
   position: relative;
   min-height: 90px;
 
-  @include media-md {
+  @include media-nav {
     margin: grid(11) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
   }
 }
@@ -18,7 +18,7 @@
   width: 245px;
   display: none;
 
-  @include media-md {
+  @include media-nav {
     display: block;
   }
 }
@@ -32,21 +32,21 @@
   right: 20px;
   display: none;
 
-  @include media-md {
+  @include media-nav {
     display: block;
   }
 }
 
 // Mobile nav styles
-@include max-screen($breakpoint-md) {
+@include max-screen($breakpoint-nav) {
   // Hamburger and X buttons
   .mobile-nav-close,
   .mobile-nav-toggle {
     width: 18px;
     height: 18px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 30px;
+    left: 30px;
     z-index: 1001;
   }
   // Hide X button by default
@@ -129,7 +129,7 @@
 }
 
 // Desktop nav
-@include media-md {
+@include media-nav {
   .mobile-nav-close,
   .mobile-nav-toggle,
   .mobile-nav-bg {

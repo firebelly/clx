@@ -7,24 +7,58 @@
   top: grid(11);
   left: 0;
   width: 1500px;
-  @include media-md {
+
+  &.lower {
+    display: none;
+  }
+
+  @include media-nav {
     width: 106%;
     height: auto;
+
+    &.lower {
+      display: block;
+      top: calc(100vw + 50vh);
+      transform: rotate(180deg);
+      left: -5%;
+    }
   }
 }
-.bg-x.lower {
-  top: calc(100vw + 50vh);
-  transform: rotate(180deg);
-  left: -5%;
+
+// Mobile CLX
+@include max-screen($breakpoint-nav) {
+  .clx-elements {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+  }
+  .icon-C,
+  .icon-L,
+  .icon-X {
+    position: absolute;
+  }
+  .icon-C {
+    width: 26px;
+    top: 4px;
+    right: 44px;
+  }
+  .icon-L {
+    width: 16px;
+    top: 0;
+    right: 4px;
+  }
+  .icon-X {
+    width: 24px;
+    top: 60px;
+    right: 0;
+  }
 }
 
-.icon-C,
-.icon-L,
-.icon-X {
-  display: none;
-}
-
-@include media-md {
+// Desktop CLX
+@include media-nav {
   .icon-C,
   .icon-L,
   .icon-X {

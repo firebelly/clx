@@ -4,6 +4,7 @@
 //=include "../bower_components/jquery/dist/jquery.js"
 //=include "../bower_components/flickity/dist/flickity.pkgd.min.js"
 //=include "../bower_components/jquery.easing/js/jquery.easing.min.js"
+//=include "../bower_components/imagesloaded/imagesloaded.pkgd.min.js"
 
 // Good Design for Good Reason for Good Namespace
 var CLX = (function($) {
@@ -12,18 +13,26 @@ var CLX = (function($) {
       breakpoint_md,
       breakpoint_sm,
       breakpoint_xs,
+      adminBarHeight,
+      footerImageHeight,
+      delayed_resize_timer,
       page_at;
 
   /**
    * Initialize all functions
    */
   function _init() {
+    _resize();
     _initNewsletterForm();
     page_at = window.location.pathname;
 
     $('.mobile-nav-toggle,.mobile-nav-close').on('click', function(e) {
       e.preventDefault();
       $('body').toggleClass('mobile-nav-open');
+    });
+
+    $('.clx-elements').on('click', function(e) {
+      location.href = '/';
     });
 
     // Nav behavior
@@ -52,14 +61,19 @@ var CLX = (function($) {
 
     });
 
-    $(window).on('load',function() {
-      // Setting body-wrapper height and overflow:hidden after page load to avoid Chrome's odd behavior of determining height from absolute position items (causing layout issues)
-      var footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() : 0;
-      $('.body-wrapper').height($('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight).css('overflow','hidden');
+    $(window).on('load', function() {
+      $('.page-wrapper').imagesLoaded().done(function() {
+        _fixOverflow();
+
+        $(window).on('resize', function() {
+          clearTimeout(delayed_resize_timer);
+          delayed_resize_timer = setTimeout(_fixOverflow, 250);
+        });
+      });
       // Scroll down to hash after page load
-      // if (window.location.hash) {
-      //   _scrollBody(window.location.hash, 500);
-      // }
+      if (window.location.hash) {
+        _scrollBody(window.location.hash - 80, 500);
+      }
     });
 
     // Homepage
@@ -83,6 +97,15 @@ var CLX = (function($) {
       var jumpTo = $(this).find(':selected').val();
       location.href = jumpTo;
     });
+  }
+
+  function _fixOverflow() {
+    if (breakpoint_md) {
+      // Setting body-wrapper height and overflow:hidden after page load to avoid Chrome's odd behavior of determining height from absolute position items (causing layout issues)
+      footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() - 80 : 0;
+      adminBarHeight = $('#adminbar').length ? $('#adminbar').outerHeight() : 0;
+      $('.body-wrapper').height($('.site-header').outerHeight() + $('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight + adminBarHeight).css('overflow','hidden');
+    }
   }
 
   /**

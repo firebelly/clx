@@ -20,6 +20,9 @@ body {
 }
 .body-wrapper {
   position: relative;
+  @include max-screen($breakpoint-md) {
+    overflow: hidden;
+  }
 }
 .page-wrapper {
   @include clearfix;

@@ -5,10 +5,6 @@
   .bg-x {
     stroke: #ACE3FE;
   }
-  .icon-L {
-    right: 8%;
-    transform: rotate(-90deg);
-  }
 
   #our-programs {
     margin: grid(8) 0;
@@ -45,7 +41,19 @@
     }
   }
 
+  @include max-screen($breakpoint-md) {
+    .icon-L {
+      right: 4px;
+      transform: rotate(-90deg);
+    }
+  }
+
+
   @include media-md {
+    .icon-L {
+      right: 8%;
+      transform: rotate(-90deg);
+    }
     #our-programs {
       background: $blue;
       margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(1)} + #{$global-padding});
