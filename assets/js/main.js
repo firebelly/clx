@@ -61,18 +61,18 @@ var CLX = (function($) {
         _scrollBody('#' + hrefSplit[1], 500);
       }
     });
-    // Wait a moment before initializing rollover bg if user just clicked to a different section
-    setTimeout(function() {
-      $('.site-nav ul li').on('mousemove', function() {
-        clearTimeout(nav_timer);
-        $('.site-header').addClass('bg');
-      }).on('mouseleave', function() {
-        clearTimeout(nav_timer);
-        nav_timer = setTimeout(function() {
-          $('.site-header').removeClass('bg');
-        }, 500);
-      });
-    }, 500);
+
+    // Show white bg on nav hover, hide on leave after brief pause
+    $('.site-nav ul li.dropdown').on('mousemove', function() {
+      clearTimeout(nav_timer);
+      $('.site-header').addClass('bg');
+    });
+    $('.site-nav').on('mouseleave', function() {
+      clearTimeout(nav_timer);
+      nav_timer = setTimeout(function() {
+        $('.site-header').removeClass('bg');
+      }, 350);
+    });
 
     $(window).on('load', function() {
       $('.page-wrapper').imagesLoaded().done(function() {
