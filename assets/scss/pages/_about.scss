@@ -20,7 +20,7 @@
   }
 
   .our-values {
-    margin: grid(10) 0 grid(8);
+    margin: grid(10) 0 0;
     ul.values {
       @include clearfix;
       li {
@@ -36,7 +36,7 @@
 
   .people-group {
     overflow: hidden;
-    margin: grid(2) 0 grid(6);
+    margin: grid(2) 0 0;
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -65,12 +65,18 @@
   // Mobile-only styles
   @include max-screen($breakpoint-md) {
     // Small screen headers have colored-background h2
-    .page-header .page-header-info h2 {
-      background: $red;
+    .page-header .page-header-info {
+      h2 {
+        color: $white;
+        background: $red;
+      }
+      h4.subhead {
+        color: $white;
+      }
     }
     .people {
       padding: grid(5) #{$mobile-inset} grid(8);
-      margin: grid(8) -#{$mobile-inset} 0;
+      margin: 0 -#{$mobile-inset} 0;
     }
   }
 
@@ -96,7 +102,6 @@
       color: $white;
     }
     .our-values {
-      margin: grid(10) 0 0;
       ul.values {
         margin: grid(4) 0 grid(10);
         li {

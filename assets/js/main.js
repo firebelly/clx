@@ -27,23 +27,79 @@ var CLX = (function($) {
     _initNewsletterForm();
     page_at = window.location.pathname;
 
+    _initNav();
+
+    // After page load, run janky fixOverflow and check for hash
+    $(window).on('load', function() {
+      $('.page-wrapper').imagesLoaded().done(function() {
+        _fixOverflow();
+
+        $(window).on('resize', function() {
+          clearTimeout(delayed_resize_timer);
+          delayed_resize_timer = setTimeout(_fixOverflow, 250);
+        });
+      });
+
+      // Scroll down to hash after page load
+      if (window.location.hash) {
+        _scrollBody(window.location.hash - 80, 500);
+      }
+    });
+
+    // Selects that jump to URLs
+    $(document).on('change', 'select.jumpSelect', function(e) {
+      var jumpTo = $(this).find(':selected').val();
+      location.href = jumpTo;
+    });
+
+    // Page-specific inits
+    if ($('body.page-home').length) {
+      _initHomepage();
+    }
+  }
+
+  /**
+   * Homepage functionality
+   */
+   function _initHomepage() {
+    // Featured carousel
+    flkty = new Flickity('.featured-carousel', {
+      cellSelector: 'article.featured',
+      pageDots: false,
+      prevNextButtons: true,
+      groupCells: false,
+      autoPlay: 5000,
+      adaptiveHeight: true,
+      wrapAround: true,
+      selectedAttraction: 0.2,
+      friction: 0.8,
+      arrowShape: 'M36.13 26 18 44.268 18 55.732 36.13 74 42.176 67.909 31.747 57.403 25.821 54.057 26.414 52.628 31.747 54.299 82 54.299 82 45.698 31.747 45.698 26.414 47.372 25.821 45.94 31.747 42.594 42.176 32.091z'
+    });
+  }
+
+  /**
+   * Mobile and desktop nav behavior
+   */
+  function _initNav() {
+    // Mobile hamburger and X close icons toggle mobile nav
     $('.mobile-nav-toggle,.mobile-nav-close').on('click', function(e) {
       e.preventDefault();
       $('body').toggleClass('mobile-nav-open');
     });
 
+    // Mobile CLX arrangement at top-right is the home button
     $('.clx-elements').on('click', function(e) {
       location.href = '/';
     });
 
-    // Nav behavior
+    // Handle clicks on nav a elements
     $('.site-nav a').on('click', function(e) {
       var $this = $(this);
       var $li = $this.parents('li:first');
       var href = $this.attr('href');
       var hrefSplit = href.split('#');
 
-      // Mobile support for ul.children
+      // Mobile support for ul.children, slide in/out child options
       if (Modernizr.touchevents && $li.hasClass('dropdown')) {
         e.preventDefault();
         $('.site-nav li').not($li).removeClass('open');
@@ -51,7 +107,7 @@ var CLX = (function($) {
         return;
       }
 
-      // Close mobile nav
+      // Close mobile nav on click (if item just scrolls page down)
       $('body').removeClass('mobile-nav-open');
 
       // Just scroll down to section if anchor link on same page
@@ -62,62 +118,29 @@ var CLX = (function($) {
       }
     });
 
-    // Show white bg on nav hover, hide on leave after brief pause
+    // Show white bg on nav hover...
     $('.site-nav ul li.dropdown').on('mousemove', function() {
       clearTimeout(nav_timer);
       $('.site-header').addClass('bg');
     });
+    // ...hide on leave after brief pause
     $('.site-nav').on('mouseleave', function() {
       clearTimeout(nav_timer);
       nav_timer = setTimeout(function() {
         $('.site-header').removeClass('bg');
       }, 350);
     });
-
-    $(window).on('load', function() {
-      $('.page-wrapper').imagesLoaded().done(function() {
-        _fixOverflow();
-
-        $(window).on('resize', function() {
-          clearTimeout(delayed_resize_timer);
-          delayed_resize_timer = setTimeout(_fixOverflow, 250);
-        });
-      });
-      // Scroll down to hash after page load
-      if (window.location.hash) {
-        _scrollBody(window.location.hash - 80, 500);
-      }
-    });
-
-    // Homepage
-    if ($('body.page-home').length) {
-      flkty = new Flickity('.featured-carousel', {
-        cellSelector: 'article.featured',
-        pageDots: false,
-        prevNextButtons: true,
-        groupCells: false,
-        autoPlay: 5000,
-        adaptiveHeight: true,
-        wrapAround: true,
-        selectedAttraction: 0.2,
-        friction: 0.8,
-        arrowShape: 'M36.13 26 18 44.268 18 55.732 36.13 74 42.176 67.909 31.747 57.403 25.821 54.057 26.414 52.628 31.747 54.299 82 54.299 82 45.698 31.747 45.698 26.414 47.372 25.821 45.94 31.747 42.594 42.176 32.091z'
-      });
-    }
-
-    // Selects that jump to URLs
-    $(document).on('change', 'select.jumpSelect', function(e) {
-      var jumpTo = $(this).find(':selected').val();
-      location.href = jumpTo;
-    });
   }
 
+  /**
+   * Janky fix for large SVG bg elements fighting Chrome's absolute-position-elements-changing-viewport behavior
+   */
   function _fixOverflow() {
     if (breakpoint_md) {
       // Setting body-wrapper height and overflow:hidden after page load to avoid Chrome's odd behavior of determining height from absolute position items (causing layout issues)
       footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() - 80 : 0;
-      adminBarHeight = $('#adminbar').length ? $('#adminbar').outerHeight() : 0;
-      $('.body-wrapper').height($('.site-header').outerHeight() + $('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight + adminBarHeight).css('overflow','hidden');
+      // adminBarHeight = $('#adminbar').length ? $('#adminbar').outerHeight() : 0;
+      $('.body-wrapper').height($('.site-header').outerHeight() + $('.page-wrapper').outerHeight() + $('.site-footer').outerHeight() + footerImageHeight).css('overflow','hidden');
     } else {
       $('.body-wrapper').css('height','');
     }
@@ -164,6 +187,9 @@ var CLX = (function($) {
     });
   }
 
+  /**
+   * Scroll body to element
+   */
   function _scrollBody(el, duration) {
     var headerOffset = 0;
     if ($(el).length) {
@@ -189,7 +215,9 @@ var CLX = (function($) {
   }
 
 
-  // Public functions
+  /**
+   * Public functions
+   */
   return {
     init: _init,
     resize: _resize

@@ -7,12 +7,12 @@
   }
 
   #our-programs {
-    margin: grid(8) 0;
+    margin: grid(8) 0 grid(4);
   }
   #our-impact {
     background: $blue3;
     padding: grid(5) #{$mobile-inset} grid(8);
-    margin: grid(8) -#{$mobile-inset} 0;
+    margin: 0 -#{$mobile-inset};
   }
   #work-with-us {
     border-top: 1px dashed $black;
@@ -38,6 +38,7 @@
     border-bottom: 1px dashed $black;
     &:last-of-type {
       border-bottom: none;
+      margin-bottom: 0;
     }
   }
 

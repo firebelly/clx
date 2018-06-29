@@ -6,6 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssnano      = require('gulp-cssnano');
 var include      = require('gulp-include');
 var rev          = require('gulp-rev');
+var revdel       = require('gulp-rev-delete-original');
 var sourcemaps   = require('gulp-sourcemaps');
 var runSequence  = require('run-sequence');
 var notify       = require('gulp-notify');
@@ -17,6 +18,12 @@ var svgmin       = require('gulp-svgmin');
 var rename       = require('gulp-rename');
 var argv         = require('minimist')(process.argv.slice(2));
 var jshint       = require('gulp-jshint');
+
+
+// Various config
+var conf = {
+  siteUrl: 'clx.localhost'
+};
 
 // CLI options
 var enabled = {
@@ -83,8 +90,9 @@ gulp.task('scripts', ['jshint'], function() {
 // Revision files for production assets
 gulp.task('rev', function() {
   if (!enabled.rev) return;
-  return gulp.src(['web/assets/dist/**/*.{css,js,jpg,png,svg,gif}'])
+  return gulp.src(['web/assets/dist/**/*.{css,js,jpg,png,gif}'])
     .pipe(rev())
+    .pipe(revdel())
     .pipe(gulp.dest('web/assets/dist'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('web/assets/dist'));
@@ -102,7 +110,7 @@ gulp.task('copy', function() {
 gulp.task('watch', ['build'], function() {
   // Init BrowserSync
   browserSync.init({
-    proxy: 'clx.localhost',
+    proxy: conf.siteUrl,
     notify: false,
     open: false
   });
@@ -147,7 +155,6 @@ gulp.task('svgs', function() {
             cleanupIDs: false
         }]
     }))
-    .pipe(gulp.dest('web/assets/dist/svgs/'))
     .pipe(svgstore({inlineSvg: true}))
     .pipe(rename({suffix: '-defs'}))
     .pipe(gulp.dest('web/assets/dist/'));

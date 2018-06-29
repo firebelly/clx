@@ -62,6 +62,9 @@
 
 // Bottom of page upcoming event + secondary feature
 .secondary-featured {
+  article {
+    margin: grid(8);
+  }
 
   @include media-md {
     padding: grid(10) 0;

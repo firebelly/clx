@@ -5,6 +5,7 @@
     @include aspect-ratio(500,500);
   }
 }
+// Page header with image
 .page-header {
   position: relative;
   .page-header-info {
@@ -14,9 +15,12 @@
   @include max-screen($breakpoint-md) {
     .page-header-info {
       margin-top: -#{grid(20)};
+      h4.subhead {
+        margin-bottom: grid(4);
+      }
       h2 {
         margin: 0 -#{$mobile-inset * 2} 0 -#{$mobile-inset};
-        padding: $mobile-inset #{$mobile-inset * 2} $mobile-inset $mobile-inset;
+        padding: grid(4) #{$mobile-inset * 2} $mobile-inset $mobile-inset;
         background: $blue;
         font: 35px/1.2 $font-header;
       }
@@ -46,7 +50,12 @@
     }
   }
 }
+
+// Text-only page headers
 .text-header {
+  margin: grid(6) 0;
+
+  // Desktop styles
   @include media-md {
     margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
     padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});

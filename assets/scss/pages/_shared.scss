@@ -9,7 +9,7 @@
 
   // Mobile single-entry expands outside content area by $mobile-inset
   padding: grid(5) #{$mobile-inset} grid(8);
-  margin: grid(8) -#{$mobile-inset} 0;
+  margin: 0 -#{$mobile-inset} 0;
 
   @include media-md {
     min-height: 50vh; // todo: remove this (tmp while we have no content)
@@ -20,6 +20,7 @@
 
 .center-content {
   @include clearfix;
+  padding: 0 0 grid(8);
 
   @include media-md {
     margin: 0 calc(#{columns(1)} - #{$global-padding * 2}) 0 calc(#{columns(1)} - #{$global-padding});
