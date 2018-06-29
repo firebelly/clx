@@ -44,7 +44,7 @@
         <li>{{ value.valueText|nl2br }}</li>
       {% endfor %}
       </ul>
-      <a href="/about/values/" class="arrow">Learn more about our values &rarr;</a>
+      <a href="/about/values/" class="arrow">Learn more about our values <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
     </div>
 
   </div>
@@ -71,6 +71,9 @@
               {% endif %}
               <h3>{{ person.personName }}</h3>
               <h4>{{ person.personTitle }}</h4>
+              {% if person.email %}
+                <p class="email"><a class="arrow" href="mailto:{{ person.email }}">Email <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+              {% endif %}
               <div class="bio">{{ person.body }}</div>
             </article>
           </li>

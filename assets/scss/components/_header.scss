@@ -37,6 +37,9 @@
       }
       .site-nav > ul > li > a {
         color: $black;
+        .icon-arrow {
+          fill: $black;
+        }
       }
     }
   }
@@ -64,9 +67,19 @@
   top: -30px;
   right: 20px;
   display: none;
+  fill: none;
+  stroke: $black;
 
   @include media-nav {
     display: block;
+  }
+}
+.site-nav {
+  .icon-arrow {
+    width: 12px;
+    height: 12px;
+    fill: $black;
+    transform: rotate(90deg);
   }
 }
 
@@ -193,6 +206,9 @@
         }
         &.active>a {
           color: $red;
+          .icon-arrow {
+            fill: $red;
+          }
         }
         // Child menus, hidden at start
         ul.children {

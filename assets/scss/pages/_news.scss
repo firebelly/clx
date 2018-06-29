@@ -26,6 +26,7 @@
     }
   }
 
+  // Desktop styles
   @include media-md {
     .filters {
       @include clearfix;

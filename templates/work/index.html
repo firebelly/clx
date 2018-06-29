@@ -33,7 +33,7 @@
       <ul class="links">
         {% for link in entry.workWithUs.links %}
           <li>
-            <a class="arrow" href="{{ link.linkUrl }}">{{ link.linkText }} &rarr;</a>
+            <a class="arrow" href="{{ link.linkUrl }}">{{ link.linkText }} <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
           </li>
         {% endfor %}
       </ul>

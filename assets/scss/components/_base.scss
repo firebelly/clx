@@ -146,3 +146,18 @@ address {
 time {
   @include type-display;
 }
+
+// Arrow links/buttons
+.arrow {
+  @include type-display;
+  .icon-arrow {
+    width: 10px;
+    height: 10px;
+    fill: $white;
+  }
+  &.left {
+    .icon-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}

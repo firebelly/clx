@@ -25,6 +25,12 @@
   // Add room for mobile footer-logo
   margin-top: 220px;
 
+  .arrow {
+    svg {
+      fill: $red;
+    }
+  }
+
   @include clearfix;
   @include type-display;
 
@@ -36,8 +42,12 @@
     @include type-display;
     line-height: 2;
   }
-  .footer-logo {
+  #footer-logo {
     width: 35px;
+    fill: $black;
+  }
+  #footer-logo-x {
+    fill: $red;
   }
   h3 {
     @include type-subhead;
@@ -52,7 +62,7 @@
     margin-right: grid(2);
   }
 
-  .footer-logo {
+  #footer-logo {
     position: absolute;
     top: -170px;
     left: 60px;
@@ -70,7 +80,7 @@
     h3 {
       margin: 0 0 grid(5);
     }
-    .footer-logo {
+    #footer-logo {
       top: auto;
       bottom: 110px;
       left: -110px;

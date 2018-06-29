@@ -11,13 +11,14 @@ var CLX = (function($) {
   var breakpointIndicatorString,
       breakpoint_lg,
       breakpoint_md,
+      breakpoint_nav,
       breakpoint_sm,
-      breakpoint_xs,
       adminBarHeight,
       footerImageHeight,
       delayed_resize_timer,
       nav_timer,
-      page_at;
+      page_at,
+      $aboutModal;
 
   /**
    * Initialize all functions
@@ -28,6 +29,13 @@ var CLX = (function($) {
     page_at = window.location.pathname;
 
     _initNav();
+
+    // Esc handlers
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) {
+        _closeAboutModal();
+      }
+    });
 
     // After page load, run janky fixOverflow and check for hash
     $(window).on('load', function() {
@@ -56,6 +64,56 @@ var CLX = (function($) {
     if ($('body.page-home').length) {
       _initHomepage();
     }
+    if ($('body.page-about').length) {
+      _initAbout();
+    }
+  }
+
+  /**
+   * About page functionality
+   */
+  function _initAbout() {
+    $(window).on('resize', _positionAboutModal);
+    $aboutModal = $('<div class="modal"><div class="grid"><div class="photo one-third"></div><div class="bio-wrap two-thirds"></div></div><div class="grid nav"><div class="one-third">&nbsp;</div></div></div>').appendTo('body');
+    $('<div class="one-third"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
+      e.preventDefault();
+      var prevMember = $('#our-team li.active').prev().length ? $('#our-team li.active').prev() : $('#our-team li:last');
+      prevMember.trigger('click');
+    });
+    $('<div class="one-third"><a href="#" class="arrow">Next Member <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
+      e.preventDefault();
+      var nextMember = $('#our-team li.active').next().length ? $('#our-team li.active').next() : $('#our-team li:first');
+      nextMember.trigger('click');
+    });
+    $('<svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg>').appendTo($aboutModal).on('click', function(e) {
+      e.preventDefault();
+      _closeAboutModal();
+    });
+    $('#our-team li').on('click', function(e) {
+      $('#our-team li').removeClass('active');
+      $(this).addClass('active');
+      e.preventDefault();
+      $aboutModal.addClass('active');
+      _populateAboutModal();
+      _positionAboutModal();
+    });
+  }
+  function _populateAboutModal() {
+    $aboutModal.find('.bio-wrap').empty();
+    // Copy html from active person
+    $aboutModal.find('.photo').html($('#our-team li.active article').html());
+    // Move bio over
+    $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
+  }
+  function _positionAboutModal() {
+    if (!$aboutModal.hasClass('active')) {
+      return;
+    }
+    var ourTeamPos = $('#our-team').offset();
+    $aboutModal.css({ top: ourTeamPos.top });
+  }
+  function _closeAboutModal() {
+    $aboutModal.removeClass('active');
   }
 
   /**
@@ -98,9 +156,10 @@ var CLX = (function($) {
       var $li = $this.parents('li:first');
       var href = $this.attr('href');
       var hrefSplit = href.split('#');
+      console.log(this,$li);
 
       // Mobile support for ul.children, slide in/out child options
-      if (Modernizr.touchevents && $li.hasClass('dropdown')) {
+      if (!breakpoint_nav && $li.hasClass('dropdown')) {
         e.preventDefault();
         $('.site-nav li').not($li).removeClass('open');
         $li.toggleClass('open');
@@ -136,7 +195,7 @@ var CLX = (function($) {
    * Janky fix for large SVG bg elements fighting Chrome's absolute-position-elements-changing-viewport behavior
    */
   function _fixOverflow() {
-    if (breakpoint_md) {
+    if (breakpoint_nav) {
       // Setting body-wrapper height and overflow:hidden after page load to avoid Chrome's odd behavior of determining height from absolute position items (causing layout issues)
       footerImageHeight = $('.footer-image').length ? $('.footer-image').outerHeight() - 80 : 0;
       // adminBarHeight = $('#adminbar').length ? $('#adminbar').outerHeight() : 0;
@@ -163,7 +222,7 @@ var CLX = (function($) {
         if ($form.find('input[name=EMAIL]').val()=='') {
           $form.find('.status').addClass('error').text('Error: Please enter an email.');
         } else {
-          $form.addClass('working').find('input[name=subscribe]').val('Sending...');
+          $form.addClass('working');
           $.getJSON($form.attr('action'), $form.serialize())
             .done(function(data) {
               if (data.result != 'success') {
@@ -180,7 +239,7 @@ var CLX = (function($) {
               $form.find('.status').addClass('error').text('Error: There was an error subscribing. Please try again.');
             })
             .always(function() {
-              $form.removeClass('working').find('input[name=subscribe]').val('Submit');
+              $form.removeClass('working');
             });
         }
       });
@@ -209,9 +268,9 @@ var CLX = (function($) {
 
     // Determine current breakpoint
     breakpoint_lg = breakpointIndicatorString === 'lg';
-    breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
+    breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_lg;
+    breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_nav;
     breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
-    breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
   }
 
 

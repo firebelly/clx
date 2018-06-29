@@ -1,5 +1,14 @@
 <footer class="site-footer" role="contentinfo">
-  <svg class="footer-logo" aria-hidden="true" role="presentation" viewBox="0 0 35 185"><use xlink:href="#mobile-logo"/></svg>
+  {# <svg class="footer-logo" aria-hidden="true" role="presentation" viewBox="0 0 35 185"><use xlink:href="#footer-logo"/></svg> #}
+  <svg id="footer-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 185">
+    <g id="footer-logo-x" transform="translate(1 151.278)">
+      <path d="M30.1216,33 C29.5066,33 28.8916,32.764 28.4216,32.294 L0.8616,4.656 C-0.0774,3.714 -0.0774,2.188 0.8616,1.247 C1.7996,0.306 3.3206,0.306 4.2606,1.247 L31.8216,28.885 C32.7596,29.827 32.7596,31.352 31.8216,32.294 C31.3526,32.764 30.7366,33 30.1216,33"/>
+      <path d="M2.5608,33 C1.9458,33 1.3298,32.764 0.8608,32.294 C-0.0772,31.352 -0.0772,29.827 0.8608,28.885 L28.4218,1.247 C29.3598,0.306 30.8828,0.306 31.8208,1.247 C32.7588,2.188 32.7588,3.714 31.8208,4.656 L4.2608,32.294 C3.7918,32.764 3.1758,33 2.5608,33"/>
+    </g>
+    <path id="footer-logo-c" d="M12.986 67.926 17.464 67.926 17.464 115.071 33.524 115.071 33.524 119.344 12.986 119.344z"/>
+    <path id="footer-logo-l" d="M0.0012,18.8864 C-0.1088,8.6034 8.1782,0.1134 18.5752,0.0014 C25.2182,-0.0696 31.1032,3.2714 34.4802,8.3754 L25.8812,14.6244 C24.4082,11.9604 21.8622,10.1784 18.6852,10.2114 C14.2072,10.2594 10.9242,13.7704 10.9772,18.7684 C11.0302,23.7634 14.3882,27.2044 18.8662,27.1564 C22.0432,27.1224 24.5522,25.2844 25.9662,22.5904 L34.6972,28.6514 C31.4302,33.8294 25.6182,37.2954 18.9752,37.3664 C8.5772,37.4784 0.1102,29.1684 0.0012,18.8864"/>
+  </svg>
+
   <div class="wrap">
     <div class="newsletter footer-block">
       <h3>Newsletter</h3>
@@ -16,7 +25,7 @@
             <div class="status"></div>
 
             <div class="actions">
-              <input name="subscribe" id="mc-embedded-subscribe" type="submit" value="Submit &rarr;">
+              <button class="arrow" name="subscribe" type="submit">Submit <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></button>
             </div>
 
             <!-- die bots --><div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e780bf1ac3ee92a79b8222e20_4da4104577" tabindex="-1" value=""></div>

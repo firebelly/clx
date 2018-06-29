@@ -9,6 +9,43 @@
     right: 8%;
     transform: rotate(-90deg);
   }
+  // Member modal
+  .modal {
+    position: absolute;
+    min-height: 200px;
+    left: 9999em;
+    right: 0;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+    padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
+    background: $orange;
+
+    .photo {
+      padding-right: $global-padding;
+    }
+    .email {
+      margin-top: grid(4);
+    }
+    .nav a {
+      display: block;
+    }
+    &.active {
+      left: 0;
+      opacity: 1;
+    }
+    .icon-close {
+      cursor: pointer;
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      fill: $black;
+      top: 30px;
+      right: 30px;
+    }
+  }
+  #footer-logo-x,
   .icon-X {
     fill: $white;
   }
@@ -17,6 +54,9 @@
   }
   .our-approach {
     background: $red;
+  }
+  #our-team li {
+    cursor: pointer;
   }
 
   .our-values {
@@ -40,6 +80,7 @@
     &:last-of-type {
       margin-bottom: 0;
     }
+    .email,
     .bio {
       display: none;
     }
@@ -100,6 +141,9 @@
   @include media-md {
     .site-nav li.active>a {
       color: $white;
+      .icon-arrow {
+        fill: $white;
+      }
     }
     .our-values {
       ul.values {

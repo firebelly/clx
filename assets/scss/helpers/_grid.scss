@@ -84,12 +84,12 @@ $column-width: 100% / $global-columns;
   visibility: hidden;
 
   &::after {
-    content: 'xs';
-    @include media-sm {
-      content: 'sm';
-    }
+    content: 'sm';
     @include media-md {
       content: 'md';
+    }
+    @include media-nav {
+      content: 'nav';
     }
     @include media-lg {
       content: 'lg';

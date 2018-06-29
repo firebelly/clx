@@ -85,7 +85,7 @@
           </time>
           <h3><a href="{{ newsEventEntry.getUrl() }}">{{ newsEventEntry.title }}</a></h3>
           <p class="excerpt">{{ newsEventEntry.excerpt ? newsEventEntry.excerpt : newsEventEntry.body | chop(limit=20, unit='w', append='…') }}</p>
-          <p class="read-more"><a href="{{ newsEventEntry.getUrl() }}" class="arrow">Read More &rarr;</a></p>
+          <p class="read-more"><a href="{{ newsEventEntry.getUrl() }}" class="arrow">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
         </article>
       {% endfor %}
     </div>

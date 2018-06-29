@@ -10,6 +10,10 @@
     right: 8%;
     transform: rotate(-90deg);
   }
+  #footer-logo-x,
+  .icon-X {
+    fill: $white;
+  }
 
   .page-header {
     // color: $gray;
@@ -36,13 +40,21 @@
   // Mobile-only styles
   @include max-screen($breakpoint-md) {
     // Small screen headers have colored-background h2
-    .page-header .page-header-info h2 {
-      background: $orange;
+    .page-header .page-header-info {
+      color: $white;
+      h2 {
+        background: $orange;
+      }
     }
   }
 
   // Desktop styles
   @include media-md {
+    .other-resources {
+      article {
+        padding-right: $global-padding;
+      }
+    }
     .site-nav li.active>a {
       color: $white;
     }

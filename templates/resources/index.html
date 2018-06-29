@@ -30,7 +30,7 @@
         <article class="one-half">
           <h3><a href="{{ resourceEntry.getUrl() }}">{{ resourceEntry.title }}</a></h3>
           <p class="excerpt">{{ resourceEntry.excerpt ? resourceEntry.excerpt : resourceEntry.body | chop(limit=20, unit='w', append='…') }}</p>
-          <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="arrow">Learn More &rarr;</a></p>
+          <p class="read-more"><a href="{{ resourceEntry.getUrl() }}" class="arrow">Learn More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
         </article>
       {% endfor %}
     </div>
