@@ -156,6 +156,7 @@ time {
 // Arrow links/buttons
 .arrow {
   @include type-display;
+  transition: color 0.2s ease;
   .icon-arrow {
     width: 10px;
     height: 10px;

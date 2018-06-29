@@ -88,6 +88,10 @@
   .button:hover {
     border-color: $gray;
   }
+  .button:active {
+    background: $gray;
+    color: $black;
+  }
   .single-entry,
   .our-approach {
     background: $red;
