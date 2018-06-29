@@ -1,0 +1,18 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% block content %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c' } %}
+  <article class="single-entry">
+    <div class="user-content">
+      {{ entry.body }}
+    </div>
+    <div class="return-crumb">
+      <a class="arrow left" href="/about/"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Back to About</a>
+    </div>
+  </article>
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage, gradientColor: '#ff6e5c' } %}
+{% endblock %}

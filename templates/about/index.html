@@ -12,19 +12,13 @@
 {% set ourBoardCategory = craft.categories.slug('our-board').one() %}
 {% set ourBoard = craft.entries({
   section: 'people',
-  relatedTo: ourBoardCategory,
-  with: [
-    'personImage',
-  ]
+  relatedTo: ourBoardCategory
 }) %}
 
 {% set ourSupportersCategory = craft.categories.slug('our-supporters').one() %}
 {% set ourSupporters = craft.entries({
   section: 'people',
-  relatedTo: ourSupportersCategory,
-  with: [
-    'personImage',
-  ]
+  relatedTo: ourSupportersCategory
 }) %}
 
 {% block content %}
@@ -109,6 +103,7 @@
           </li>
         {% endfor %}
       </ul>
+      <a href="/about/supporters/" class="arrow">View all our supporters <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
     </div>
   </div>
 

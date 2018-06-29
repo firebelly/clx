@@ -10,9 +10,6 @@
   .return-crumb {
     border: none;
   }
-  .single-member {
-    background: $gray;
-  }
 
   .news-posts {
     article {
@@ -23,6 +20,11 @@
       h3 {
         margin-top: 0;
       }
+    }
+  }
+  .single-entry {
+    .user-content {
+      margin-bottom: grid(4);
     }
   }
 

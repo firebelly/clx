@@ -54,6 +54,9 @@ var CLX = (function($) {
       }
     });
 
+    // Editable donation link
+    $('.footer-block.donate a:last').addClass('arrow').append(' <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>');
+
     // Selects that jump to URLs
     $(document).on('change', 'select.jumpSelect', function(e) {
       var jumpTo = $(this).find(':selected').val();

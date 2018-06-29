@@ -60,12 +60,17 @@
 }
 
 // Magnify icon
-.icon-search {
-  width: 18px;
-  height: 18px;
+.search-toggle {
+  width: 38px;
+  height: 38px;
+  padding: 10px;
+  svg {
+    width: 18px;
+    height: 18px;
+  }
   position: absolute;
-  top: -30px;
-  right: 20px;
+  top: -40px;
+  right: 10px;
   display: none;
   fill: none;
   stroke: $black;

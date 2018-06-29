@@ -2,19 +2,23 @@
   {% set gradientColor = '#241f21' %}
 {% endif %}
 
-{% set headerImage = pageHeader.image.one() %}
-{% set treatedImage = craft.imager.transformImage(headerImage, {
-  width: 1000,
-  height: 1000,
-  mode: 'crop',
-  position: '20% 65%',
-  effects: { modulate: [100, 0, 100], clut: 'gradient:' ~ gradientColor ~ '-' ~ '#ffffff' }
-}) %}
+{% if pageHeader.image|length %}
+  {% set headerImage = pageHeader.image.one() %}
+  {% set treatedImage = craft.imager.transformImage(headerImage, {
+    width: 1000,
+    height: 1000,
+    mode: 'crop',
+    position: '20% 65%',
+    effects: { modulate: [100, 0, 100], clut: 'gradient:' ~ gradientColor ~ '-' ~ '#ffffff' }
+  }) %}
+{% endif %}
 
 <div class="page-header">
-  <div class="image-wrap">
-    <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
-  </div>
+    <div class="image-wrap">
+      {% if pageHeader.image|length %}
+      <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
+      {% endif %}
+    </div>
   <div class="page-header-info">
     <h4 class="subhead">{{ pageHeader.headerTitle }}</h4>
     {{ pageHeader.statement }}

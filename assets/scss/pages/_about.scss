@@ -5,9 +5,23 @@
   .bg-x {
     stroke: #F95B56;
   }
+  .return-crumb {
+    border-color: #F95B56;
+  }
   .icon-L {
     right: 8%;
     transform: rotate(-90deg);
+  }
+  .modal,
+  .single-entry:not(.people) {
+    .arrow {
+      .icon-arrow {
+        fill: $white;
+      }
+      &:hover {
+        color: $white;
+      }
+    }
   }
   // Member modal
   .modal {
@@ -74,6 +88,7 @@
   .button:hover {
     border-color: $gray;
   }
+  .single-entry,
   .our-approach {
     background: $red;
   }

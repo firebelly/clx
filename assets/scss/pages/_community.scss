@@ -3,6 +3,9 @@
 .page-community {
   .return-crumb {
     border: none;
+    .icon-arrow {
+      fill: $red;
+    }
   }
   .single-member {
     background: $gray;

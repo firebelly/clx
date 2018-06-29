@@ -1,0 +1,43 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set ourSupportersCategory = craft.categories.slug('our-supporters').one() %}
+{% set ourSupporters = craft.entries({
+  section: 'people',
+  relatedTo: ourSupportersCategory,
+  with: [
+    'personImage',
+  ]
+}) %}
+
+{% block content %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c' } %}
+  <article class="single-entry">
+    <div class="user-content">
+      {{ entry.body }}
+    </div>
+
+    <div class="people-group" id="our-supporters">
+      <ul class="grid">
+        {% for person in ourSupporters.all() %}
+          <li class="one-third">
+            <article>
+              <h3>{{ person.organizationName }}</h3>
+              {% if person.personName %}
+                <h4>{{ person.personName }}</h4>
+              {% endif %}
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="return-crumb">
+      <a class="arrow left" href="/about/"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Back to About</a>
+    </div>
+  </article>
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage, gradientColor: '#ff6e5c' } %}
+{% endblock %}

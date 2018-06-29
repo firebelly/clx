@@ -88,18 +88,24 @@ address {
 
 // General button styles
 .button {
-  transition: border .2s;
+  transition: all .15s ease;
   padding: 10px 32px;
   font: 16px/1.5625 $font-display;
   color: $black;
   display: inline-block;
   border: 1px solid $black;
   border-radius: 3px;
+  text-decoration: none;
 }
 // Hover events on no-touch
 .no-touchevents {
   .button:hover {
+    text-decoration: none;
     border: 1px solid $red;
+  }
+  .button:active {
+    background: $red;
+    color: $white;
   }
 }
 
@@ -153,11 +159,15 @@ time {
   .icon-arrow {
     width: 10px;
     height: 10px;
-    fill: $white;
+    fill: $red;
   }
   &.left {
     .icon-arrow {
       transform: rotate(180deg);
     }
   }
+}
+.no-touchevents .arrow:hover {
+  color: $red;
+  text-decoration: none;
 }
