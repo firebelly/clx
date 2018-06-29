@@ -16,6 +16,7 @@ var CLX = (function($) {
       adminBarHeight,
       footerImageHeight,
       delayed_resize_timer,
+      nav_timer,
       page_at;
 
   /**
@@ -59,8 +60,19 @@ var CLX = (function($) {
         e.target.blur();
         _scrollBody('#' + hrefSplit[1], 500);
       }
-
     });
+    // Wait a moment before initializing rollover bg if user just clicked to a different section
+    setTimeout(function() {
+      $('.site-nav ul li').on('mousemove', function() {
+        clearTimeout(nav_timer);
+        $('.site-header').addClass('bg');
+      }).on('mouseleave', function() {
+        clearTimeout(nav_timer);
+        nav_timer = setTimeout(function() {
+          $('.site-header').removeClass('bg');
+        }, 500);
+      });
+    }, 500);
 
     $(window).on('load', function() {
       $('.page-wrapper').imagesLoaded().done(function() {
