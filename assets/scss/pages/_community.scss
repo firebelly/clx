@@ -42,7 +42,10 @@
         width: 33.3%;
         padding-right: $global-padding;
         margin-bottom: grid(4);
-        &:nth-child(3n+1) {
+      }
+      .member-list {
+        @include clearfix;
+        article:nth-child(3n+1) {
           clear: left;
         }
       }

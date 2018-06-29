@@ -4,7 +4,7 @@
   background: $orange;
 
   .bg-x {
-    stroke: #A9A640;
+    stroke: rgba($black, 0.1);
   }
   .icon-L {
     right: 8%;
@@ -15,11 +15,26 @@
     fill: $white;
   }
 
-  .page-header {
-    // color: $gray;
+  .button:hover {
+    border-color: $gray;
   }
+  .button:active {
+    background: $gray;
+    color: $black;
+  }
+  .single-entry {
+    .arrow {
+      .icon-arrow {
+        fill: $white;
+      }
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
   .return-crumb {
-    border-color: rgba($black,0.2);
+    border-color: rgba($black, 0.1);
   }
   .single-entry {
     background: $orange;

@@ -1,6 +1,10 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set mode = craft.app.request.getParam('mode') ?? 'grid' %}
+{% set perPage = (mode == 'grid') ? 30 : 120 %}
+{% if entry is not defined %}
+  {% set entry = craft.entries.section('community').one() %}
+{% endif %}
 
 {% if category is defined %}
 
@@ -11,7 +15,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, memberEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(perPage) as paginationInfo, memberEntries %}
 
 {% else %}
 
@@ -21,7 +25,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, memberEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(perPage) as paginationInfo, memberEntries %}
 
 {% endif %}
 
@@ -32,26 +36,55 @@
   </div>
 
   <div class="center-content members">
-    {% for memberEntry in memberEntries %}
-      <article>
-        {% set memberImage = memberEntry.memberImage[0] ?? null %}
-        {% if memberImage %}
-          {% set treatedImage = craft.imager.transformImage(memberImage, {
-            width: 500,
-            height: 500,
-            effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
-          }) %}
-          <div class="image-wrap">
-            <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
-          </div>
+    <ul class="filters">
+      <li>
+        <a href="/community/"{{ mode == 'grid' ? ' class="active"' : '' }}>Grid</a> |
+        <a href="/community/?mode=list"{{ mode == 'list' ? ' class="active"' : '' }}>List</a>
+      </li>
+      <li>
+        <select name="filter" class="jumpSelect">
+          <option value="#">Filter by Member Type</option>
+          {% for newsCat in craft.categories.group('memberTypes').all() %}
+            <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li class="selected-category">
+        {% if tag is defined %}
+          <a class="close" href="{{ entry.getUrl() }}">{{ tag.title }} <span>X</span></a>
         {% endif %}
-        <h4><a href="{{ memberEntry.getUrl() }}">
-          {% if memberEntry.personName %}
-            {{ memberEntry.personName }}{{ memberEntry.organizationName ? '<br>' : '' }}
+        {% if category is defined %}
+          <a class="close" href="{{ entry.getUrl() }}">{{ category.title }} <span>X</span></a>
+        {% endif %}
+      </li>
+    </ul>
+    <div class="member-list">
+      {% for memberEntry in memberEntries %}
+        <article>
+          {% if mode == 'grid' %}
+            {% set memberImage = memberEntry.memberImage[0] ?? null %}
+            {% if memberImage %}
+              {% set treatedImage = craft.imager.transformImage(memberImage, {
+                width: 500,
+                height: 500,
+                effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+              }) %}
+              <div class="image-wrap">
+                <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
+              </div>
+            {% endif %}
           {% endif %}
-          {{ memberEntry.organizationName }}
-        </a></h4>
-      </article>
-    {% endfor %}
-  </div>
+          <h4><a href="{{ memberEntry.getUrl() }}">
+            {% if memberEntry.personName %}
+              {{ memberEntry.personName }}{{ memberEntry.organizationName ? '<br>' : '' }}
+            {% endif %}
+            {{ memberEntry.organizationName }}
+          </a></h4>
+        </article>
+      {% endfor %}
+    </div>
+  </div>{# /.center-content #}
+
+  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo } %}
+
 {% endblock %}

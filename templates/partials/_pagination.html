@@ -1,0 +1,21 @@
+{% if paginationInfo.totalPages > 1 %}
+  <nav class="pagination">
+    <ul>
+      {# <li><a href="{{ paginationInfo.firstUrl }}">First Page</a></li> #}
+      {% if paginationInfo.prevUrl %}<li><a class="arrow left" href="{{ paginationInfo.prevUrl }}"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous</a></li>{% endif %}
+
+      {% for page, url in paginationInfo.getPrevUrls(5) %}
+        <li><a href="{{ url }}">{{ page }}</a></li>
+      {% endfor %}
+
+      <span class="current">{{ paginationInfo.currentPage }}</span>
+
+      {% for page, url in paginationInfo.getNextUrls(5) %}
+        <li><a href="{{ url }}">{{ page }}</a></li>
+      {% endfor %}
+
+      {% if paginationInfo.nextUrl %}<li><a class="arrow" href="{{ paginationInfo.nextUrl }}">Next <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>{% endif %}
+      {# <li><a href="{{ paginationInfo.lastUrl }}">Last Page</a></li> #}
+    </ul>
+  </nav>
+{% endif %}

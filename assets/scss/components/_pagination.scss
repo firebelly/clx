@@ -1,0 +1,30 @@
+.pagination {
+  padding: 0 0 grid(4);
+  span,
+  a {
+    padding: grid(2);
+    &:first-of-type {
+      padding-left: 0;
+    }
+  }
+  .current {
+    color: $red;
+  }
+  ul {
+    @include type-subhead;
+    margin: 0;
+    padding: 0;
+  }
+  .arrow {
+    @include type-subhead;
+  }
+  li {
+    display: inline-block;
+  }
+
+  // Desktop styles
+  @include media-md {
+    margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+    padding: 0 columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
+  }
+}

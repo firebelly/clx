@@ -14,7 +14,7 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
 
 {% elseif category is defined %}
 
@@ -24,7 +24,7 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
 
 {% else %}
 
@@ -33,7 +33,7 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(100) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
 
 {% endif %}
 
@@ -90,5 +90,7 @@
       {% endfor %}
     </div>
   </div>{# /.center-content #}
+
+  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo } %}
 
 {% endblock %}

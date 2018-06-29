@@ -1,12 +1,6 @@
 // News
 
 .page-news-events {
-  .filters {
-    @include type-subhead;
-    a.active {
-      color: $red;
-    }
-  }
   .return-crumb {
     border: none;
   }
@@ -30,19 +24,6 @@
 
   // Desktop styles
   @include media-md {
-    .filters {
-      @include clearfix;
-      list-style: none;
-      margin: 0 0 grid(8);
-      li {
-        float: left;
-        width: 33%;
-        &.selected-category {
-          font-weight: normal;
-          text-transform: none;
-        }
-      }
-    }
     .news-posts {
       @include clearfix;
 
