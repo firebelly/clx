@@ -58,7 +58,7 @@
         {% endif %}
       </li>
     </ul>
-    <div class="member-list">
+    <div class="member-list mode-{{ mode }}">
       {% for memberEntry in memberEntries %}
         <article>
           {% if mode == 'grid' %}
@@ -81,6 +81,8 @@
             {{ memberEntry.organizationName }}
           </a></h4>
         </article>
+      {% else %}
+        <p class="none-found">No posts found.</p>
       {% endfor %}
     </div>
   </div>{# /.center-content #}

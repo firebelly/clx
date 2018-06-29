@@ -11,7 +11,14 @@
     background: $gray;
   }
 
-  .members {
+  .member-list {
+    @include clearfix;
+    &.mode-list {
+      h4 {
+        margin: grid(1) 0;
+        font-weight: normal;
+      }
+    }
   }
 
   // Mobile-only styles
@@ -33,7 +40,7 @@
         top: 205px;
       }
     }
-    .members {
+    .member-list {
       article {
         .image {
           @include aspect-ratio(320,215);
@@ -42,11 +49,13 @@
         width: 33.3%;
         padding-right: $global-padding;
         margin-bottom: grid(4);
-      }
-      .member-list {
-        @include clearfix;
-        article:nth-child(3n+1) {
+        &:nth-child(3n+1) {
           clear: left;
+        }
+      }
+      &.mode-list {
+        article {
+          margin-bottom: grid(2);
         }
       }
     }

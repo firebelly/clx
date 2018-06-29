@@ -38,6 +38,12 @@
   a.active {
     color: $red;
   }
+  li {
+    display: block;
+    margin: grid(4) 0;
+  }
+
+  // Desktop styles
   @include media-md {
     @include clearfix;
     list-style: none;
@@ -45,6 +51,7 @@
     li {
       float: left;
       width: 33%;
+      margin: 0;
       &.selected-category {
         font-weight: normal;
         text-transform: none;
@@ -53,9 +60,7 @@
   }
 }
 
-
-
-// Site alerts
+// Site alerts (unused right now)
 .alert {
   background: $black;
   color: $white;
@@ -75,7 +80,6 @@
     margin-left: columns(2);
   }
 }
-
 
 // General button styles
 .button {
