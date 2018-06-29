@@ -22,3 +22,7 @@ web/assets/fonts
 
 # Treated images
 web/imager
+
+# Ignore unrevisioned assets
+web/assets/dist/css/main.css
+web/assets/dist/js/main.js
