@@ -1,14 +1,59 @@
 // Homepage
 
 .page-home {
-  // .page-wrapper {
-  //   padding: 0;
-  // }
+  .text-header {
+    margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
+    padding: grid(14) columns(1) grid(8) calc(#{columns(1)} - #{$global-padding * 2});
+
+    &.secondary {
+      margin-top: grid(10);
+    }
+  }
 }
+// Featured carousel
 .featured {
   @include clearfix;
 
-  @include media-md {
+  // Break out featured posts from global padding
+  .featured-carousel {
+    margin: 0 -#{$global-padding};
+    .article-info {
+      margin: 0 $global-padding;
+    }
+  }
+}
+
+// Bottom of page upcoming event + secondary feature
+.secondary-featured {
+  @include clearfix;
+  article {
+    margin: grid(8) 0;
+  }
+}
+
+// Small screen only styles
+@include max-screen($breakpoint-md) {
+  // Reorder article-image & article-info on smaller screens
+  .featured.news {
+    margin: 0 -#{$mobile-inset};
+    .grid {
+      display: flex;
+      flex-direction: column;
+    }
+    .article-image {
+      order: 1;
+    }
+    .article-info {
+      margin: 0 $mobile-inset;
+      order: 2;
+    }
+  }
+}
+
+// Desktop styles
+@include media-md {
+  .featured {
+    margin: 0;
     padding: 0 $global-padding;
     width: 100%;
 
@@ -32,47 +77,15 @@
       }
     }
   }
-}
 
-// Small screen only styles
-@include max-screen($breakpoint-md) {
-  // Break out featured posts from global padding
-  .featured-carousel {
-    margin: 0 -#{$global-padding};
-    .article-info {
-      margin: 0 $global-padding;
-    }
-  }
-  // Reorder article-image & article-info on smaller screens
-  .featured.news {
-    margin: 0 -#{$mobile-inset};
-    .grid {
-      display: flex;
-      flex-direction: column;
-    }
-    .article-image {
-      order: 1;
-    }
-    .article-info {
-      margin: 0 $mobile-inset;
-      order: 2;
-    }
-  }
-}
-
-// Bottom of page upcoming event + secondary feature
-.secondary-featured {
-  article {
-    margin: grid(8);
-  }
-
-  @include media-md {
-    padding: grid(10) 0;
+  .secondary-featured {
+    padding: grid(8) 0;
     margin-left: calc(#{columns(2)} - #{$global-padding});
     article {
-     width: 50%;
-     float: left;
-     padding: 0 columns(1) grid(6) 0;
+      margin: 0;
+      width: 50%;
+      float: left;
+      padding: 0 columns(1) grid(6) 0;
     }
   }
 }

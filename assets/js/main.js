@@ -73,7 +73,7 @@ var CLX = (function($) {
    * About page functionality
    */
   function _initAbout() {
-    $(window).on('resize', _positionAboutModal);
+    // Build team member modal markup and behavior
     $aboutModal = $('<div class="modal"><div class="grid"><div class="photo one-third"></div><div class="bio-wrap two-thirds"></div></div><div class="grid nav"><div class="one-third">&nbsp;</div></div></div>').appendTo('body');
     $('<div class="one-third"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
       e.preventDefault();
@@ -89,15 +89,24 @@ var CLX = (function($) {
       e.preventDefault();
       _closeAboutModal();
     });
+
+    // Open modals for team members on click
     $('#our-team li').on('click', function(e) {
+      e.preventDefault();
       $('#our-team li').removeClass('active');
       $(this).addClass('active');
-      e.preventDefault();
       $aboutModal.addClass('active');
       _populateAboutModal();
       _positionAboutModal();
+      _scrollBody('#our-team', 500);
     });
+
+    // Reposition modal on window resize
+    $(window).on('resize', _positionAboutModal);
   }
+  /**
+   * Populate team member modal with HTML from source element
+   */
   function _populateAboutModal() {
     $aboutModal.find('.bio-wrap').empty();
     // Copy html from active person
@@ -105,6 +114,10 @@ var CLX = (function($) {
     // Move bio over
     $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
   }
+
+  /**
+   * Set top of team member modal to where Our Team is
+   */
   function _positionAboutModal() {
     if (!$aboutModal.hasClass('active')) {
       return;
@@ -112,8 +125,12 @@ var CLX = (function($) {
     var ourTeamPos = $('#our-team').offset();
     $aboutModal.css({ top: ourTeamPos.top });
   }
+
+  /**
+   * Close team member modal on escape or clicking X icon
+   */
   function _closeAboutModal() {
-    $aboutModal.removeClass('active');
+    $aboutModal.removeClass('active').css('top', '-9999em');
   }
 
   /**
@@ -147,7 +164,9 @@ var CLX = (function($) {
 
     // Mobile CLX arrangement at top-right is the home button
     $('.clx-elements').on('click', function(e) {
-      location.href = '/';
+      if (!breakpoint_nav) {
+        location.href = '/';
+      }
     });
 
     // Handle clicks on nav a elements
@@ -156,7 +175,6 @@ var CLX = (function($) {
       var $li = $this.parents('li:first');
       var href = $this.attr('href');
       var hrefSplit = href.split('#');
-      console.log(this,$li);
 
       // Mobile support for ul.children, slide in/out child options
       if (!breakpoint_nav && $li.hasClass('dropdown')) {
