@@ -11,7 +11,7 @@
   }
 
   @include media-nav {
-    padding: grid(11) calc(#{columns(.5)}) 0 calc(#{columns(1)} - #{$global-padding});
+    padding: grid(10) calc(#{columns(.5)}) grid(6) calc(#{columns(1)} - #{$global-padding});
 
     // Nav bg that slides out when hovering over site-nav
     .nav-bg {
@@ -206,8 +206,8 @@
       li {
         display: inline-block;
         position: relative;
-        padding: grid(1) grid(.5);
-        margin: grid(1) grid(1.5) 0;
+        padding: grid(0) grid(.5) grid(1);
+        margin: grid(0) grid(1.5) 0;
         @include type-subhead;
         border-bottom: 2px dashed transparent;
         &:hover {

@@ -23,6 +23,7 @@
     }
   }
   .single-entry {
+    background: $gray;
     .user-content {
       margin-bottom: grid(4);
     }
@@ -30,6 +31,17 @@
 
   // Desktop styles
   @include media-md {
+    .page-header {
+      padding-top: grid(20);
+      .image-wrap {
+        .image {
+          @include aspect-ratio(680,530);
+        }
+      }
+    }
+    .single-entry {
+      padding-top: grid(6);
+    }
     .related-posts {
       margin-top: grid(10);
       article:first-of-type {

@@ -1,0 +1,13 @@
+{% if relatedPosts|length %}
+  <div class="related-posts">
+    <h4 class="subhead">Related Posts</h4>
+    <div class="grid">
+    {% for relatedPost in relatedPosts.all() %}
+      <article class="one-half">
+        <h3><a href="{{ relatedPost.getUrl() }}">{{ relatedPost.title }}</a></h3>
+        <p class="read-more"><a class="arrow" href="{{ relatedPost.getUrl() }}">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+{% endif %}

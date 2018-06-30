@@ -1,0 +1,14 @@
+{% if image|length %}
+  {% set headerImage = image.one() %}
+  {% set treatedImage = craft.imager.transformImage(headerImage, {
+    width: 1000,
+    height: 1000,
+    mode: 'crop',
+    effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+  }) %}
+  <div class="page-header">
+    <div class="image-wrap">
+      <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
+    </div>
+  </div>
+{% endif %}
