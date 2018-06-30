@@ -1,23 +1,38 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
 
+{% set relatedPosts = craft.entries.section('news').id('not ' ~ entry.id).limit(2) %}
+
 {% block content %}
-	<article class="single-entry single-news">
-		{% include 'partials/_news-event-header' with { newsEventPost: entry } %}
-		<h1>{{ entry.title }}</h1>
-		{{ entry.statement }}
-		{% include 'partials/_stats' with { stats: entry.stats } %}
-		<div class="user-content">
-			{{ entry.body }}
-		</div>
-		{% if entry.tags %}
-			<ul class="tags">
-				{% for tag in entry.tags.all() %}
-					<a href="/news-events/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
-				{% endfor %}
-			</ul>
-		{% endif %}
-		<h4 class="subhead">Share</h4>
-		<h4 class="subhead">Related Posts</h4>
-	</article>
+  <article class="single-entry single-news">
+    {% include 'partials/_news-event-header' with { newsEventPost: entry } %}
+    <h1>{{ entry.title }}</h1>
+    {{ entry.statement }}
+    <div class="user-content">
+      {{ entry.body }}
+    </div>
+    {% if entry.tags %}
+      <ul class="tags">
+        {% for tag in entry.tags.all() %}
+          <a href="/news-events/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <h4 class="subhead">Share</h4>
+
+    {% if relatedPosts|length %}
+      <div class="related-posts">
+        <h4 class="subhead">Related Posts</h4>
+        <div class="grid">
+        {% for relatedPost in relatedPosts %}
+          <article class="one-half">
+            <h3><a href="{{ relatedPost.getUrl() }}">{{ relatedPost.title }}</a></h3>
+            <p class="read-more"><a class="arrow" href="{{ relatedPost.getUrl() }}">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+          </article>
+        {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  </article>
 {% endblock %}

@@ -10,8 +10,6 @@
 @import "helpers/typography";
 @import "helpers/utility";
 
-// Vendor
-
 // Components
 @import "components/base";
 @import "components/clx";
@@ -21,6 +19,7 @@
 @import "components/page-headers";
 @import "components/flickity";
 @import "components/pagination";
+@import "components/user-content";
 
 // Pages
 @import "pages/shared";

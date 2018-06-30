@@ -4,6 +4,12 @@
   .return-crumb {
     border: none;
   }
+  .related-posts {
+    margin-top: grid(4);
+    h3 {
+      margin-top: 0;
+    }
+  }
 
   .news-posts {
     article {
@@ -24,6 +30,12 @@
 
   // Desktop styles
   @include media-md {
+    .related-posts {
+      margin-top: grid(10);
+      article:first-of-type {
+        padding-right: $global-padding;
+      }
+    }
     .news-posts {
       @include clearfix;
 

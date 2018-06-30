@@ -1,0 +1,12 @@
+.user-content {
+  ul {
+    list-style-type: disc;
+  }
+  ol,
+  ul {
+    padding-left: 2em;
+    li {
+      margin-bottom: grid(3);
+    }
+  }
+}
