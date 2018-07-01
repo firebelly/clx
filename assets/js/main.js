@@ -29,6 +29,7 @@ var CLX = (function($) {
     page_at = window.location.pathname;
 
     _initNav();
+    _initSearch();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -156,7 +157,16 @@ var CLX = (function($) {
   }
 
   /**
-   * Mobile and desktop nav behavior
+   * Search behavior for mobile & desktop
+   */
+  function _initSearch() {
+    $('.search-toggle').on('click', function() {
+      $('body').toggleClass('search-open');
+    });
+  }
+
+  /**
+   * Nav behavior for mobile and desktop
    */
   function _initNav() {
     // Mobile hamburger and X close icons toggle mobile nav

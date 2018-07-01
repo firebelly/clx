@@ -61,9 +61,15 @@ h1,
 .h1 {
   font: 35px/1.2 $font-header;
   margin: 0 0 grid(2);
+  &.display {
+    font: bold 80px/1 $font-display;
+  }
 
   @include media-md {
     font: 60px/1.166666667 $font-header;
+    &.display {
+      font: bold 130px/1 $font-display;
+    }
   }
 }
 

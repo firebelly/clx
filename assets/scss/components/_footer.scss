@@ -93,5 +93,20 @@
         clear: left;
       }
     }
+    .social a {
+      padding-bottom: 2px;
+      border-bottom: 1px dashed transparent;
+      &:hover {
+        border-bottom: 1px dashed $white;
+      }
+    }
+  }
+}
+
+.no-touchevents {
+  .site-footer {
+    a:not(.arrow):not(.button):hover {
+      border-color: $white;
+    }
   }
 }

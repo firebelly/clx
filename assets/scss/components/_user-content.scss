@@ -9,4 +9,19 @@
       margin-bottom: grid(3);
     }
   }
+  a:not(.arrow):not(.button) {
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed $black;
+    transition: all 0.2s ease;
+  }
+  h1 a:not(.arrow):not(.button) {
+    border-bottom: 4px dashed $black;
+  }
+}
+.no-touchevents {
+  .user-content a:hover {
+    color: $red;
+    border-color: $red;
+  }
 }
