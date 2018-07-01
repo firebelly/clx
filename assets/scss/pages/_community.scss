@@ -28,8 +28,8 @@
     }
   }
 
-  // Desktop styles
-  @include media-md {
+  // Adjust L position and rotation
+  @include media-nav {
     .icon-L {
       top: 160px;
       right: 6%;
@@ -40,6 +40,10 @@
         top: 205px;
       }
     }
+  }
+
+  // Desktop styles
+  @include media-md {
     .member-list {
       article {
         .image {
