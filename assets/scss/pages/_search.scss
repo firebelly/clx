@@ -1,0 +1,104 @@
+// Search
+
+.page-search {}
+
+.search-form {
+  padding: grid(5) 0;
+  [type=submit] {
+    display: none;
+  }
+
+  @include media-md {
+    margin: 0 calc(#{columns(2)} - #{$global-padding});
+    padding: grid(10) 0;
+  }
+
+  h4.subhead {
+    margin: 0;
+  }
+  input[name="q"] {
+    color: $black;
+    width: 100%;
+    font: 40px/1 $font-regular;
+    outline: none;
+    display: block;
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: grid(2) 0;
+    border-bottom: 2px dashed $black;
+    &::placeholder {
+      color: rgba($black,.2);
+    }
+
+    &:focus {
+      border-color: $red;
+    }
+  }
+}
+
+
+.search-results {
+}
+
+#search-modal {
+  top: 0;
+  left: 0;
+  // height: 500px;
+  // width: 100%;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 10001;
+  position: fixed;
+  background: rgba($white, 1);
+  // transform: translateY(-500px);
+  transform: translateY(-100%);
+  transition: transform .3s ease, opacity .3s ease;
+
+  .scroll-wrap {
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .icon-close {
+    top: 30px;
+    left: 30px;
+    width: 38px;
+    height: 38px;
+    padding: 10px;
+    fill: $black;
+    position: absolute;
+
+    @include media-nav {
+      cursor: pointer;
+      left: auto;
+      top: 50px;
+      right: calc(#{columns(.5)} + 10px);
+    }
+  }
+
+  // Modal-specific styles for form
+  .search-form {
+    padding: grid(20) columns(1);
+    @include media-md {
+      padding: grid(20) 0 grid(10) 0;
+    }
+  }
+
+}
+
+.search-open {
+  // Stop body scrolling
+  position: fixed;
+  overflow: hidden;
+  #search-modal {
+    opacity: 1;
+    transform: none;
+
+    .icon-x {
+      opacity: 1;
+      transition: opacity 0s 0.3s;
+    }
+  }
+}

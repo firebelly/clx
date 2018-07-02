@@ -2,23 +2,21 @@
 {% set query = craft.app.request.getParam('q') %}
 
 {% block content %}
-
-  <form action="{{ url('search') }}" class="search-form">
-      <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="search" value="{{ query ? query : '' }}" name="q" placeholder="Search" required="">
-      <button type="submit" class="button">Search</button>
-  </form>
-
-  {% if query %}
-    {% set entries = craft.entries.search(query).orderBy('score') %}
-    <div class="search-results">
-      {% if (entries|length) == 0 %}
-        <p class="no-results">No results found.</p>
-      {% else %}
-        {% for entry in entries %}
-          {% include 'search/_article' %}
-        {% endfor %}
-      {% endif %}
+  {% include "partials/_search-form" with { 'query': query } %}
+  <div class="center-content">
+    <div class="news-posts">
+    {% if query %}
+      {% set entries = craft.entries.search(query).orderBy('score') %}
+      <div class="search-results">
+        {% if (entries|length) == 0 %}
+          <p class="no-results">No results found.</p>
+        {% else %}
+          {% for entry in entries %}
+            {% include 'search/_article' %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
     </div>
-  {% endif %}
-
+  </div>
 {% endblock %}

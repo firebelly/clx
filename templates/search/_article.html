@@ -1,11 +1,42 @@
-<article class="search-article">
-  {% set entryType = entry.type.name ?? 'News' %}
-  {% switch entryType %}
-    {% case "News" %}
-      <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-      <p class="excerpt">{{ entry.excerpt ? entry.excerpt : entry.body | chop(limit=20, unit='w', append='…') }}</p>
-    {% case "Events" %}
-      <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-      <p class="excerpt">{{ entry.excerpt ? entry.excerpt : entry.body | chop(limit=20, unit='w', append='…') }}</p>
-  {% endswitch %}
-</article>
+{% set entryType = entry.type.name ?? 'News' %}
+{% switch entryType %}
+  {% case "Person" %}
+    {% set entryUrl = "/about/#person-" ~ entry.slug %}
+    {% set entryImage = entry.personImage %}
+  {% default %}
+    {% set entryUrl = entry.getUrl() %}
+    {% set entryImage = entryType in ['News', 'Events'] ? entry.newsEventImage : [] %}
+{% endswitch %}
+
+{# Skip over some single pages that don't make sense in search #}
+{% if entryType not in ['Homepage', 'Events Index', 'News Index', 'Resources Index'] %}
+  <article class="search-article">
+    {% if entryImage|length %}
+      {% set treatedImage = craft.imager.transformImage(entryImage.one(), {
+        width: 960,
+        height: 600,
+        effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+      }) %}
+      <div class="image-wrap">
+        <a href="{{ entryUrl }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
+      </div>
+    {% endif %}
+    {# {% include "partials/_news-event-header" with { newsEventPost: entry } %} #}
+    {% switch entryType %}
+      {% case "News" %}
+        <time datetime="{{ entry.postDate|date('Y-m-d') }}">
+          {{ entry.postDate|date('F d Y') }}
+        </time>
+      {% case "Events" %}
+        <time datetime="{{ entry.dateStart|date('Y-m-d') }}">
+          {{ entry.dateStart|date('F d Y') }}
+          {% if entry.dateEnd and entry.dateEnd|date('F d Y') != entry.dateStart|date('F d Y') %}
+            – {{ entry.dateEnd|date('F d Y') }}
+          {% endif %}
+        </time>
+    {% endswitch %}
+    <h3><a href="{{ entryUrl }}">{{ entry.title }}</a></h3>
+    <p class="excerpt">{{ entry.excerpt ? entry.excerpt : entry.body | chop(limit=20, unit='w', append='…') }}</p>
+    <p class="read-more"><a href="{{ entryUrl }}" class="arrow">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+  </article>
+{% endif %}

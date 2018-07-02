@@ -34,14 +34,18 @@
 
       <div class="page-wrapper">
         <main class="site-main" role="main">
-          <div class="wrap">
-            {% block content %}{% endblock %}
-          </div>
+          {% block content %}{% endblock %}
         </main>
       </div>{# /.page-wrapper #}
 
       {% block footerimage %}{% endblock %}
       {% include '/partials/_footer' %}
+
+      <div id="search-modal">
+        <div class="content"></div>
+        <svg class="icon icon-close"><use xlink:href="#icon-close" /></svg>
+        {% include "partials/_search-form" with { 'query': '' } %}
+      </div>
 
     </div>{# /.body-wrapper #}
   </body>

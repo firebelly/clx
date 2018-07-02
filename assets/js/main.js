@@ -35,6 +35,7 @@ var CLX = (function($) {
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
         _closeAboutModal();
+        _closeSearch();
       }
     });
 
@@ -48,12 +49,7 @@ var CLX = (function($) {
           delayed_resize_timer = setTimeout(_fixOverflow, 250);
         });
       });
-
-      // Scroll down to hash after page load
-      if (window.location.hash) {
-        _scrollBody(window.location.hash - 80, 500);
-      }
-    });
+   });
 
     // Editable donation link
     $('.footer-block.donate a:last').addClass('arrow').append(' <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>');
@@ -77,6 +73,19 @@ var CLX = (function($) {
    * About page functionality
    */
   function _initAbout() {
+    $(window).on('load', function() {
+      // Check if linking to single person that has a popup
+      if (window.location.hash && window.location.hash.match(/^#person/)) {
+        var person_slug = window.location.hash.replace('#person-', '');
+        if ($('#our-team [data-slug="'+person_slug+'"]').length) {
+          $('#our-team [data-slug="'+person_slug+'"]').trigger('click');
+        } else {
+          _scrollBody('#our-team', 500);
+        }
+      }
+    });
+
+
     // Build team member modal markup and behavior
     $aboutModal = $('<div class="modal"><div class="grid"><div class="photo one-third"></div><div class="bio-wrap two-thirds"></div></div><div class="grid nav"><div class="one-third">&nbsp;</div></div></div>').appendTo('body');
     $('<div class="one-third"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
@@ -96,13 +105,13 @@ var CLX = (function($) {
 
     // Open modals for team members on click
     $('#our-team li').on('click', function(e) {
-      e.preventDefault();
+      // e.preventDefault();
       $('#our-team li').removeClass('active');
       $(this).addClass('active');
       $aboutModal.addClass('active');
       _populateAboutModal();
-      _positionAboutModal();
       _scrollBody('#our-team', 500);
+      window.location.hash = '#person-' + $(this).attr('data-slug');
     });
 
     // Reposition modal on window resize
@@ -117,6 +126,7 @@ var CLX = (function($) {
     $aboutModal.find('.photo').html($('#our-team li.active article').html());
     // Move bio over
     $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
+    _positionAboutModal();
   }
 
   /**
@@ -134,7 +144,10 @@ var CLX = (function($) {
    * Close team member modal on escape or clicking X icon
    */
   function _closeAboutModal() {
-    $aboutModal.removeClass('active').css('top', '-9999em');
+    if ($aboutModal) {
+      $aboutModal.removeClass('active').css('top', '-9999em');
+      history.replaceState('', document.title, window.location.pathname);
+    }
   }
 
   /**
@@ -160,9 +173,18 @@ var CLX = (function($) {
    * Search behavior for mobile & desktop
    */
   function _initSearch() {
-    $('.search-toggle').on('click', function() {
+    $('.search-toggle, .nav-search').on('click', function(e) {
+      e.preventDefault();
       $('body').toggleClass('search-open');
+      $('#search-modal input[name=q]').focus();
     });
+    $(document).on('click', '.icon-close', function(e) {
+      e.preventDefault();
+      _closeSearch();
+    });
+  }
+  function _closeSearch() {
+    $('body').removeClass('search-open');
   }
 
   /**

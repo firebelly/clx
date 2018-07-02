@@ -50,7 +50,7 @@
       <h4 class="subhead">Our Team</h4>
       <ul class="grid">
         {% for person in ourTeam.all() %}
-          <li class="one-third">
+          <li class="one-third" data-slug="{{ person.slug }}">
             <article>
               {% set personImage = person.personImage[0] ?? null %}
               {% if personImage %}

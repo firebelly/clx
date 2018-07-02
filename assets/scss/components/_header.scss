@@ -11,7 +11,7 @@
   }
 
   @include media-nav {
-    padding: grid(10) calc(#{columns(.5)}) grid(6) calc(#{columns(1)} - #{$global-padding});
+    padding: grid(10) columns(.5) grid(6) calc(#{columns(1)} - #{$global-padding});
 
     // Nav bg that slides out when hovering over site-nav
     .nav-bg {
@@ -45,13 +45,17 @@
   }
 }
 
+.search-open {
+
+}
+
 // Desktop-only logomark
 .icon-logo {
   fill: $black;
   position: absolute;
   top: 0;
   left: 0;
-  width: 245px;
+  width: 220px;
   display: none;
 
   @include media-nav {
@@ -208,9 +212,10 @@
       li {
         display: inline-block;
         position: relative;
-        padding: grid(0) grid(.5) grid(1);
-        margin: grid(0) grid(1.5) 0;
+        padding: grid(0) grid(1.25) grid(1);
+        margin: 0;
         @include type-subhead;
+        font: bold 15px/1.375 $font-display;
         border-bottom: 2px dashed transparent;
         &:hover {
           border-color: $black;
@@ -268,6 +273,21 @@
            opacity: 1;
            display: block;
         }
+      }
+    }
+  }
+}
+
+// Larger screens
+@include media-lg {
+  .icon-logo {
+    width: 245px;
+  }
+  .site-nav {
+    ul {
+      li {
+        padding: grid(0) grid(2) grid(1);
+        font-size: 16px;
       }
     }
   }
