@@ -27,6 +27,7 @@
     background: transparent;
     padding: grid(2) 0;
     border-bottom: 2px dashed $black;
+    transition: all .2s ease;
     &::placeholder {
       color: rgba($black,.2);
     }

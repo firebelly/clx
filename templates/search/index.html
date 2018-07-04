@@ -11,7 +11,7 @@
         {% if (entries|length) == 0 %}
           <p class="no-results">No results found.</p>
         {% else %}
-          {% for entry in entries %}
+          {% for entry in entries.all() %}
             {% include 'search/_article' %}
           {% endfor %}
         {% endif %}

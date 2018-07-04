@@ -42,6 +42,12 @@
     display: block;
     margin: grid(4) 0;
   }
+  .select {
+    text-transform: none;
+    span {
+      letter-spacing: 0;
+    }
+  }
 
   // Desktop styles
   @include media-md {
@@ -55,6 +61,10 @@
       &.selected-category {
         font-weight: normal;
         text-transform: none;
+        span {
+          font-weight: bold;
+          color: $red;
+        }
       }
     }
   }

@@ -1,8 +1,18 @@
 {% set entryType = entry.type.name ?? 'News' %}
 {% switch entryType %}
   {% case "Person" %}
-    {% set entryUrl = "/about/#person-" ~ entry.slug %}
+    {% set personType = entry.personType.one() %}
+    {% if personType.slug == 'our-supporters' %}
+      {% set entryUrl = "/about/supporters/" %}
+    {% elseif personType.slug == 'our-team' %}
+      {% set entryUrl = "/about/#person-" ~ entry.slug %}
+    {% else %}
+      {% set entryUrl = "/about/#our-team" %}
+    {% endif %}
     {% set entryImage = entry.personImage %}
+  {% case "Members" %}
+    {% set entryUrl = entry.getUrl() %}
+    {% set entryImage = entry.memberImage %}
   {% default %}
     {% set entryUrl = entry.getUrl() %}
     {% set entryImage = entryType in ['News', 'Events'] ? entry.newsEventImage : [] %}

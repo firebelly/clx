@@ -49,19 +49,22 @@
         <a href="/news-events/events/"{{ newsOrEvents == 'events' ? ' class="active"' : '' }}>Events</a>
       </li>
       <li>
-        <select name="filter" class="jumpSelect">
-          <option value="#">Filter by {{ newsOrEvents == 'news' ? 'Topic' : 'Event Type' }}</option>
-          {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics').all() %}
-            <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
-          {% endfor %}
-        </select>
+        <div class="select">
+          <select name="filter" class="jumpSelect">
+            <option value="#">Filter by {{ newsOrEvents == 'news' ? 'Topic' : 'Event Type' }}</option>
+            {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics').all() %}
+              <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
+            {% endfor %}
+          </select>
+          <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>
+        </div>
       </li>
       <li class="selected-category">
         {% if tag is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ tag.title }} <span>X</span></a>
+          <a class="close" href="{{ entry.getUrl() }}">{{ tag.title }}&nbsp;<span>x</span></a>
         {% endif %}
         {% if category is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ category.title }} <span>X</span></a>
+          <a class="close" href="{{ entry.getUrl() }}">{{ category.title }}&nbsp;<span>x</span></a>
         {% endif %}
       </li>
     </ul>

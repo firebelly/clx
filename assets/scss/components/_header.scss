@@ -212,8 +212,8 @@
       li {
         display: inline-block;
         position: relative;
-        padding: grid(0) grid(1.25) grid(1);
-        margin: 0;
+        padding: grid(0) grid(.5) grid(1);
+        margin: 0 grid(.8);
         @include type-subhead;
         font: bold 15px/1.375 $font-display;
         border-bottom: 2px dashed transparent;
@@ -286,7 +286,7 @@
   .site-nav {
     ul {
       li {
-        padding: grid(0) grid(2) grid(1);
+        margin: 0 grid(1.2);
         font-size: 16px;
       }
     }

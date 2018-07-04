@@ -16,7 +16,7 @@
     transition: all 0.2s ease;
   }
   h1 a:not(.arrow):not(.button) {
-    border-bottom: 4px dashed $black;
+    border-width: 4px;
   }
 }
 .no-touchevents {

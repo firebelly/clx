@@ -96,3 +96,72 @@ form {
     }
   }
 }
+
+// Dropdowns
+.select {
+  position: relative;
+  display: inline-block;
+
+  select {
+    display: block;
+    width: 100%;
+    padding: 0 grid(3) 0 0;
+    margin: 0;
+    color: $black;
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    outline: 0;
+    appearance: none;
+  }
+
+  // Undo the Firefox inner focus ring
+  select:focus:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+
+  // Dropdown arrow
+  .icon-arrow {
+    position: absolute;
+    bottom: 4px;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    transform: rotate(90deg);
+    fill: $red;
+  }
+
+  // Focus
+  select:focus {
+    // box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem $black;
+  }
+
+  // Active/open
+  select:active {
+    // color: $white;
+    // background-color: $black;
+  }
+
+  // Hide the arrow in IE10 and up
+  select::-ms-expand {
+    display: none;
+  }
+}
+
+// Media query to target Firefox only
+@-moz-document url-prefix() {
+  // Firefox hack to hide the arrow
+  .select select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    padding-right: 1rem;
+  }
+
+  // <option> elements inherit styles from <select>, so reset them.
+  .select option {
+    background-color: $white;
+  }
+}

@@ -49,9 +49,17 @@ var CLX = (function($) {
           delayed_resize_timer = setTimeout(_fixOverflow, 250);
         });
       });
-   });
+    });
 
-    // Editable donation link
+    // Janky resize of selects to selected item (currently the first) so rightside arrow is flush with text
+    $('.select').each(function() {
+      var tmp = $('<span>' + $(this).find('select :selected').text() + '</span>').appendTo(this);
+      var tmp_width = tmp.width();
+      tmp.remove();
+      $(this).find('select').width(tmp_width);
+    });
+
+    // Editable donation link needs an arrow svg
     $('.footer-block.donate a:last').addClass('arrow').append(' <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>');
 
     // Selects that jump to URLs

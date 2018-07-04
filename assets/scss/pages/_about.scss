@@ -28,7 +28,6 @@
     position: absolute;
     min-height: 200px;
     top: -9999em;
-    left: 9999em;
     right: 0;
     z-index: 2000;
     opacity: 0;
@@ -46,7 +45,6 @@
       display: block;
     }
     &.active {
-      left: 0;
       opacity: 1;
     }
     .icon-close {
