@@ -2,7 +2,7 @@
 
 .footer-image {
   position: relative;
-  margin-top: -#{grid(10)};
+  margin: -#{grid(10)} 0 -#{grid(28)};
   z-index: -1;
 
   @include media-nav {

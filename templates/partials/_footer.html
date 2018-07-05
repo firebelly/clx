@@ -49,7 +49,7 @@
       <ul>
         {% for socialLink in siteOptions.footerInfo.socialLinks %}
           <li>
-            <a href="{{ socialLink.socialUrl }}" target="_blank"><svg class="icon icon-{{ socialLink.socialNetwork|lower }}"><use xlink:href="#icon-{{ socialLink.socialNetwork|lower }}" /></svg>{{ socialLink.socialNetwork }}</a>
+            <a href="{{ socialLink.socialUrl }}" rel="noopener noreferrer" target="_blank"><svg class="icon icon-{{ socialLink.socialNetwork|lower }}"><use xlink:href="#icon-{{ socialLink.socialNetwork|lower }}" /></svg>{{ socialLink.socialNetwork }}</a>
           </li>
         {% endfor %}
       </ul>

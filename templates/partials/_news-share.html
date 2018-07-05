@@ -1,1 +1,9 @@
-<h4 class="subhead">Share</h4>
+<div class="share">
+  <h4 class="subhead">Share</h4>
+  <ul>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u={{ craft.app.request.absoluteUrl|url_encode }}"><svg class="icon-facebook" aria-hidden="true" role="presentation"><use xlink:href="#icon-facebook"/></svg></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/home?status={{ entry.title|url_encode }}%20on%20Chicago%20Learning%20Exchange%3A%20{{ craft.app.request.absoluteUrl|url_encode }}"><svg class="icon-twitter" aria-hidden="true" role="presentation"><use xlink:href="#icon-twitter"/></svg></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/shareArticle?mini=true&url={{ craft.app.request.absoluteUrl|url_encode }}&title={{ entry.title|url_encode }}&summary=&source="><svg class="icon-linkedin" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkedin"/></svg></a>
+  </ul>
+
+</div>
