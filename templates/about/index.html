@@ -1,4 +1,5 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = entry.title %}
 
 {% set ourTeamCategory = craft.categories.slug('our-team').one() %}
 {% set ourTeam = craft.entries({

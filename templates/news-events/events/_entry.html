@@ -1,5 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
+{% set title = entry.title %}
 
 {% set relatedPosts = craft.entries.section('events').id('not ' ~ entry.id).limit(2) %}
 
@@ -10,25 +11,27 @@
     {% include 'partials/_news-event-header' with { newsEventPost: entry } %}
     <h1>{{ entry.title }}</h1>
     <ul class="event-meta">
-      <li>
-        {{ entry.dateStart|date('m/d/y') }}
-        {% set eventTime = entry.dateStart|date('ga') %}
-        {% if eventTime != '12am' %}
-          @ {{ eventTime }}
-        {% endif %}
-        {% if entry.dateEnd and entry.dateEnd != entry.dateStart %}
-          – {{ entry.dateEnd|date('m/d/y') }}
-          {% set eventTime = entry.dateEnd|date('ga') %}
+      {% if entry.dateStart %}
+        <li>
+          {{ entry.dateStart|date('m/d/y') }}
+          {% set eventTime = entry.dateStart|date('ga') %}
           {% if eventTime != '12am' %}
             @ {{ eventTime }}
           {% endif %}
-        {% endif %}
-      </li>
+          {% if entry.dateEnd and entry.dateEnd != entry.dateStart %}
+            – {{ entry.dateEnd|date('m/d/y') }}
+            {% set eventTime = entry.dateEnd|date('ga') %}
+            {% if eventTime != '12am' %}
+              @ {{ eventTime }}
+            {% endif %}
+          {% endif %}
+        </li>
+      {% endif %}
       {% if entry.venue %}
         <li>{{ entry.venue }}</li>
       {% endif %}
       {% if entry.address %}
-        <li>{{ entry.address.formattedAddress }}</li>
+        <li>{% include "partials/_address" with { "address": entry.address } %}</li>
       {% endif %}
       {% if entry.eventUrl %}
         <li><a class="arrow" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>

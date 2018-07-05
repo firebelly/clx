@@ -1,6 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set newsOrEvents = segment(2) == '' ? 'News' : segment(2) %}
+{% set newsOrEvents = segment(2) == '' ? 'news' : segment(2) %}
+{% set sortField = newsOrEvents == 'News' ? 'postDate' : 'dateStart' %}
 {% if entry is not defined %}
   {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}
@@ -14,7 +15,8 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  {% set title = newsOrEvents ~ ' tagged: ' ~ tag.title %}
 
 {% elseif category is defined %}
 
@@ -24,7 +26,8 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  {% set title = category.title %}
 
 {% else %}
 
@@ -33,7 +36,8 @@
     with: [
       'newsEventImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+  {% set title = newsOrEvents|ucfirst %}
 
 {% endif %}
 
@@ -83,9 +87,15 @@
               <a href="{{ newsEventEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
             </div>
           {% endif %}
-          <time datetime="{{ newsEventEntry.postDate|date('Y-m-d') }}">
-            {{ newsEventEntry.postDate|date('F d Y') }}
-          </time>
+          {% if newsOrEvents == 'news' %}
+            <time datetime="{{ newsEventEntry.postDate|date('Y-m-d') }}">
+              {{ newsEventEntry.postDate|date('F d Y') }}
+            </time>
+          {% else %}
+            <time datetime="{{ newsEventEntry.dateStart|date('Y-m-d') }}">
+              {{ newsEventEntry.dateStart|date('F d Y') }}
+            </time>
+          {% endif %}
           <h3><a href="{{ newsEventEntry.getUrl() }}">{{ newsEventEntry.title }}</a></h3>
           <p class="excerpt">{{ newsEventEntry.excerpt ? newsEventEntry.excerpt : newsEventEntry.body | chop(limit=20, unit='w', append='…') }}</p>
           <p class="read-more"><a href="{{ newsEventEntry.getUrl() }}" class="arrow">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>

@@ -1,5 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set query = craft.app.request.getParam('q') %}
+{% set title = 'Search: ' ~ query %}
 
 {% block content %}
   {% include "partials/_search-form" with { 'query': query } %}
