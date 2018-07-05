@@ -9,7 +9,21 @@
   <article class="single-entry single-news">
     {% include "partials/_news-event-header" with { newsEventPost: entry } %}
     <h1>{{ entry.title }}</h1>
-    {{ entry.statement }}
+    <ul class="news-date">
+      <li>
+        <time datetime="{{ entry.postDate|date('Y-m-d') }}">
+          {{ entry.postDate|date('m.d.Y') }}
+        </time>
+      </li>
+      <li class="author">
+        {% if entry.postAuthor.clxPerson|length %}
+          {% set clxPerson = entry.postAuthor.clxPerson.one() %}
+          {{ clxPerson.fullName }}
+        {% else %}
+          {{ entry.postAuthor.personName }}
+        {% endif %}
+      </li>
+    </ul>
     <div class="user-content">
       {{ entry.body }}
     </div>

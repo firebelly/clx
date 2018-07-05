@@ -9,6 +9,31 @@
   <article class="single-entry single-event">
     {% include 'partials/_news-event-header' with { newsEventPost: entry } %}
     <h1>{{ entry.title }}</h1>
+    <ul class="event-meta">
+      <li>
+        {{ entry.dateStart|date('m/d/y') }}
+        {% set eventTime = entry.dateStart|date('ga') %}
+        {% if eventTime != '12am' %}
+          @ {{ eventTime }}
+        {% endif %}
+        {% if entry.dateEnd and entry.dateEnd != entry.dateStart %}
+          – {{ entry.dateEnd|date('m/d/y') }}
+          {% set eventTime = entry.dateEnd|date('ga') %}
+          {% if eventTime != '12am' %}
+            @ {{ eventTime }}
+          {% endif %}
+        {% endif %}
+      </li>
+      {% if entry.venue %}
+        <li>{{ entry.venue }}</li>
+      {% endif %}
+      {% if entry.address %}
+        <li>{{ entry.address.formattedAddress }}</li>
+      {% endif %}
+      {% if entry.eventUrl %}
+        <li><a class="arrow" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>
+      {% endif %}
+    </ul>
     <div class="user-content">
       {{ entry.body }}
     </div>
