@@ -38,7 +38,6 @@
   }
 }
 
-
 .search-results {
 }
 
@@ -86,17 +85,27 @@
       padding: grid(20) 0 grid(10) 0;
     }
   }
+}
 
+// Adjust for adminbar
+.logged-in {
+  #search-modal {
+    top: 52px;
+    @include media-md {
+      top: 45px;
+    }
+  }
 }
 
 .search-open {
   // Stop body scrolling
   position: fixed;
   overflow: hidden;
+
+  // Show search modal
   #search-modal {
     opacity: 1;
     transform: none;
-
     .icon-x {
       opacity: 1;
       transition: opacity 0s 0.3s;
