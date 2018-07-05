@@ -41,6 +41,7 @@ var CLX = (function($) {
 
     // After page load, run janky fixOverflow and check for hash
     $(window).on('load', function() {
+      _fixOverflow();
       $('.page-wrapper').imagesLoaded().done(function() {
         _fixOverflow();
 
