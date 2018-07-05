@@ -37,9 +37,9 @@
 
   <div class="center-content members">
     <ul class="filters">
-      <li>
-        <a href="/community/"{{ mode == 'grid' ? ' class="active"' : '' }}>Grid</a> |
-        <a href="/community/?mode=list"{{ mode == 'list' ? ' class="active"' : '' }}>List</a>
+      <li class="view-toggle">
+        <a href="/community/"{{ mode == 'grid' ? ' class="active"' : '' }}><svg class="icon-grid" aria-hidden="true" role="presentation" title="Grid View"><use xlink:href="#icon-grid"/></svg></a>
+        <a href="/community/?mode=list"{{ mode == 'list' ? ' class="active"' : '' }}><svg class="icon-list" aria-hidden="true" role="presentation" title="List View"><use xlink:href="#icon-list"/></svg></a>
       </li>
       <li>
         <div class="select">

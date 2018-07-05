@@ -35,8 +35,18 @@
 // News/Events + Community Filters
 .filters {
   @include type-subhead;
+  .view-toggle {
+    svg {
+      width: 15px;
+      height: 15px;
+      margin-right: grid(2);
+    }
+  }
   a.active {
     color: $red;
+    svg {
+      fill: $red;
+    }
   }
   li {
     display: block;
@@ -67,6 +77,11 @@
       width: 33%;
       margin: 0;
     }
+  }
+}
+.no-touchevents {
+  .view-toggle a:hover svg {
+    fill: $red;
   }
 }
 
