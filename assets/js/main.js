@@ -41,15 +41,10 @@ var CLX = (function($) {
 
     // After page load, run janky fixOverflow and check for hash
     $(window).on('load', function() {
-      _fixOverflow();
       $('.page-wrapper').imagesLoaded().done(function() {
         _fixOverflow();
-
-        $(window).on('resize', function() {
-          clearTimeout(delayed_resize_timer);
-          delayed_resize_timer = setTimeout(_fixOverflow, 250);
-        });
       });
+      _fixOverflow();
     });
 
     // Janky resize of selects to selected item (currently the first) so rightside arrow is flush with text
@@ -332,6 +327,10 @@ var CLX = (function($) {
     breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_lg;
     breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_nav;
     breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
+
+    // Slower resize events
+    clearTimeout(delayed_resize_timer);
+    delayed_resize_timer = setTimeout(_fixOverflow, 250);
   }
 
 
