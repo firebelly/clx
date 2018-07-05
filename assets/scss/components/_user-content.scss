@@ -20,7 +20,7 @@
   }
 }
 .no-touchevents {
-  .user-content a:hover {
+  .user-content a:not(.button):hover {
     color: $red;
     border-color: $red;
   }
