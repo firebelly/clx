@@ -20,7 +20,11 @@
     {% endif %}
   </div>
   <div class="page-header-info">
-    <h4 class="subhead">{{ pageHeader.headerTitle }}</h4>
+    {% if crumbRoot is defined %}
+      <h4 class="subhead crumb"><a href="{{ crumbRoot.url }}">{{ crumbRoot.title }}</a> / {{ pageHeader.headerTitle }}</h4>
+    {% else %}
+      <h4 class="subhead">{{ pageHeader.headerTitle }}</h4>
+    {% endif %}
     {{ pageHeader.statement }}
   </div>
 </div>

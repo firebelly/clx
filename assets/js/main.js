@@ -81,10 +81,10 @@ var CLX = (function($) {
       // Check if linking to single person that has a popup
       if (window.location.hash && window.location.hash.match(/^#person/)) {
         var person_slug = window.location.hash.replace('#person-', '');
-        if ($('#our-team [data-slug="'+person_slug+'"]').length) {
-          $('#our-team [data-slug="'+person_slug+'"]').trigger('click');
+        if ($('#our-team-modals [data-slug="'+person_slug+'"]').length) {
+          $('#our-team-modals [data-slug="'+person_slug+'"]').trigger('click');
         } else {
-          _scrollBody('#our-team', 500);
+          _scrollBody('#our-team-modals', 500);
         }
       }
     });
@@ -92,29 +92,32 @@ var CLX = (function($) {
 
     // Build team member modal markup and behavior
     $aboutModal = $('<div class="modal"><div class="grid"><div class="photo one-third"></div><div class="bio-wrap two-thirds"></div></div><div class="grid nav"><div class="one-third">&nbsp;</div></div></div>').appendTo('body');
+    // Previous member link
     $('<div class="one-third"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
       e.preventDefault();
-      var prevMember = $('#our-team li.active').prev().length ? $('#our-team li.active').prev() : $('#our-team li:last');
+      var prevMember = $('#our-team-modals li.active').prev().length ? $('#our-team-modals li.active').prev() : $('#our-team-modals li:last');
       prevMember.trigger('click');
     });
+    // Next member link
     $('<div class="one-third"><a href="#" class="arrow">Next Member <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
       e.preventDefault();
-      var nextMember = $('#our-team li.active').next().length ? $('#our-team li.active').next() : $('#our-team li:first');
+      var nextMember = $('#our-team-modals li.active').next().length ? $('#our-team-modals li.active').next() : $('#our-team-modals li:first');
       nextMember.trigger('click');
     });
+    // Close button
     $('<svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg>').appendTo($aboutModal).on('click', function(e) {
       e.preventDefault();
       _closeAboutModal();
     });
 
     // Open modals for team members on click
-    $('#our-team li').on('click', function(e) {
+    $('#our-team-modals li').on('click', function(e) {
       // e.preventDefault();
-      $('#our-team li').removeClass('active');
+      $('#our-team-modals li').removeClass('active');
       $(this).addClass('active');
       $aboutModal.addClass('active');
       _populateAboutModal();
-      _scrollBody('#our-team', 500);
+      _scrollBody('#our-team-modals', 500);
       window.location.hash = '#person-' + $(this).attr('data-slug');
     });
 
@@ -127,7 +130,7 @@ var CLX = (function($) {
   function _populateAboutModal() {
     $aboutModal.find('.bio-wrap').empty();
     // Copy html from active person
-    $aboutModal.find('.photo').html($('#our-team li.active article').html());
+    $aboutModal.find('.photo').html($('#our-team-modals li.active article').html());
     // Move bio over
     $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
     _positionAboutModal();
@@ -140,7 +143,7 @@ var CLX = (function($) {
     if (!$aboutModal.hasClass('active')) {
       return;
     }
-    var ourTeamPos = $('#our-team').offset();
+    var ourTeamPos = $('#our-team-modals').offset();
     $aboutModal.css({ top: ourTeamPos.top });
   }
 

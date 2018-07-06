@@ -9,8 +9,20 @@
     border-color: rgba($black,0.1);
   }
   .icon-L {
-    right: 8%;
-    transform: rotate(-90deg);
+    transform: rotate(180deg);
+  }
+
+  // Adjust L position and rotation
+  @include media-nav {
+    .icon-L {
+      top: 160px;
+      right: 6%;
+    }
+    &.logged-in {
+      .icon-L {
+        top: 205px;
+      }
+    }
   }
   .modal,
   .single-entry:not(.people) {
@@ -202,6 +214,16 @@
       li {
         padding: 0 #{$global-padding/2};
       }
+    }
+  }
+}
+
+// Hover states for user-content and crumb links
+.no-touchevents .page-about {
+  .user-content,
+  .crumb {
+    a:hover {
+      color: $white;
     }
   }
 }

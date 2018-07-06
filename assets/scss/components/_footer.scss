@@ -7,7 +7,7 @@
 
   @include media-nav {
     padding: 0;
-    margin-left: calc(#{columns(1)} - #{$global-padding});
+    margin: -#{grid(10)} 0 0 calc(#{columns(1)} - #{$global-padding});
     .image-wrap {
       .image {
         @include aspect-ratio(1240,570);
@@ -24,6 +24,12 @@
   position: relative;
   // Add room for mobile footer-logo
   margin-top: 220px;
+
+  .copyright {
+    margin-top: grid(4);
+    color: rgba($gray, .25);
+    font-size: 12px;
+  }
 
   .arrow {
     svg {
@@ -95,9 +101,14 @@
     }
     .social a {
       padding-bottom: 2px;
-      border-bottom: 1px dashed transparent;
+      &, svg {
+        transition: all 0.2s ease;
+      }
       &:hover {
-        border-bottom: 1px dashed $white;
+        color: $red;
+        svg {
+          fill: $red;
+        }
       }
     }
   }

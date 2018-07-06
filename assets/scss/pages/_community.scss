@@ -61,3 +61,17 @@
     }
   }
 }
+
+// Hover states for member articles
+.no-touchevents {
+  .member-list article {
+    h4 a {
+      transition: all 0.2s ease;
+    }
+    &:hover {
+      h4 a {
+        color: $red;
+      }
+    }
+  }
+}

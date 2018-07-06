@@ -1,6 +1,11 @@
 // Search
 
-.page-search {}
+.page-search {
+  background: $white;
+  .bg-x {
+    display: none;
+  }
+}
 
 .search-form {
   padding: grid(5) 0;

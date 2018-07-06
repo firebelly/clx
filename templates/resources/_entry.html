@@ -4,7 +4,7 @@
 
 {% block content %}
   <article class="single-entry single-resource">
-    <h4 class="crumb subhead"><a href="/resources/">Resources</a> {% if resourceType %} / <a href="{{ resourceType.getUrl() }}">{{ resourceType.title }}</a>{% endif %}</h4>
+    <h4 class="crumb subhead"><a href="/resources/">Resources</a>{% if resourceType %} / {{ resourceType.title }}{% endif %}</h4>
     <h1>{{ entry.title }}</h1>
     {{ entry.statement }}
     <div class="user-content">

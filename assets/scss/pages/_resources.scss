@@ -75,3 +75,13 @@
     }
   }
 }
+
+// Hover states for user-content and crumb links
+.no-touchevents .page-resources {
+  .user-content,
+  .crumb {
+    a:hover {
+      color: $white;
+    }
+  }
+}

@@ -9,8 +9,10 @@
     h3 {
       margin-top: 0;
     }
+    p.excerpt {
+      margin-bottom: grid(1);
+    }
   }
-
   @include media-md {
     @include clearfix;
 
@@ -67,6 +69,13 @@
 }
 
 .page-news-events {
+  // Single page styles
+  &.single {
+    background: $white;
+    .bg-x {
+      display: none;
+    }
+  }
   .return-crumb {
     border: none;
   }
@@ -81,7 +90,7 @@
   }
 
   .single-entry {
-    background: $gray;
+    background: $white;
     .user-content {
       margin-bottom: grid(4);
     }

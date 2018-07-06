@@ -11,7 +11,7 @@
 }) %}
 
 {% block content %}
-  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c' } %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#ff6e5c', crumbRoot: { 'url': '/about/', 'title': 'About' } } %}
   <article class="single-entry">
     <div class="user-content">
       {{ entry.body }}
