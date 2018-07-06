@@ -80,8 +80,17 @@
   }
 }
 .no-touchevents {
-  .view-toggle a:hover svg {
-    fill: $red;
+  .filters {
+    a, svg {
+      transition: all 0.2s ease;
+    }
+    a:hover {
+      color: $red;
+      svg {
+        fill: $red;
+      }
+    }
+
   }
 }
 

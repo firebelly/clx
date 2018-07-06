@@ -16,7 +16,7 @@ form {
     background: none;
     border: none;
     border-bottom: 1px dashed $dk-gray;
-    transition: border .2s;
+    transition: border 0.2s ease;
     padding: 10px 0;
     color: $white;
     font: 16px/1.375 $font-display;
@@ -163,5 +163,13 @@ form {
   // <option> elements inherit styles from <select>, so reset them.
   .select option {
     background-color: $white;
+  }
+}
+.no-touchevents {
+  .select select {
+    transition: all 0.2s ease;
+    &:hover {
+      color: $red;
+    }
   }
 }
