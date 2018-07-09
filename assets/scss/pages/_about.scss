@@ -79,6 +79,7 @@
       top: 20px;
       right: 20px;
       svg {
+        transition: all 0.2s ease;
         width: 18px;
         height: 18px;
         fill: $black;
@@ -251,6 +252,9 @@
     a:hover {
       color: $gray;
     }
+  }
+  .modal a.close:hover svg {
+    stroke: $gray;
   }
   // Search icon has white hover (unless .site-header.bg is open)
   .site-header:not(.bg) {
