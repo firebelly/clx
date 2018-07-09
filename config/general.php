@@ -32,6 +32,8 @@ return [
         // Base site URL
         'siteUrl' => 'http://clx.localhost',
 
+        'backupCommand' => '/usr/local/bin/mysqldump',
+
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
     ],
