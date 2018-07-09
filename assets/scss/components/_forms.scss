@@ -35,7 +35,7 @@ form {
       &.half {
         width: calc(50% - 12px);
         float: left;
-        &:nth-child(odd) {
+        &:nth-child(even) {
           float: right;
         }
       }
