@@ -1,5 +1,8 @@
 <form action="/search" class="search-form">
   <h4 class="subhead">Search</h4>
-  <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="search" value="{{ query }}" name="q" placeholder="Type to search..." required>
+  <div class="q-wrap">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="search" value="{{ query }}" name="q" placeholder="Type to search..." required>
+    <a href="#" class="search-clear"><svg class="icon icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></a>
+  </div>
   <button type="submit">Search</button>
 </form>

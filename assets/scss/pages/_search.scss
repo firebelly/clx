@@ -27,7 +27,7 @@
     font: 40px/1 $font-regular;
     outline: none;
     display: block;
-    // appearance: none;
+    appearance: none;
     border: none;
     background: transparent;
     padding: grid(2) 0;
@@ -36,11 +36,42 @@
     &::placeholder {
       color: rgba($black,.2);
     }
-
     &:focus {
       border-color: $red;
     }
   }
+
+  .q-wrap {
+    position: relative;
+    .search-clear {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      background: rgba($black, 0.15);
+      text-align: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      display: none;
+      svg {
+        width: 10px;
+        height: 10px;
+        stroke: $white;
+        stroke-width: 4px;
+      }
+    }
+    &.has-text {
+      .search-clear {
+        display: block;
+      }
+    }
+  }
+
+}
+.no-touchevents .search-clear:hover {
+  background: rgba($black, .25);
 }
 
 #search-modal {
@@ -60,18 +91,19 @@
     max-height: 100%;
   }
 
-  .icon-close {
+  a.close {
     top: 30px;
     left: 30px;
     width: 38px;
     height: 38px;
     padding: 10px;
-    stroke: $black;
-    stroke-width: 2px;
-    transition: all 0.2s ease;
     position: absolute;
-    &:hover {
-      stroke: $red;
+    svg {
+      transition: all 0.2s ease;
+      stroke: $black;
+      stroke-width: 2px;
+      width: 18px;
+      height: 18px;
     }
 
     @include media-nav {
@@ -88,6 +120,11 @@
     @include media-md {
       padding: grid(20) 0 grid(10) 0;
     }
+  }
+}
+.no-touchevents {
+  #search-modal a.close:hover svg {
+    stroke: $red;
   }
 }
 

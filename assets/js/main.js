@@ -213,13 +213,27 @@ var CLX = (function($) {
       $('body').toggleClass('search-open');
       $('#search-modal input[name=q]').focus();
     });
-    $(document).on('click', '.icon-close', function(e) {
+    // Init (X) search-clear button behavior
+    $('.search-form input[name=q]').on('change keyup', _toggleClearSearch);
+    $('.search-form .search-clear').on('click', function(e) {
+      e.preventDefault();
+      $(this).parents('.search-form:first').find('input[name=q]').val('').focus();
+      _toggleClearSearch();
+    });
+    $(document).on('click', '#search-modal a.close', function(e) {
       e.preventDefault();
       _closeSearch();
     });
+    _toggleClearSearch();
   }
   function _closeSearch() {
     $('body').removeClass('search-open');
+  }
+  function _toggleClearSearch() {
+    // Show/hide (X) clear button for search inputs
+    $('.search-form').each(function() {
+      $(this).find('.q-wrap').toggleClass('has-text', $(this).find('input[name=q]').val() !== '');
+    });
   }
 
   /**
