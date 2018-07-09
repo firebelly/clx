@@ -116,7 +116,7 @@ var CLX = (function($) {
       nextMember.trigger('click');
     });
     // Close button
-    $('<svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg>').appendTo($aboutModal).on('click', function(e) {
+    $('<a href="#" class="close"><svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></a>').appendTo($aboutModal).on('click', function(e) {
       e.preventDefault();
       _closeAboutModal();
     });

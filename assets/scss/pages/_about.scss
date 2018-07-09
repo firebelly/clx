@@ -61,14 +61,22 @@
     &.active {
       opacity: 1;
     }
-    .icon-close {
-      cursor: pointer;
+    a.close {
+      display: block;
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 38px;
+      height: 38px;
+      padding: 10px;
       fill: $black;
-      top: 30px;
-      right: 30px;
+      top: 20px;
+      right: 20px;
+      svg {
+        width: 18px;
+        height: 18px;
+        fill: $black;
+        stroke: $black;
+        stroke-width: 2px;
+      }
     }
 
     // Mobile-only styles
