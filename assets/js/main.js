@@ -39,6 +39,13 @@ var CLX = (function($) {
       }
     });
 
+    // Smoothscroll links
+    $('a.smoothscroll').click(function(e) {
+      e.preventDefault();
+      var href = $(this).attr('href');
+      _scrollBody($(href), 500, 0, true);
+    });
+
     // After page load, run janky fixOverflow and check for hash
     $(window).on('load', function() {
       $('.page-wrapper').imagesLoaded().done(function() {
@@ -321,7 +328,7 @@ var CLX = (function($) {
   function _resize() {
     // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
     breakpointIndicatorString = window.getComputedStyle(
-      document.querySelector('#breakpoint-indicator'), ':after'
+      document.querySelector('#top'), ':after'
     ).getPropertyValue('content')
     .replace(/['"]+/g, '');
 

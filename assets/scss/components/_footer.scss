@@ -25,6 +25,29 @@
   // Add room for mobile footer-logo
   margin-top: 220px;
 
+  .back-to-top {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: grid(10);
+    right: 3.5%;
+    transform: rotate(270deg);
+    padding: grid(1);
+    &, svg {
+      transition: all 0.2s ease;
+    }
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: $red;
+    }
+    &:hover {
+      svg {
+        fill: $white;
+      }
+    }
+  }
+
   .copyright {
     margin-top: grid(4);
     color: rgba($gray, .25);

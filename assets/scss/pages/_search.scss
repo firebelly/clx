@@ -72,8 +72,13 @@
     width: 38px;
     height: 38px;
     padding: 10px;
-    fill: $black;
+    stroke: $black;
+    stroke-width: 2px;
+    transition: all 0.2s ease;
     position: absolute;
+    &:hover {
+      stroke: $red;
+    }
 
     @include media-nav {
       cursor: pointer;
