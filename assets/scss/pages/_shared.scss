@@ -35,17 +35,16 @@
     .gradient {
       transition: all .5s ease;
       position: absolute;
-      top: 70%;
+      top: 0;
       left: 0;
       bottom: 0;
       right: 0;
       opacity: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 100%);
+      background: rgba(65, 65, 65, 0.5);
       pointer-events: none;
     }
     &:hover .gradient {
-      top: 0;
-      opacity: 1;
+      opacity: .5;
     }
   }
   // Titles turn red
@@ -127,7 +126,7 @@
 // Site alerts (unused right now)
 .alert {
   background: $black;
-  color: $white;
+  color: $gray;
   text-align: center;
   z-index: 1000;
   padding: mobile-grid(3);
@@ -135,7 +134,7 @@
     margin: 0;
   }
   a {
-    color: $white;
+    color: $gray;
     text-decoration: underline;
   }
 
@@ -165,7 +164,7 @@
   }
   .button:active {
     background: $red;
-    color: $white;
+    color: $gray;
   }
 }
 

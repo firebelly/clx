@@ -16,7 +16,7 @@
     // Nav bg that slides out when hovering over site-nav
     .nav-bg {
       display: block;
-      background: rgba($white, .97);
+      background: rgba($white, .98);
       position: absolute;
       left: 0;
       width: 100%;
@@ -53,7 +53,7 @@
 .icon-logo {
   fill: $black;
   position: absolute;
-  top: 0;
+  top: -36px;
   left: 0;
   width: 220px;
   display: none;
@@ -184,7 +184,7 @@
         letter-spacing: 0;
         margin: 0;
         a {
-          color: $white;
+          color: $gray;
         }
       }
     }

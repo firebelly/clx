@@ -7,7 +7,7 @@
     stroke: rgba($black, 0.1);
   }
   .icon-L {
-    right: 8%;
+    right: 5%;
     transform: rotate(-90deg);
   }
   #footer-logo-x,
@@ -26,10 +26,10 @@
   .single-entry {
     .arrow {
       .icon-arrow {
-        fill: $white;
+        fill: $gray;
       }
       &:hover {
-        color: $white;
+        color: $gray;
       }
     }
   }
@@ -59,7 +59,7 @@
   @include max-screen($breakpoint-md) {
     // Small screen headers have colored-background h2
     .page-header .page-header-info {
-      color: $white;
+      color: $gray;
       h2 {
         background: $orange;
       }
@@ -74,7 +74,7 @@
       }
     }
     .site-nav li.active>a {
-      color: $white;
+      color: $gray;
     }
   }
 }
@@ -85,13 +85,13 @@
   .user-content,
   .crumb {
     a:hover {
-      color: $white;
+      color: $gray;
     }
   }
   // Search icon has white hover (unless .site-header.bg is open)
   .site-header:not(.bg) {
     .search-toggle:hover svg {
-      stroke: $white;
+      stroke: $gray;
     }
   }
 }

@@ -181,8 +181,9 @@ var CLX = (function($) {
       autoPlay: 5000,
       adaptiveHeight: true,
       wrapAround: true,
-      selectedAttraction: 0.2,
-      friction: 0.8,
+      selectedAttraction: 0.01,
+      friction: 0.2,
+      dragThreshold: 10,
       arrowShape: 'M36.13 26 18 44.268 18 55.732 36.13 74 42.176 67.909 31.747 57.403 25.821 54.057 26.414 52.628 31.747 54.299 82 54.299 82 45.698 31.747 45.698 26.414 47.372 25.821 45.94 31.747 42.594 42.176 32.091z'
     });
   }

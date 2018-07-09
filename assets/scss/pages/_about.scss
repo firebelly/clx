@@ -29,10 +29,10 @@
   .single-entry:not(.people) {
     .arrow {
       .icon-arrow {
-        fill: $white;
+        fill: $gray;
       }
       &:hover {
-        color: $white;
+        color: $gray;
       }
     }
   }
@@ -162,13 +162,13 @@
     // Small screen headers have colored-background h2
     .page-header .page-header-info {
       h2 {
-        color: $white;
+        color: $gray;
         background: $red;
       }
       h4.subhead {
-        color: $white;
+        color: $gray;
         a {
-          color: $white;
+          color: $gray;
         }
       }
     }
@@ -200,9 +200,9 @@
   // Desktop styles
   @include media-md {
     .site-nav li.active>a {
-      color: $white;
+      color: $gray;
       .icon-arrow {
-        fill: $white;
+        fill: $gray;
       }
     }
     .our-values {
@@ -233,13 +233,13 @@
   .user-content,
   .crumb {
     a:hover {
-      color: $white;
+      color: $gray;
     }
   }
   // Search icon has white hover (unless .site-header.bg is open)
   .site-header:not(.bg) {
     .search-toggle:hover svg {
-      stroke: $white;
+      stroke: $gray;
     }
   }
   .article-grid article {

@@ -18,7 +18,7 @@ form {
     border-bottom: 1px dashed $dk-gray;
     transition: border 0.2s ease;
     padding: 10px 0;
-    color: $white;
+    color: $gray;
     font: 16px/1.375 $font-display;
     &:focus {
       outline: 0;
@@ -60,7 +60,7 @@ form {
     border: none;
     background: none;
     padding: 0;
-    color: $white;
+    color: $gray;
     &:hover {
       text-decoration: underline;
     }
@@ -69,9 +69,10 @@ form {
   // Feedback from submitting form
   .status {
     font: 16px/1.5625 $font-display;
-    color: $red;
     display: none;
+    color: $gray;
     &.error {
+      color: $red;
       margin: grid(2) 0 grid(4);
       display: block;
     }
@@ -136,12 +137,12 @@ form {
 
   // Focus
   select:focus {
-    // box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem $black;
+    // box-shadow: 0 0 0 .075rem $gray, 0 0 0 .2rem $black;
   }
 
   // Active/open
   select:active {
-    // color: $white;
+    // color: $gray;
     // background-color: $black;
   }
 
@@ -162,7 +163,7 @@ form {
 
   // <option> elements inherit styles from <select>, so reset them.
   .select option {
-    background-color: $white;
+    background-color: $gray;
   }
 }
 .no-touchevents {

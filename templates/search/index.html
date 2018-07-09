@@ -5,17 +5,14 @@
 {% block content %}
   {% include "partials/_search-form" with { 'query': query } %}
   <div class="center-content">
-    <div class="news-posts">
+    <div class="news-posts article-grid">
     {% if query %}
       {% set entries = craft.entries.search(query).orderBy('score') %}
-      <div class="search-results">
-        {% if (entries|length) == 0 %}
-          <p class="no-results">No results found.</p>
+        {% for entry in entries.all() %}
+          {% include 'search/_article' %}
         {% else %}
-          {% for entry in entries.all() %}
-            {% include 'search/_article' %}
-          {% endfor %}
-        {% endif %}
+          <p class="no-results">No results found.</p>
+        {% endfor %}
       </div>
     {% endif %}
     </div>

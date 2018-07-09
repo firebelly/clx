@@ -19,7 +19,7 @@
 
 .site-footer {
   background: $black;
-  color: $white;
+  color: $gray;
   padding: $global-padding;
   position: relative;
   // Add room for mobile footer-logo
@@ -43,7 +43,7 @@
     }
     &:hover {
       svg {
-        fill: $white;
+        fill: $gray;
       }
     }
   }
@@ -64,7 +64,7 @@
   @include type-display;
 
   a {
-    color: $white;
+    color: $gray;
   }
   ul,
   p {
@@ -87,7 +87,7 @@
     vertical-align: baseline;
     width: 16px;
     height: 16px;
-    fill: $white;
+    fill: $gray;
     margin-right: grid(2);
   }
 
@@ -140,7 +140,7 @@
 .no-touchevents {
   .site-footer {
     a:not(.arrow):not(.button):hover {
-      border-color: $white;
+      border-color: $gray;
     }
   }
 }
