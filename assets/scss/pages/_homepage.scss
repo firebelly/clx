@@ -26,6 +26,10 @@
       }
     }
 
+    .text-header h1 {
+      font: 32px/1.2 $font-header;
+    }
+
     // Reorder article-image & article-info on smaller screens
     .featured.news {
       margin: 0 -#{$mobile-inset};
