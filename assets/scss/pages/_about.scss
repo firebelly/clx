@@ -48,6 +48,14 @@
     padding: $global-padding;
     transition: opacity 0.5s ease;
     background: $orange;
+    .grid {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    &.dimmed .grid {
+      transition: opacity 0s ease;
+      opacity: 0;
+    }
 
     .photo {
       padding-right: $global-padding;

@@ -27,7 +27,7 @@
     font: 40px/1 $font-regular;
     outline: none;
     display: block;
-    appearance: none;
+    // appearance: none;
     border: none;
     background: transparent;
     padding: grid(2) 0;
@@ -52,7 +52,7 @@
   z-index: 10001;
   position: fixed;
   background: $white;
-  transform: translateY(-100%);
+  transform: translateY(-110%);
   transition: transform .3s ease, opacity .3s ease;
 
   .scroll-wrap {

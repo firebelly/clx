@@ -31,11 +31,24 @@ var CLX = (function($) {
     _initNav();
     _initSearch();
 
-    // Esc handlers
+    // Keyboard navigation and esc handlers
     $(document).keyup(function(e) {
+      // esc
       if (e.keyCode === 27) {
         _closeAboutModal();
         _closeSearch();
+      }
+      // <-
+      if (e.keyCode === 37) {
+        if ($('.prev-member').length && $('.page-about .modal.active').length) {
+          $('.prev-member').trigger('click');
+        }
+      }
+      // ->
+      if (e.keyCode === 39) {
+        if ($('.next-member').length && $('.page-about .modal.active').length) {
+          $('.next-member').trigger('click');
+        }
       }
     });
 
@@ -104,13 +117,13 @@ var CLX = (function($) {
     // Build team member modal markup and behavior
     $aboutModal = $('<div class="modal"><div class="grid"><div class="photo one-third"></div><div class="bio-wrap two-thirds"></div></div><div class="grid nav"><div class="one-third">&nbsp;</div></div></div>').appendTo('body');
     // Previous member link
-    $('<div class="one-third"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
+    $('<div class="one-third prev-member"><a href="#" class="arrow left"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Previous Member</a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
       e.preventDefault();
       var prevMember = $('#our-team-modals li.active').prev().length ? $('#our-team-modals li.active').prev() : $('#our-team-modals li:last');
       prevMember.trigger('click');
     });
     // Next member link
-    $('<div class="one-third"><a href="#" class="arrow">Next Member <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
+    $('<div class="one-third next-member"><a href="#" class="arrow">Next Member <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></div>').appendTo($aboutModal.find('.nav')).on('click', function(e) {
       e.preventDefault();
       var nextMember = $('#our-team-modals li.active').next().length ? $('#our-team-modals li.active').next() : $('#our-team-modals li:first');
       nextMember.trigger('click');
@@ -139,11 +152,14 @@ var CLX = (function($) {
    * Populate team member modal with HTML from source element
    */
   function _populateAboutModal() {
-    $aboutModal.find('.bio-wrap').empty();
+    $aboutModal.addClass('dimmed').find('.bio-wrap').empty();
     // Copy html from active person
     $aboutModal.find('.photo').html($('#our-team-modals li.active article').html());
     // Move bio over
     $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
+    setTimeout(function() {
+      $aboutModal.removeClass('dimmed');
+    }, 150);
     _positionAboutModal();
   }
 
