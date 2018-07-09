@@ -16,6 +16,7 @@
   }
 
   .button:hover {
+    color: $gray;
     border-color: $gray;
   }
   .button:active {
@@ -40,9 +41,11 @@
     background: $orange;
   }
   .primary-resources {
-    margin-bottom: grid(6);
+    @include clearfix;
+    padding-bottom: grid(6);
   }
   .other-resources {
+    @include clearfix;
     h3,
     p {
       margin: 0 0 grid(2);
@@ -76,12 +79,19 @@
   }
 }
 
-// Hover states for user-content and crumb links
+// Hover states changes for dark-bg page
 .no-touchevents .page-resources {
+  // User-content and crumb links get white instead of red
   .user-content,
   .crumb {
     a:hover {
       color: $white;
+    }
+  }
+  // Search icon has white hover (unless .site-header.bg is open)
+  .site-header:not(.bg) {
+    .search-toggle:hover svg {
+      stroke: $white;
     }
   }
 }

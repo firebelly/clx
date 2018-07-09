@@ -34,7 +34,7 @@
   </div>
 
   {% if entry.homepageFeaturedPosts.featuredCarousel|length %}
-    <div class="featured-carousel">
+    <div class="featured-carousel article-grid">
     {% for featuredPost in entry.homepageFeaturedPosts.featuredCarousel.all() %}
       {% set postType = featuredPost.type.name %}
       {% set postImage = featuredPost.newsEventImage[0] ?? null %}
@@ -73,35 +73,37 @@
   </div>
 
   {% if secondFeature %}
-    <article class="featured news">
-      <div class="grid">
-        <div class="article-info one-half">
-          <h4 class="subhead"><a href="/news-events/news/"><span>News</span></a> {% if secondFeature.newsTopics|length %} / <a href="{{ secondFeature.newsTopics[0].getUrl() }}">{{ secondFeature.newsTopics[0].title }}</a>{% endif %}</h4>
-          <h3><a href="{{ secondFeature.getUrl() }}">{{ secondFeature.title }}</a></h3>
-          <p class="read-more">
-            <a href="{{ secondFeature.getUrl() }}" class="button">Read More</a>
-          </p>
-        </div>
-
-        {% if secondFeature.newsEventImage|length %}
-          {% set postImage = secondFeature.newsEventImage.one() %}
-          {% set treatedImage = craft.imager.transformImage(postImage, {
-            width: 1000,
-            height: 1000,
-            mode: 'crop',
-            effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
-          }) %}
-          <div class="article-image one-half">
-            <div class="image-wrap">
-              <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
-            </div>
+    <div class="article-grid">
+      <article class="featured news">
+        <div class="grid">
+          <div class="article-info one-half">
+            <h4 class="subhead"><a href="/news-events/news/"><span>News</span></a> {% if secondFeature.newsTopics|length %} / <a href="{{ secondFeature.newsTopics[0].getUrl() }}">{{ secondFeature.newsTopics[0].title }}</a>{% endif %}</h4>
+            <h3><a href="{{ secondFeature.getUrl() }}">{{ secondFeature.title }}</a></h3>
+            <p class="read-more">
+              <a href="{{ secondFeature.getUrl() }}" class="button">Read More</a>
+            </p>
           </div>
-        {% endif %}
-      </div>
-    </article>
+
+          {% if secondFeature.newsEventImage|length %}
+            {% set postImage = secondFeature.newsEventImage.one() %}
+            {% set treatedImage = craft.imager.transformImage(postImage, {
+              width: 1000,
+              height: 1000,
+              mode: 'crop',
+              effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+            }) %}
+            <div class="article-image one-half">
+              <div class="image-wrap">
+                <a href="{{ secondFeature.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </article>
+    </div>
   {% endif %}
 
-  <div class="secondary-featured">
+  <div class="secondary-featured article-grid">
 
     {% if upcomingEvent %}
       <article class="upcoming event">

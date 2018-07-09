@@ -1,6 +1,8 @@
 // News
 
 .news-posts {
+  @include clearfix;
+
   article {
     time {
       display: block;
@@ -12,11 +14,12 @@
     p.excerpt {
       margin-bottom: grid(1);
     }
-  }
-  @include media-md {
-    @include clearfix;
+    margin: 0 0 grid(8);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
 
-    article {
+    @include media-md {
       .image {
         @include aspect-ratio(480,305);
       }

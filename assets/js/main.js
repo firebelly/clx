@@ -1,4 +1,4 @@
-// CLX Splash - Firebelly 2018
+// CLX - Firebelly 2018
 /*jshint latedef:false*/
 
 //=include "../bower_components/jquery/dist/jquery.js"
@@ -42,8 +42,7 @@ var CLX = (function($) {
     // Smoothscroll links
     $('a.smoothscroll').click(function(e) {
       e.preventDefault();
-      var href = $(this).attr('href');
-      _scrollBody($(href), 500, 0, true);
+      _scrollBody($(this).attr('href'), 500);
     });
 
     // After page load, run janky fixOverflow and check for hash
@@ -54,7 +53,12 @@ var CLX = (function($) {
       _fixOverflow();
     });
 
-    // Janky resize of selects to selected item (currently the first) so rightside arrow is flush with text
+    // Add superfluous gradient overlay to .article-grid .image-wraps for hover state
+    $('.article-grid article .image-wrap').each(function() {
+      $('<div class="gradient"></div>').appendTo(this);
+    });
+
+    // Resize selects to selected item (currently always the first which is the "title") so rightside arrow is flush with text
     $('.select').each(function() {
       var tmp = $('<span>' + $(this).find('select :selected').text() + '</span>').appendTo(this);
       var tmp_width = tmp.width();
@@ -329,8 +333,7 @@ var CLX = (function($) {
     // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
     breakpointIndicatorString = window.getComputedStyle(
       document.querySelector('#top'), ':after'
-    ).getPropertyValue('content')
-    .replace(/['"]+/g, '');
+    ).getPropertyValue('content').replace(/['"]+/g, '');
 
     // Determine current breakpoint
     breakpoint_lg = breakpointIndicatorString === 'lg';

@@ -13,7 +13,7 @@
 
   .member-list {
     @include clearfix;
-    &.mode-list {
+    &.article-list {
       h4 {
         margin: grid(1) 0;
         font-weight: normal;
@@ -53,7 +53,7 @@
           clear: left;
         }
       }
-      &.mode-list {
+      &.article-list {
         article {
           margin-bottom: grid(2);
         }

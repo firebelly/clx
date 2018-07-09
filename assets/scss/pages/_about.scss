@@ -24,6 +24,7 @@
       }
     }
   }
+  // Change colors of arrows
   .modal,
   .single-entry:not(.people) {
     .arrow {
@@ -35,6 +36,7 @@
       }
     }
   }
+
   // Member modal
   .modal {
     position: absolute;
@@ -96,11 +98,12 @@
     fill: $white;
   }
   .button:hover {
+    color: $gray;
     border-color: $gray;
   }
   .button:active {
-    background: $gray;
     color: $black;
+    background: $gray;
   }
   .single-entry,
   .our-approach {
@@ -164,7 +167,13 @@
       }
       h4.subhead {
         color: $white;
+        a {
+          color: $white;
+        }
       }
+    }
+    .our-approach {
+      padding-bottom: grid(8);
     }
     .people {
       padding: grid(5) #{$mobile-inset} grid(8);
@@ -218,12 +227,29 @@
   }
 }
 
-// Hover states for user-content and crumb links
+// Hover states changes for dark-bg page
 .no-touchevents .page-about {
+  // User-content and crumb links get white instead of red
   .user-content,
   .crumb {
     a:hover {
       color: $white;
+    }
+  }
+  // Search icon has white hover (unless .site-header.bg is open)
+  .site-header:not(.bg) {
+    .search-toggle:hover svg {
+      stroke: $white;
+    }
+  }
+  .article-grid article {
+    h3 {
+      transition: all 0.2s ease;
+    }
+    &:hover {
+      h3 {
+        color: $red;
+      }
     }
   }
 }

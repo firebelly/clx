@@ -27,6 +27,36 @@
   }
 }
 
+// Article hovers
+.no-touchevents {
+  // Gradient on .article-grid hovers
+  .article-grid .image-wrap {
+    position: relative;
+    .gradient {
+      transition: all .5s ease;
+      position: absolute;
+      top: 70%;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+    }
+    &:hover .gradient {
+      top: 0;
+      opacity: 1;
+    }
+  }
+  // Titles turn red
+  article h3 a {
+    transition: all 0.2s ease;
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
 .read-more {
   @include type-display;
   margin-bottom: 0;
@@ -129,6 +159,7 @@
 // Hover events on no-touch
 .no-touchevents {
   .button:hover {
+    color: $red;
     text-decoration: none;
     border: 1px solid $red;
   }
@@ -173,7 +204,7 @@
 .return-crumb {
   border-top: 4px dashed $blue2;
   margin-top: grid(4);
-  padding: grid(8) 0 grid(2);
+  padding: grid(8) 0 grid(6);
   &,
   .arrow {
     @include type-subhead;

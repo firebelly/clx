@@ -72,6 +72,7 @@
   svg {
     width: 16px;
     height: 16px;
+    stroke: $black;
     stroke-width: 1.5px;
   }
   position: absolute;
@@ -85,6 +86,15 @@
     display: block;
   }
 }
+.no-touchevents .search-toggle {
+  &, svg {
+    transition: all 0.2s ease;
+  }
+  &:hover svg {
+    stroke: $red;
+  }
+}
+
 .site-nav {
   .icon-arrow {
     width: 16px;
