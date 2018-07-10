@@ -5,7 +5,8 @@
   {% set entry = craft.entries.section('resourcesIndex').one() %}
 {% endif %}
 
-{% set primaryResourcesCat = craft.categories.group('resourceTypes').slug('primary-resources').one() %}
+{% set primaryResourcesCat = craft.categories.group('resourceTypes').slug('primary-resource').one() %}
+
 {% set primaryResources = craft.entries({
   section: 'resources',
   relatedTo: primaryResourcesCat,
