@@ -43,6 +43,9 @@
   .primary-resources {
     @include clearfix;
     padding-bottom: grid(6);
+    article:not(:last-of-type) {
+      margin-bottom: grid(6);
+    }
   }
   .other-resources {
     @include clearfix;
