@@ -5,6 +5,7 @@
 {% if entry is not defined %}
   {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
 {% if tag is defined %}
   {% set tag = craft.tags.slug(tag).one() %}
@@ -38,6 +39,7 @@
     ]
   }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
   {% set title = newsOrEvents|ucfirst %}
+  {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 
 {% endif %}
 

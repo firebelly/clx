@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Ensure consistent www URL
+    # Ensure consistent URL
     RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^chicagolx\.org [NC]
     RewriteCond %{HTTP_HOST} !^staging\.chicagolx\.org [NC]

@@ -1,5 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
 {% set ourSupportersCategory = craft.categories.slug('our-supporters').one() %}
 {% set ourSupporters = craft.entries({

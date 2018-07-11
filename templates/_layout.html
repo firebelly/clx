@@ -6,7 +6,7 @@
 
   <body class="{% if currentUser %}logged-in {% endif %}{% if bodyClass is defined %}{{ bodyClass }} {% endif %}page-{{ segment(1) ? segment(1) : 'home' }}"{% if bodyId is defined %} id="{{ bodyId }}"{% endif %}>
     <div id="top"></div>
-    {{ adminbar({ sticky: false }) }}
+    {{ adminbar({ sticky: false, entry: entry }) }}
     <div class="body-wrapper">
 
       <svg class="icon bg-x" aria-hidden="true" role="presentation" viewBox="0 0 1527 1507"><use xlink:href="#bg-x"/></svg>
