@@ -1,0 +1,22 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set bodyClass = 'single' %}
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% block content %}
+  {% if entry.pageHeader.image|length or entry.pageHeader.headerTitle or entry.pageHeader.statement %}
+    {% include 'partials/_page-header' with { pageHeader: entry.pageHeader } %}
+  {% endif %}
+  <article class="single-entry single-page">
+    <h1>{{ entry.title }}</h1>
+    <div class="user-content">
+      {{ entry.body }}
+    </div>
+  </article>
+{% endblock %}
+
+{% block footerimage %}
+  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
+  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
+{% endblock %}

@@ -1,0 +1,12 @@
+// pages
+
+.page-pages {
+  // Single page styles
+  &,
+  .single-entry {
+    background: $white;
+  }
+  .bg-x {
+    display: none;
+  }
+}
