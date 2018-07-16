@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "279333d5a85388c2c9cea5a3ac67075b",
+    "content-hash": "c59409d8a4b9c06091463bd757acf530",
     "packages": [
         {
             "name": "aelvan/imager",
-            "version": "v2.0.1.2",
+            "version": "v2.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/56c84bb0a7aabf2fc24abe70fe3ee82b3f86f39c",
-                "reference": "56c84bb0a7aabf2fc24abe70fe3ee82b3f86f39c",
+                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/703d82fb9f5f43b0bbb4a84b36b211f474c8fc6e",
+                "reference": "703d82fb9f5f43b0bbb4a84b36b211f474c8fc6e",
                 "shasum": ""
             },
             "require": {
@@ -67,15 +67,15 @@
                 "docs": "https://github.com/aelvan/Imager-Craft/blob/craft3/README.md",
                 "issues": "https://github.com/aelvan/Imager-Craft/issues"
             },
-            "time": "2018-06-12T19:59:07+00:00"
+            "time": "2018-07-13T14:33:34+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.62.8",
+            "version": "3.63.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7f35cc8bdf5afec650300c5633277be279833e0a",
-                "reference": "7f35cc8bdf5afec650300c5633277be279833e0a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d67dc8846739f4a1f93f25ce5d5cbfb3a555530d",
+                "reference": "d67dc8846739f4a1f93f25ce5d5cbfb3a555530d",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-07-03T20:00:01+00:00"
+            "time": "2018-07-13T21:46:58+00:00"
         },
         {
             "name": "barrelstrength/sprout-active",
@@ -678,11 +678,11 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.1.0",
+            "version": "2.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/7d72a873e12ea7c92a8a6d00e025e303089d504e",
-                "reference": "7d72a873e12ea7c92a8a6d00e025e303089d504e",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/d49309d7c251d15c729093e208dd21b9cfc05a19",
+                "reference": "d49309d7c251d15c729093e208dd21b9cfc05a19",
                 "shasum": ""
             },
             "require": {
@@ -724,7 +724,7 @@
                 "docs": "https://github.com/craftcms/redactor",
                 "rss": "https://github.com/craftcms/redactor/commits/master.atom"
             },
-            "time": "2018-05-15T21:58:54+00:00"
+            "time": "2018-07-14T09:42:21+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -1240,11 +1240,11 @@
         },
         {
             "name": "google/cloud",
-            "version": "v0.70.0",
+            "version": "v0.71.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php/zipball/e41812b66d728bdb4f989a6b40c82bf245256415",
-                "reference": "e41812b66d728bdb4f989a6b40c82bf245256415",
+                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php/zipball/b47d69981c5134478391c57df4928ab6cd14552b",
+                "reference": "b47d69981c5134478391c57df4928ab6cd14552b",
                 "shasum": ""
             },
             "require": {
@@ -1258,34 +1258,35 @@
                 "rize/uri-template": "~0.3"
             },
             "replace": {
-                "google/cloud-bigquery": "1.2.4",
+                "google/cloud-bigquery": "1.3.0",
                 "google/cloud-bigquerydatatransfer": "0.6.1",
-                "google/cloud-bigtable": "0.5.1",
+                "google/cloud-bigtable": "0.5.2",
                 "google/cloud-container": "0.5.1",
-                "google/cloud-core": "1.20.7",
-                "google/cloud-dataproc": "0.5.1",
+                "google/cloud-core": "1.21.0",
+                "google/cloud-dataproc": "0.5.2",
                 "google/cloud-datastore": "1.5.4",
                 "google/cloud-debugger": "0.12.1",
                 "google/cloud-dialogflow": "0.3.1",
-                "google/cloud-dlp": "0.11.0",
+                "google/cloud-dlp": "0.11.1",
                 "google/cloud-error-reporting": "0.11.1",
                 "google/cloud-firestore": "0.11.2",
                 "google/cloud-iot": "0.3.1",
-                "google/cloud-kms": "0.1.0",
+                "google/cloud-kms": "0.1.1",
                 "google/cloud-language": "0.15.1",
-                "google/cloud-logging": "1.12.3",
+                "google/cloud-logging": "1.12.4",
                 "google/cloud-monitoring": "0.11.1",
                 "google/cloud-oslogin": "0.6.0",
                 "google/cloud-pubsub": "1.4.0",
-                "google/cloud-redis": "0.3.1",
+                "google/cloud-redis": "0.3.2",
                 "google/cloud-spanner": "1.6.1",
                 "google/cloud-speech": "0.15.1",
                 "google/cloud-storage": "1.5.2",
                 "google/cloud-tasks": "0.1.0",
+                "google/cloud-text-to-speech": "0.1.0",
                 "google/cloud-trace": "0.10.1",
                 "google/cloud-translate": "1.2.3",
-                "google/cloud-videointelligence": "1.0.2",
-                "google/cloud-vision": "0.14.2"
+                "google/cloud-videointelligence": "1.0.3",
+                "google/cloud-vision": "0.15.0"
             },
             "suggest": {
                 "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
@@ -1334,6 +1335,7 @@
                     "Google\\Cloud\\Speech\\": "Speech/src",
                     "Google\\Cloud\\Storage\\": "Storage/src",
                     "Google\\Cloud\\Tasks\\": "Tasks/src",
+                    "Google\\Cloud\\TextToSpeech\\": "TextToSpeech/src",
                     "Google\\Cloud\\Trace\\": "Trace/src",
                     "Google\\Cloud\\Translate\\": "Translate/src",
                     "Google\\Cloud\\VideoIntelligence\\": "VideoIntelligence/src",
@@ -1350,6 +1352,7 @@
                     "GPBMetadata\\Google\\Cloud\\Redis\\": "Redis/metadata",
                     "GPBMetadata\\Google\\Cloud\\Speech\\": "Speech/metadata",
                     "GPBMetadata\\Google\\Cloud\\Tasks\\": "Tasks/metadata",
+                    "GPBMetadata\\Google\\Cloud\\Texttospeech\\": "TextToSpeech/metadata",
                     "GPBMetadata\\Google\\Cloud\\Videointelligence\\": "VideoIntelligence/metadata",
                     "GPBMetadata\\Google\\Cloud\\Vision\\": "Vision/metadata",
                     "GPBMetadata\\Google\\Devtools\\Clouddebugger\\": "Debugger/metadata",
@@ -1406,7 +1409,7 @@
                 "translation",
                 "vision"
             ],
-            "time": "2018-07-03T15:31:33+00:00"
+            "time": "2018-07-11T17:47:34+00:00"
         },
         {
             "name": "google/gax",
@@ -1483,11 +1486,11 @@
         },
         {
             "name": "grpc/grpc",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/ad3f6a2bb47475a32a7cdf23da3f67957e0e5aab",
-                "reference": "ad3f6a2bb47475a32a7cdf23da3f67957e0e5aab",
+                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/8ff8ed6a99803b4e2396ce63b289cad4b4c40d39",
+                "reference": "8ff8ed6a99803b4e2396ce63b289cad4b4c40d39",
                 "shasum": ""
             },
             "require": {
@@ -1511,7 +1514,7 @@
             "keywords": [
                 "rpc"
             ],
-            "time": "2018-05-15T22:09:16+00:00"
+            "time": "2018-06-28T22:47:39+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3278,11 +3281,11 @@
         },
         {
             "name": "tde/craftplugin-geoaddress",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tdeNL/craftplugin-geoaddress/zipball/9bb529ebcf9b13695443be5eb9e58532c1e8b98c",
-                "reference": "9bb529ebcf9b13695443be5eb9e58532c1e8b98c",
+                "url": "https://api.github.com/repos/tdeNL/craftplugin-geoaddress/zipball/e53ad25d283873a534ff8886acec3994fb00c592",
+                "reference": "e53ad25d283873a534ff8886acec3994fb00c592",
                 "shasum": ""
             },
             "require": {
@@ -3320,7 +3323,7 @@
                 "docs": "https://github.com/tdeNL/craftplugin-geoaddress/blob/master/README.md",
                 "issues": "https://github.com/tdeNL/craftplugin-geoaddress/issues"
             },
-            "time": "2018-07-04T11:35:01+00:00"
+            "time": "2018-07-16T07:04:18+00:00"
         },
         {
             "name": "tinify/tinify",

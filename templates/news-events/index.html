@@ -1,51 +1,40 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set newsOrEvents = segment(2) == '' ? 'news' : segment(2) %}
-{% set sortField = newsOrEvents == 'news' ? 'postDate DESC' : 'dateStart ASC' %}
 {% if entry is not defined %}
   {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
+{% set entryOptions = {
+    section: newsOrEvents,
+    with: [
+      'newsEventImage'
+    ],
+    orderBy: 'featured DESC, postDate DESC',
+  }
+%}
+{% if newsOrEvents == 'events' %}
+  {% set entryOptions = entryOptions|merge({
+    orderBy: 'featured DESC, dateStart ASC',
+    dateStart: '>= ' ~ now|date('Y-m-d')
+  }) %}
+{% endif %}
+
 {% if tag is defined %}
   {% set tag = craft.tags.slug(tag).one() %}
   {# todo: 404 on no tag matches #}
-  {% paginate craft.entries({
-    section: newsOrEvents,
-    relatedTo: tag,
-    with: [
-      'newsEventImage'
-    ],
-    orderBy: 'featured DESC, '~sortField
-  }).limit(30) as paginationInfo, newsEventsEntries %}
+  {% set entryOptions = entryOptions|merge({ relatedTo: tag }) %}
   {% set title = newsOrEvents ~ ' tagged: ' ~ tag.title %}
-
 {% elseif category is defined %}
-
-  {% paginate craft.entries({
-    section: newsOrEvents,
-    relatedTo: category,
-    with: [
-      'newsEventImage'
-    ],
-    orderBy: 'featured DESC, '~sortField
-  }).limit(30) as paginationInfo, newsEventsEntries %}
+  {% set entryOptions = entryOptions|merge({ relatedTo: category }) %}
   {% set title = category.title %}
-
 {% else %}
-
-  {% paginate craft.entries({
-    section: newsOrEvents,
-    with: [
-      'newsEventImage'
-    ],
-    orderBy: 'featured DESC, '~sortField
-  }).limit(30) as paginationInfo, newsEventsEntries %}
-  {# todo: add dateStart: '>= ' ~ now.w3cDate() for events #}
   {% set title = newsOrEvents|ucfirst %}
   {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
-
 {% endif %}
+
+{% paginate craft.entries(entryOptions).limit(30) as paginationInfo, newsEventsEntries %}
 
 {% block content %}
   <div class="text-header">
@@ -63,7 +52,7 @@
           <select name="filter" class="jumpSelect">
             <option value="#">Filter by {{ newsOrEvents == 'news' ? 'Topic' : 'Event Type' }}</option>
             {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics').all() %}
-              <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
+              <option value="{{ newsCat.getUrl() }}" {# to show selected category: {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
             {% endfor %}
           </select>
           <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>
@@ -110,7 +99,7 @@
         <p class="none-found">No posts found.</p>
       {% endfor %}
     </div>
-  </div>{# /.center-content #}
+  </div>
 
   {% include "partials/_pagination" with { 'paginationInfo': paginationInfo } %}
 

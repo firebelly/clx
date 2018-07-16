@@ -28,9 +28,9 @@
     "verbb/super-table": "2.0.7",
     "topshelfcraft/wordsmith": "3.0.2",
     "wbrowar/adminbar": "3.1.6",
-    "craftcms/redactor": "2.1.0",
-    "tde/craftplugin-geoaddress": "v1.0.7",
-    "aelvan/imager": "v2.0.1.2",
+    "craftcms/redactor": "2.1.2",
+    "tde/craftplugin-geoaddress": "v1.0.8",
+    "aelvan/imager": "v2.0.2",
     "pennebaker/craft-architect": "2.2.9"
   },
   "autoload": {
