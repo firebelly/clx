@@ -179,6 +179,13 @@
     @include type-display;
     margin-bottom: grid(5);
   }
+
+  @include media-md {
+    li {
+      max-width: none;
+      padding-right: grid(2);
+    }
+  }
 }
 
 // Post meta columns at the bottom of several areas (contact, social, links)
