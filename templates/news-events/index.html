@@ -1,7 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set newsOrEvents = segment(2) == '' ? 'news' : segment(2) %}
-{% set sortField = newsOrEvents == 'News' ? 'postDate' : 'dateStart' %}
+{% set sortField = newsOrEvents == 'news' ? 'postDate DESC' : 'dateStart ASC' %}
 {% if entry is not defined %}
   {% set entry = craft.entries.section(newsOrEvents ~ 'Index').one() %}
 {% endif %}
@@ -15,8 +15,9 @@
     relatedTo: tag,
     with: [
       'newsEventImage'
-    ]
-  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+    ],
+    orderBy: 'featured DESC, '~sortField
+  }).limit(30) as paginationInfo, newsEventsEntries %}
   {% set title = newsOrEvents ~ ' tagged: ' ~ tag.title %}
 
 {% elseif category is defined %}
@@ -26,8 +27,9 @@
     relatedTo: category,
     with: [
       'newsEventImage'
-    ]
-  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+    ],
+    orderBy: 'featured DESC, '~sortField
+  }).limit(30) as paginationInfo, newsEventsEntries %}
   {% set title = category.title %}
 
 {% else %}
@@ -36,8 +38,10 @@
     section: newsOrEvents,
     with: [
       'newsEventImage'
-    ]
-  }).orderBy('featured DESC, '~sortField~' DESC').limit(30) as paginationInfo, newsEventsEntries %}
+    ],
+    orderBy: 'featured DESC, '~sortField
+  }).limit(30) as paginationInfo, newsEventsEntries %}
+  {# todo: add dateStart: '>= ' ~ now.w3cDate() for events #}
   {% set title = newsOrEvents|ucfirst %}
   {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 
