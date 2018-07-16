@@ -64,6 +64,7 @@ var CLX = (function($) {
         _fixOverflow();
       });
       _fixOverflow();
+      setTimeout(_fixOverflow, 3000);
     });
 
     // Add superfluous gradient overlay to .article-grid .image-wraps for hover state

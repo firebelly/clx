@@ -1,4 +1,10 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set showingInfo = false %}
+{% if entry is not defined and slug is defined %}
+  {% set showingInfo = true %}
+  {% set entry = craft.entries.section('programs').slug(slug).one() %}
+{% endif %}
+
 {% set bodyClass = 'single' %}
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
@@ -8,12 +14,26 @@
   <article class="single-entry single-program">
     <h4 class="crumb subhead"><a href="/work/">Work<a> / <a href="/work/#our-programs">Our Programs</a></h4>
     <h1>{{ entry.title }}</h1>
-    {{ entry.statement }}
-    {% include 'partials/_stats' with { stats: entry.stats } %}
-    <div class="user-content">
-      {{ entry.body }}
-    </div>
-    {% include 'partials/_post-meta' with { postMeta: entry.postMeta } %}
+
+    {% if showingInfo %}
+      <div class="user-content">
+        {{ entry.extraInfo }}
+      </div>
+      {% if entry.formEmbed %}
+        {{ entry.formEmbed|raw }}
+      {% endif %}
+    {% else %}
+      {{ entry.statement }}
+      {% include 'partials/_stats' with { stats: entry.stats } %}
+      <div class="user-content">
+        {{ entry.body }}
+      </div>
+      {% if entry.extraInfo %}
+        <a href="{{ entry.getUrl() }}/info" class="button">Learn More</a>
+      {% endif %}
+      {% include 'partials/_post-meta' with { postMeta: entry.postMeta } %}
+    {% endif %}
+
     <div class="return-crumb">
       <a class="arrow left" href="/work/#our-programs"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Our Programs</a>
     </div>
