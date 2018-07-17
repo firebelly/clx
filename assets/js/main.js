@@ -157,7 +157,7 @@ var CLX = (function($) {
       if (breakpoint_nav) {
         _scrollBody('#our-team-modals', 500);
       } else {
-        _scrollBody('#our-team-modals li.active', 500);
+        _scrollBody('#our-team-modals li.active', 500, -40);
       }
       window.location.hash = '#person-' + $(this).attr('data-slug');
     });
@@ -192,7 +192,7 @@ var CLX = (function($) {
     if (breakpoint_nav) {
       modalTop = $('#our-team-modals').offset().top;
     } else {
-      modalTop = $('#our-team-modals li.active').offset().top;
+      modalTop = $('#our-team-modals li.active').offset().top - 40;
     }
     $aboutModal.css({ top: modalTop });
   }
@@ -374,10 +374,12 @@ var CLX = (function($) {
   /**
    * Scroll body to element
    */
-  function _scrollBody(el, duration) {
-    var headerOffset = 0;
+  function _scrollBody(el, duration, offset) {
+    if (typeof offset === 'undefined') {
+      offset = 0;
+    }
     if ($(el).length) {
-      $('html, body').animate({scrollTop: $(el).offset().top + headerOffset}, duration, 'easeInOutSine');
+      $('html, body').animate({scrollTop: $(el).offset().top + offset}, duration, 'easeInOutSine');
     }
   }
 
