@@ -106,8 +106,9 @@ var CLX = (function($) {
   function _initAbout() {
     // Clicking outside of modal closes modal
     $(document).on('click touchend', 'body.modal-active', function(e) {
-      // Make sure target isn't in modal or one of the links in #our-team-modals
-      if ($(e.target).parents('.modal').length + $(e.target).parents('#our-team-modals').length === 0) {
+      $target = $(e.target);
+      // Make sure target isn't modal, a modal element, or one of the links in #our-team-modals
+      if (!$target.hasClass('modal') && $target.parents('.modal').length + $target.parents('#our-team-modals').length === 0) {
         _closeAboutModal();
       }
     });
