@@ -105,7 +105,7 @@ var CLX = (function($) {
    */
   function _initAbout() {
     // Clicking outside of modal closes modal
-    $(document).on('click', 'body.modal-active', function(e) {
+    $(document).on('click touchend', 'body.modal-active', function(e) {
       // Make sure target isn't in modal or one of the links in #our-team-modals
       if ($(e.target).parents('.modal').length + $(e.target).parents('#our-team-modals').length === 0) {
         _closeAboutModal();
