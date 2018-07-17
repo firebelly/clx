@@ -18,12 +18,14 @@ var CLX = (function($) {
       delayed_resize_timer,
       nav_timer,
       page_at,
-      $aboutModal;
+      $aboutModal,
+      $body;
 
   /**
    * Initialize all functions
    */
   function _init() {
+    $body = $('body');
     _resize();
     _initNewsletterForm();
     page_at = window.location.pathname;
@@ -102,6 +104,14 @@ var CLX = (function($) {
    * About page functionality
    */
   function _initAbout() {
+    // Clicking outside of modal closes modal
+    $(document).on('click', 'body.modal-active', function(e) {
+      // Make sure target isn't in modal or one of the links in #our-team-modals
+      if ($(e.target).parents('.modal').length + $(e.target).parents('#our-team-modals').length === 0) {
+        _closeAboutModal();
+      }
+    });
+
     $(window).on('load', function() {
       // Check if linking to single person that has a popup
       if (window.location.hash && window.location.hash.match(/^#person/)) {
@@ -137,10 +147,11 @@ var CLX = (function($) {
 
     // Open modals for team members on click
     $('#our-team-modals li').on('click', function(e) {
-      // e.preventDefault();
+      e.preventDefault();
       $('#our-team-modals li').removeClass('active');
       $(this).addClass('active');
       $aboutModal.addClass('active');
+
       _populateAboutModal();
       // Scroll up to modal on desktop (mobile modal is placed on active person)
       if (breakpoint_nav) {
@@ -164,6 +175,7 @@ var CLX = (function($) {
     // Move bio over
     $aboutModal.find('.photo .bio').appendTo($aboutModal.find('.bio-wrap'));
     setTimeout(function() {
+      $body.addClass('modal-active');
       $aboutModal.removeClass('dimmed');
     }, 150);
     _positionAboutModal();
@@ -191,6 +203,7 @@ var CLX = (function($) {
   function _closeAboutModal() {
     if ($aboutModal) {
       $aboutModal.removeClass('active').css('top', '-9999em');
+      $body.removeClass('modal-active');
       history.replaceState('', document.title, window.location.pathname);
     }
   }
