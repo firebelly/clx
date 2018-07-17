@@ -2,7 +2,7 @@
 <ul class="stats grid">
   {% for stat in stats %}
     <li class="one-third">
-      <span class="stat-figure">{{ stat.statFigure }}</span>
+      <span class="stat-figure">{{ stat.statFigure|replace('0','O') }}</span>
       <span class="stat-label">{{ stat.statLabel }}</span>
     </li>
   {% endfor %}
