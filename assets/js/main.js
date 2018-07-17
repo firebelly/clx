@@ -142,7 +142,12 @@ var CLX = (function($) {
       $(this).addClass('active');
       $aboutModal.addClass('active');
       _populateAboutModal();
-      _scrollBody('#our-team-modals', 500);
+      // Scroll up to modal on desktop (mobile modal is placed on active person)
+      if (breakpoint_nav) {
+        _scrollBody('#our-team-modals', 500);
+      } else {
+        _scrollBody('#our-team-modals li.active', 500);
+      }
       window.location.hash = '#person-' + $(this).attr('data-slug');
     });
 
@@ -171,8 +176,13 @@ var CLX = (function($) {
     if (!$aboutModal.hasClass('active')) {
       return;
     }
-    var ourTeamPos = $('#our-team-modals').offset();
-    $aboutModal.css({ top: ourTeamPos.top });
+    var modalTop;
+    if (breakpoint_nav) {
+      modalTop = $('#our-team-modals').offset().top;
+    } else {
+      modalTop = $('#our-team-modals li.active').offset().top;
+    }
+    $aboutModal.css({ top: modalTop });
   }
 
   /**
