@@ -1,9 +1,10 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
+{% set memberType = entry.memberType.one() %}
 
 {% block content %}
   <article class="single-entry single-member">
-    <h4 class="crumb subhead"><a href="/community/">Community</a> / Member</h4>
+    <h4 class="crumb subhead"><a href="/community/">Community</a>{% if memberType %} / <a href="{{ memberType.getUrl() }}">{{ memberType.title }}</a>{% endif %}</h4>
     <h1>{{ entry.title }}</h1>
     {{ entry.statement }}
     <div class="user-content">
