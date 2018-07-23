@@ -63,10 +63,10 @@
       </li>
       <li class="selected-category">
         {% if tag is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ tag.title }}&nbsp;<span>x</span></a>
+          <a class="close" href="{{ entry.getUrl() ~ (pastEvents == 1 ? '?past=1' : '') }}">{{ tag.title }}&nbsp;<span>x</span></a>
         {% endif %}
         {% if category is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ category.title }}&nbsp;<span>x</span></a>
+          <a class="close" href="{{ entry.getUrl() ~ (pastEvents == 1 ? '?past=1' : '') }}">{{ category.title }}&nbsp;<span>x</span></a>
         {% endif %}
       </li>
     </ul>
