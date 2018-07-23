@@ -1,2 +1,10 @@
-{{ address.street }},
-{{ address.city }}, {{ address.zip }}
+{% if address.street %}
+	{{ address.street }},
+{% endif %}
+{% if address.city %}
+	{{ address.city }}
+{% endif %}
+{% if address.zip %}
+	, {{ address.zip }}
+{% endif %}
+

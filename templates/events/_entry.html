@@ -37,9 +37,7 @@
       {% if entry.venue %}
         <li>{{ entry.venue }}</li>
       {% endif %}
-      {% if entry.address %}
-        <li>{% include "partials/_address" with { "address": entry.address } %}</li>
-      {% endif %}
+      <li>{% include "partials/_address" with { "address": entry.address } %}</li>
       {% if entry.eventUrl and isActiveEvent %}
         <li><a class="arrow" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>
       {% endif %}
