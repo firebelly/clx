@@ -50,7 +50,7 @@
       <li>
         <div class="select">
           <select name="filter" class="jumpSelect">
-            <option value="#">Filter by {{ newsOrEvents == 'news' ? 'Topic' : 'Event Type' }}</option>
+            <option value="#">FILTER</option>
             {% for newsCat in craft.categories.group(newsOrEvents=='events' ? 'eventTypes' : 'newsTopics').all() %}
               <option value="{{ newsCat.getUrl() }}" {# to show selected category: {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
             {% endfor %}
