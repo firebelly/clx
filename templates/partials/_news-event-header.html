@@ -1,5 +1,5 @@
 {% if newsEventPost.type.name == 'News' %}
-  <h4 class="subhead crumb"><a href="/news-events/news/">News</a> {% if newsEventPost.newsTopics|length %} / <a href="{{ newsEventPost.newsTopics[0].getUrl() }}">{{ newsEventPost.newsTopics[0].title }}</a>{% endif %}</h4>
+  <h4 class="subhead crumb"><a href="/news/">News</a> {% if newsEventPost.newsTopics|length %} / <a href="{{ newsEventPost.newsTopics[0].getUrl() }}">{{ newsEventPost.newsTopics[0].title }}</a>{% endif %}</h4>
 {% else %}
-  <h4 class="subhead crumb"><a href="/news-events/events/">Events</a> {% if newsEventPost.eventTypes|length %} / <a href="{{ newsEventPost.eventTypes[0].getUrl() }}">{{ newsEventPost.eventTypes[0].title }}</a>{% endif %}</h4>
+  <h4 class="subhead crumb"><a href="/events/">Events</a> {% if newsEventPost.eventTypes|length %} / <a href="{{ newsEventPost.eventTypes[0].getUrl() }}">{{ newsEventPost.eventTypes[0].title }}</a>{% endif %}</h4>
 {% endif %}

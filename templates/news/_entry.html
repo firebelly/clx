@@ -33,7 +33,7 @@
     {% if entry.tags %}
       <ul class="tags">
         {% for tag in entry.tags.all() %}
-          <a href="/news-events/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
+          <a href="/news/tagged/{{ tag.slug }}" class="button">{{ tag.title }}</a>
         {% endfor %}
       </ul>
     {% endif %}
