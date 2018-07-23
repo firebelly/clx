@@ -1,13 +1,12 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set bodyClass = 'single' %}
-{% set resourceType = entry.resourceType.one() %}
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
 {% block content %}
   <article class="single-entry single-resource">
-    <h4 class="crumb subhead"><a href="/resources/">Resources</a>{% if resourceType %} / {{ resourceType.title }}{% endif %}</h4>
+    <h4 class="crumb subhead"><a href="/resources/">Resources</a></h4>
     <h1>{{ entry.title }}</h1>
     {{ entry.statement }}
     <div class="user-content">
