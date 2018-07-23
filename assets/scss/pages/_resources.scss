@@ -33,6 +33,12 @@
       }
     }
   }
+  .user-content {
+    .openquote,
+    .closequote {
+      color: $gray;
+    }
+  }
 
   .return-crumb {
     border-color: rgba($black, 0.1);

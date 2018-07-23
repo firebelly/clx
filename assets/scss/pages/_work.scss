@@ -28,6 +28,12 @@
   .single-program {
     background: $blue;
   }
+  .user-content {
+    .openquote,
+    .closequote {
+      color: $gray;
+    }
+  }
   .program {
     h2 {
       margin: 0 0 grid(2);

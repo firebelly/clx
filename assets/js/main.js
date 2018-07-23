@@ -82,10 +82,16 @@ var CLX = (function($) {
       var $this = $(this);
       tmp.remove();
       $this.find('select').width(tmp_width);
+      // Wait a second to apply .sized to trigger showing the icon-arrow
       setTimeout(function() {
         $this.addClass('sized');
       }, 250);
+    });
 
+    // Add curly quotes to blockquotes
+    $('.user-content blockquote').each(function() {
+      $('<span class="openquote">&ldquo;</span>').prependTo(this);
+      $('<span class="closequote">&rdquo;</span>').appendTo(this);
     });
 
     // Editable donation link needs an arrow svg

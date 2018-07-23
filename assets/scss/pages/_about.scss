@@ -36,6 +36,12 @@
       }
     }
   }
+  .user-content {
+    .openquote,
+    .closequote {
+      color: $gray;
+    }
+  }
 
   // Member modal
   .modal {
