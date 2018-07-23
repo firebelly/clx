@@ -6,7 +6,7 @@
 {% set programs = craft.entries().section('programs') %}
 
 {% block content %}
-  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#AFE3FE' } %}
+  {% include 'partials/_page-header' with { pageHeader: entry.pageHeader, gradientColor: '#91dbff' } %}
 
   <div id="our-programs">
     <h4 class="subhead">Our Programs</h4>
@@ -45,5 +45,5 @@
 {% endblock %}
 
 {% block footerimage %}
-  {% include 'partials/_footer-image' with { footerImage: entry.footerImage, gradientColor: '#AFE3FE' } %}
+  {% include 'partials/_footer-image' with { footerImage: entry.footerImage, gradientColor: '#91dbff' } %}
 {% endblock %}
