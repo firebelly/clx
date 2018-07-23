@@ -1,0 +1,25 @@
+<article>
+  {% set newsEventImage = newsEventEntry.newsEventImage[0] ?? null %}
+  {% if newsEventImage %}
+    {% set treatedImage = craft.imager.transformImage(newsEventImage, {
+      width: 960,
+      height: 600,
+      effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+    }) %}
+    <div class="image-wrap">
+      <a href="{{ newsEventEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
+    </div>
+  {% endif %}
+  {% if newsOrEvents == 'news' %}
+    <time datetime="{{ newsEventEntry.postDate|date('Y-m-d') }}">
+      {{ newsEventEntry.postDate|date('F d Y') }}
+    </time>
+  {% else %}
+    <time datetime="{{ newsEventEntry.dateStart|date('Y-m-d') }}">
+      {{ newsEventEntry.dateStart|date('F d Y') }}
+    </time>
+  {% endif %}
+  <h3><a href="{{ newsEventEntry.getUrl() }}">{{ newsEventEntry.title }}</a></h3>
+  <p class="excerpt">{{ newsEventEntry.excerpt ? newsEventEntry.excerpt : newsEventEntry.body | chop(limit=20, unit='w', append='…') }}</p>
+  <p class="read-more"><a href="{{ newsEventEntry.getUrl() }}" class="arrow">Read More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+</article>

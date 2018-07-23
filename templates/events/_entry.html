@@ -5,6 +5,7 @@
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
 {% set relatedPosts = craft.entries.section('events').id('not ' ~ entry.id).limit(2) %}
+{% set isActiveEvent = (entry.dateStart and entry.dateStart|date('Y-m-d') > now|date('Y-m-d')) ? true : false %}
 
 {% block content %}
   {% include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } %}
@@ -26,6 +27,10 @@
             {% if eventTime != '12am' %}
               @ {{ eventTime }}
             {% endif %}
+            {% if entry.dateEnd|date('Y-m-d') < now|date('Y-m-d') %}
+              {% set isActiveEvent = false %}
+            {% endif %}
+
           {% endif %}
         </li>
       {% endif %}
@@ -35,7 +40,7 @@
       {% if entry.address %}
         <li>{% include "partials/_address" with { "address": entry.address } %}</li>
       {% endif %}
-      {% if entry.eventUrl %}
+      {% if entry.eventUrl and isActiveEvent %}
         <li><a class="arrow" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>
       {% endif %}
     </ul>

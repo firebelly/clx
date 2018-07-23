@@ -133,6 +133,11 @@ form {
     pointer-events: none;
     transform: rotate(90deg);
     fill: $red;
+    transition: opacity .1s ease;
+    opacity: 0;
+  }
+  &.sized .icon-arrow {
+    opacity: 1;
   }
 
   // Focus

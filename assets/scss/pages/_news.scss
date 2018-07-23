@@ -74,7 +74,8 @@
   fill: $red;
 }
 
-.page-news-events {
+.page-events,
+.page-news {
   // Single page styles
   &.single {
     background: $white;

@@ -62,6 +62,7 @@ var CLX = (function($) {
 
     // After page load, run janky fixOverflow and check for hash
     $(window).on('load', function() {
+      $body.addClass('loaded');
       $('.page-wrapper').imagesLoaded().done(function() {
         _fixOverflow();
       });
@@ -78,8 +79,13 @@ var CLX = (function($) {
     $('.select').each(function() {
       var tmp = $('<span>' + $(this).find('select :selected').text() + '</span>').appendTo(this);
       var tmp_width = tmp.width();
+      var $this = $(this);
       tmp.remove();
-      $(this).find('select').width(tmp_width);
+      $this.find('select').width(tmp_width);
+      setTimeout(function() {
+        $this.addClass('sized');
+      }, 250);
+
     });
 
     // Editable donation link needs an arrow svg
