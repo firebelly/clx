@@ -96,17 +96,22 @@
       <h4 class="subhead">Our Supporters</h4>
       <ul class="grid">
         {% for person in ourSupporters.all() %}
-          <li class="one-third">
-            <article>
-              <h3>{{ person.organizationName }}</h3>
-              {% if person.personName %}
-                <h4>{{ person.personName }}</h4>
-              {% endif %}
-            </article>
-          </li>
+          {% if loop.index < 10 %}
+            <li class="one-third">
+              <article>
+                <h3>{{ person.organizationName }}</h3>
+                {% if person.personName %}
+                  <h4>{{ person.personName }}</h4>
+                {% endif %}
+              </article>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
-      <a href="/about/supporters/" class="arrow">View all our supporters <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+      {% if ourSupporters.count() > 9 %}
+        <a href="/about/supporters/" class="arrow">View all our supporters <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+      {% endif %}
+
     </div>
   </div>
 
