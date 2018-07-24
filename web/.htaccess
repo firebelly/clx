@@ -5,6 +5,7 @@
     RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^chicagolx\.org [NC]
     RewriteCond %{HTTP_HOST} !^staging\.chicagolx\.org [NC]
+    RewriteCond %{HTTP_HOST} !^chicagolx\.webfactional\.com [NC]
     RewriteCond %{HTTP_HOST} !^clx\.localhost [NC]
     RewriteRule ^(.*)$ https://chicagolx.org/$1 [R=301,L]
 
