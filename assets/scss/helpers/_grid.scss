@@ -26,6 +26,9 @@ $column-width: 100% / $global-columns;
   @include min-screen($breakpoint-md) {
     display: flex;
     flex-wrap: wrap;
+    &.nowrap {
+      flex-wrap: nowrap;
+    }
   }
   &.-persist {
     display: flex;
