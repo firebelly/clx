@@ -19,7 +19,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(perPage) as paginationInfo, memberEntries %}
+  }).orderBy('organizationName ASC, personName ASC').limit(perPage) as paginationInfo, memberEntries %}
 
 {% else %}
 
@@ -29,7 +29,7 @@
       'memberType',
       'memberImage'
     ]
-  }).orderBy('featured DESC, postDate DESC').limit(perPage) as paginationInfo, memberEntries %}
+  }).orderBy('organizationName ASC, personName ASC').limit(perPage) as paginationInfo, memberEntries %}
 
 {% endif %}
 
