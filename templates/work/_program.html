@@ -29,7 +29,9 @@
         {{ entry.body }}
       </div>
       {% if entry.extraInfo %}
-        <a href="{{ entry.getUrl() }}/info" class="button">Learn More</a>
+        <div class="learn-more">
+          <a href="{{ entry.getUrl() }}/info" class="button">{{ entry.extraInfoPrompt ? entry.extraInfoPrompt : 'Learn More' }}</a>
+        </div>
       {% endif %}
       {% include 'partials/_post-meta' with { postMeta: entry.postMeta } %}
     {% endif %}
