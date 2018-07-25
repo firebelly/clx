@@ -1,7 +1,17 @@
 {
-	"formatting": ["p", "h2", "h3", "blockquote"],
+  "formatting": ["p", "h2", "h3", "blockquote"],
   "buttons": ["formatting", "bold", "italic", "lists", "link", "image", "video", "html"],
   "plugins": ["fullscreen", "video"],
   "toolbarFixed": true,
-  "linkNewTab": true
+  "linkNewTab": true,
+  "formattingAdd": {
+    "red-p-add": {
+        "title": "Button Block",
+        "api": "module.block.format",
+        "args": {
+            "tag": "p",
+            "class": "button-block"
+        }
+    }
+  }
 }

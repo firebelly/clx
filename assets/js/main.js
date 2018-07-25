@@ -88,6 +88,9 @@ var CLX = (function($) {
       }, 250);
     });
 
+    // Add .button class to a elements in p.button-block (Redactor button-blocks)
+    $('.user-content p.button-block a').addClass('button');
+
     // Add curly quotes to blockquotes
     $('.user-content blockquote').each(function() {
       $('<span class="openquote">&ldquo;</span>').prependTo(this);
