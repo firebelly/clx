@@ -197,10 +197,10 @@
     @include type-display;
   }
   li {
-    // Remove top margins on first headers
-    > h4,
-    > h3 {
-      margin-top: 0;
+    // Remove margins headers
+    h3,
+    h4 {
+      margin: 0;
     }
   }
 
