@@ -199,9 +199,8 @@
 
   @include media-md {
     li {
-      float: left;
-      width: 33%;
       padding-right: $global-padding;
+      max-width: none;
     }
   }
 }
