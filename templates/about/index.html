@@ -69,7 +69,10 @@
               <h3>{{ person.personName }}</h3>
               <h4>{{ person.personTitle }}</h4>
               {% if person.email %}
-                <p class="email"><a class="arrow" href="mailto:{{ person.email }}">Email <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+                <p class="email"><a rel="noopener" target="_blank" class="arrow" href="mailto:{{ person.email }}">Email <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
+              {% endif %}
+              {% if person.personUrl %}
+                <p class="person-url"><a class="arrow" rel="noopener" target="_blank" href="{{ person.personUrl }}">Website <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></p>
               {% endif %}
               <div class="bio">{{ person.body }}</div>
             </article>
@@ -99,10 +102,12 @@
           {% if loop.index < 10 %}
             <li class="one-third">
               <article>
+                {% if person.personUrl %}<a rel="noopener" target="_blank" href="{{ person.personUrl }}">{% endif %}
                 <h3>{{ person.organizationName }}</h3>
                 {% if person.personName %}
                   <h4>{{ person.personName }}</h4>
                 {% endif %}
+                {% if person.personUrl %}</a>{% endif %}
               </article>
             </li>
           {% endif %}
