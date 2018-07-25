@@ -13,6 +13,9 @@
     <div class="user-content">
       {{ entry.body }}
     </div>
+    {% if entry.formEmbed %}
+      {{ entry.formEmbed|raw }}
+    {% endif %}
   </article>
 {% endblock %}
 
