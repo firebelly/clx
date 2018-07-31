@@ -87,12 +87,15 @@
     border: none;
   }
   .related-posts {
-    margin-top: grid(4);
+    padding: grid(4) 0 grid(2);
     h3 {
       margin: 0;
     }
     article {
       margin-bottom: grid(4);
+    }
+    @include media-md {
+      padding-bottom: 0;
     }
   }
 
