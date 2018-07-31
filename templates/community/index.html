@@ -49,8 +49,8 @@
         <div class="select">
           <select name="filter" class="jumpSelect">
             <option value="#">FILTER</option>
-            {% for newsCat in craft.categories.group('memberTypes').all() %}
-              <option value="{{ newsCat.getUrl() }}" {# {{ category is defined and newsCat.title == category.title ? 'selected' : '' }} #}>{{ newsCat.title }}</option>
+            {% for memberType in craft.categories.group('memberTypes').all() %}
+              <option value="{{ memberType.getUrl() ~ (mode == 'list' ? '?mode=list' : '') }}" {# {{ category is defined and memberType.title == category.title ? 'selected' : '' }} #}>{{ memberType.title }}</option>
             {% endfor %}
           </select>
           <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg>
@@ -58,10 +58,10 @@
       </li>
       <li class="selected-category">
         {% if tag is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ tag.title }}&nbsp;<span>x</span></a>
+          <a class="close" href="{{ entry.getUrl() ~ (mode == 'list' ? '?mode=list' : '') }}">{{ tag.title }}&nbsp;<span>x</span></a>
         {% endif %}
         {% if category is defined %}
-          <a class="close" href="{{ entry.getUrl() }}">{{ category.title }}&nbsp;<span>x</span></a>
+          <a class="close" href="{{ entry.getUrl() ~ (mode == 'list' ? '?mode=list' : '') }}">{{ category.title }}&nbsp;<span>x</span></a>
         {% endif %}
       </li>
     </ul>

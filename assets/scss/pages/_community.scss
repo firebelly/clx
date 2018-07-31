@@ -14,9 +14,12 @@
   .member-list {
     @include clearfix;
     &.article-list {
+      article {
+        margin-bottom: grid(1);
+      }
       h4 {
         margin: 0;
-        font-weight: normal;
+        font: normal 18px/1.5625 $font-display;
       }
     }
   }
@@ -53,9 +56,14 @@
           clear: left;
         }
       }
+
+      // List view
       &.article-list {
+        columns: 300px 4;
         article {
-          margin-bottom: grid(1);
+          padding-right: 0;
+          float: none;
+          width: auto;
         }
       }
     }
