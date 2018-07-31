@@ -19,7 +19,7 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "3.0.17.1",
+    "craftcms/cms": "3.0.18",
     "vlucas/phpdotenv": "^2.4.0",
     "mmikkel/cp-field-inspect": "1.0.4",
     "verbb/expanded-singles": "1.0.4",
@@ -29,7 +29,7 @@
     "topshelfcraft/wordsmith": "3.0.2",
     "wbrowar/adminbar": "3.1.6",
     "craftcms/redactor": "2.1.5",
-    "tde/craftplugin-geoaddress": "v1.0.8",
+    "tde/craftplugin-geoaddress": "v1.0.9",
     "aelvan/imager": "v2.1.0",
     "pennebaker/craft-architect": "2.2.9",
     "rias/craft-colour-swatches": "1.1.3",
