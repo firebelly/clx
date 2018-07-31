@@ -13,7 +13,7 @@
     padding: grid(5) #{$mobile-inset} grid(8);
     margin: 0 -#{$mobile-inset};
   }
-  #work-with-us {
+  #join-clx {
     border-top: 1px dashed $black;
     padding-top: grid(8);
     margin-top: grid(10);
@@ -74,7 +74,7 @@
       padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
     }
 
-    #work-with-us {
+    #join-clx {
       .links {
         a {
           width: 50%;
