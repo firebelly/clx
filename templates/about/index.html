@@ -34,14 +34,14 @@
     {{ entry.ourApproach.statement }}
     <p><a href="/work/" class="button">Our Work</a></p>
 
-    <div class="our-values">
+    <div id="our-values">
       <h4 class="subhead">We Value</h4>
       <ul class="values">
       {% for value in entry.weValue.all() %}
         <li>{{ value.valueText|nl2br }}</li>
       {% endfor %}
       </ul>
-      <a href="/about/values/" class="arrow">Learn more about our values <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+      {# <a href="/about/values/" class="arrow">Learn more about our values <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a> #}
     </div>
 
   </div>

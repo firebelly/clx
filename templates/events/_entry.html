@@ -8,7 +8,7 @@
 {% set isActiveEvent = (entry.dateStart and entry.dateStart|date('Y-m-d') > now|date('Y-m-d')) ? true : false %}
 
 {% block content %}
-  {% include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } %}
+  {# include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } #}
 
   <article class="single-entry single-event">
     {% include 'partials/_news-event-header' with { newsEventPost: entry } %}
@@ -48,4 +48,8 @@
     {% include "partials/_news-share" with { "entry": entry } %}
     {% include "partials/_news-related-posts" with { "relatedPosts": relatedPosts } %}
   </article>
+{% endblock %}
+
+{% block footerimage %}
+  {% include 'partials/_footer-image' with { footerImage: entry.newsEventImage } %}
 {% endblock %}

@@ -139,7 +139,7 @@
     cursor: pointer;
   }
 
-  .our-values {
+  #our-values {
     margin: grid(10) 0 0;
     ul.values {
       @include clearfix;
@@ -232,7 +232,7 @@
         fill: $gray;
       }
     }
-    .our-values {
+    #our-values {
       ul.values {
         margin: grid(4) 0 grid(10);
         li {
