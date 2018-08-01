@@ -184,19 +184,22 @@
     }
   }
 
+  .page-header .page-header-info {
+    h2,
+    h4.subhead {
+      color: $gray;
+      a {
+        color: $gray;
+      }
+    }
+  }
+
   // Mobile-only styles
   @include max-screen($breakpoint-md) {
     // Small screen headers have colored-background h2
     .page-header .page-header-info {
       h2 {
-        color: $gray;
         background: $red;
-      }
-      h4.subhead {
-        color: $gray;
-        a {
-          color: $gray;
-        }
       }
     }
     .our-approach {

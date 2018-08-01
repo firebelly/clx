@@ -1,6 +1,6 @@
-{% if gradientColor is not defined %}
-  {% set gradientColor = '#241f21' %}
-{% endif %}
+{# if gradientColor is not defined #}
+  {% set gradientColor = '#222222' %}
+{# endif #}
 
 {% if footerImage|length %}
   {% set treatedImage = craft.imager.transformImage(footerImage.one(), {
