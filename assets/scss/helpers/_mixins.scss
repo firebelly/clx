@@ -25,6 +25,24 @@
   padding-top: #{$height / $width * 100%}; // aspect ratio
 }
 
+@mixin dashed-border($location: 'top', $offset: 0) {
+  $pseudo: 'before';
+  @if $location == 'bottom' {
+    $pseudo: 'after';
+  }
+  &:#{$pseudo} {
+    content: '';
+    display: block;
+    position: relative;
+    #{$location}: -#{$offset};
+    height: 1px;
+    background-image: linear-gradient(to right, $black 50%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 10px 5px;
+    background-repeat: repeat-x;
+  }
+}
+
 // Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
 @mixin media-xs() {
   @media screen and (max-width: $breakpoint-sm - 1) {
