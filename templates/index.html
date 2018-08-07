@@ -46,8 +46,6 @@
         {% if postImage %}
           {% set treatedImage = craft.imager.transformImage(postImage, {
             width: 1000,
-            height: 1000,
-            mode: 'crop',
             effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
           }) %}
           <div class="article-image one-half">
@@ -91,8 +89,6 @@
             {% set postImage = secondFeature.newsEventImage.one() %}
             {% set treatedImage = craft.imager.transformImage(postImage, {
               width: 1000,
-              height: 1000,
-              mode: 'crop',
               effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
             }) %}
             <div class="article-image one-half">

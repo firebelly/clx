@@ -87,6 +87,17 @@
         {% for person in ourBoard.all() %}
           <li class="one-third">
             <article>
+              {% set personImage = person.personImage[0] ?? null %}
+              {% if personImage %}
+                {% set treatedImage = craft.imager.transformImage(personImage, {
+                  width: 600,
+                  height: 600,
+                  effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+                }) %}
+                <div class="image-wrap">
+                  <div class="image modal-popup" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});" data-id="{{ person.id }}"></div>
+                </div>
+              {% endif %}
               <h3>{{ person.personName }}</h3>
               <h4>{{ person.personTitle }}</h4>
             </article>

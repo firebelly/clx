@@ -5,6 +5,11 @@
   // Featured carousel
   .featured {
     @include clearfix;
+    .image-wrap {
+      .image {
+        @include aspect-ratio(320,215);
+      }
+    }
   }
 
   // Bottom of page upcoming event + secondary feature
