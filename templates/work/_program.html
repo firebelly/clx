@@ -38,7 +38,11 @@
     {% endif %}
 
     <div class="return-crumb">
-      <a class="arrow left" href="/work/#our-programs"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Our Programs</a>
+      {% if showingInfo %}
+        <a class="arrow left" href="{{ entry.getUrl() }}"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> {{ entry.title }}</a>
+      {% else %}
+        <a class="arrow left" href="/work/#our-programs"><svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg> Our Programs</a>
+      {% endif %}
     </div>
   </article>
 {% endblock %}
