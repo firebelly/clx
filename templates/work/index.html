@@ -2,6 +2,7 @@
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+{% if entry.pageHeader.image|length %}{% set mainImage = entry.pageHeader.image.one() %}{% endif %}
 
 {% set programs = craft.entries().section('programs') %}
 

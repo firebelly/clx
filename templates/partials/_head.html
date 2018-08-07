@@ -3,18 +3,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
-  {% if seoDescription is defined %}
+{% if seoDescription is defined %}
   <meta name="description" content="{{ seoDescription }}">
-  {% endif %}
+{% endif %}
   <link rel="canonical" href="{{ siteUrl }}">
   <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700" rel="stylesheet">
 
-  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
-  {% if mainImage is defined %}
-    <meta property="og:image" content="{{ mainImage.url }}"/>
-  {% else %}
-    <meta property="og:image" content=""/>
-  {% endif %}
+  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}">
+{% if mainImage is defined %}
+  <meta property="og:image" content="{{ mainImage.getUrl() }}">
+{% else %}
+  <meta property="og:image" content="">
+{% endif %}
 
   <link rel="stylesheet" href="{{ rev('css/main.css') }}">
   <link rel="shortcut icon" type="image/ico" href="{{ rev('images/favicon.png') }}">

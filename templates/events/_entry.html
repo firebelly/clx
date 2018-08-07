@@ -8,7 +8,7 @@
 {% set isActiveEvent = (entry.dateStart and entry.dateStart|date('Y-m-d') > now|date('Y-m-d')) ? true : false %}
 
 {% block content %}
-  {# include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } #}
+  {# (moved to footer) include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } #}
 
   <article class="single-entry single-event">
     {% include 'partials/_news-event-header' with { newsEventPost: entry } %}

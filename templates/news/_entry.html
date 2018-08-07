@@ -3,6 +3,7 @@
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+{% if entry.newsEventImage|length %}{% set mainImage = entry.newsEventImage.one() %}{% endif %}
 
 {% set relatedPosts = craft.entries.section('news').id('not ' ~ entry.id).limit(2) %}
 
