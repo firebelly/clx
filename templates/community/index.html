@@ -73,7 +73,6 @@
             {% if memberImage %}
               {% set treatedImage = craft.imager.transformImage(memberImage, {
                 width: 500,
-                height: 500,
                 effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
               }) %}
               <div class="image-wrap">

@@ -2,7 +2,6 @@
   {% set headerImage = image.one() %}
   {% set treatedImage = craft.imager.transformImage(headerImage, {
     width: 1000,
-    height: 1000,
     mode: 'crop',
     effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
   }) %}

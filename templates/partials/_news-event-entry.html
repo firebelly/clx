@@ -3,7 +3,6 @@
   {% if newsEventImage %}
     {% set treatedImage = craft.imager.transformImage(newsEventImage, {
       width: 960,
-      height: 600,
       effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
     }) %}
     <div class="image-wrap">
