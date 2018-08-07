@@ -1,0 +1,14 @@
+{# if gradientColor is not defined #}
+  {% set gradientColor = '#222222' %}
+{# endif #}
+
+{% if image|length %}
+  {% set treatedImage = craft.imager.transformImage(image.one(), {
+    width: 1200,
+    effects: { modulate: [100, 0, 100], clut: 'gradient:' ~ gradientColor ~ '-' ~ '#ffffff' }
+  }) %}
+
+  <div class="inline-image">
+    <img src="{{ treatedImage.getUrl() }}">
+  </div>
+{% endif %}

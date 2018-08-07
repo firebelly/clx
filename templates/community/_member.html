@@ -4,6 +4,7 @@
 
 {% block content %}
   <article class="single-entry single-member">
+    {% include 'partials/_inline-image' with { image: entry.memberImage } %}
     <h4 class="crumb subhead"><a href="/community/">Community</a>{% if memberType %} / <a href="{{ memberType.getUrl() }}">{{ memberType.title }}</a>{% endif %}</h4>
     <h1>{{ entry.title }}</h1>
     {{ entry.statement }}
@@ -18,6 +19,5 @@
 {% endblock %}
 
 {% block footerimage %}
-  {% set entryFooterImage = entry.footerImage|length ? entry.footerImage : entry.memberImage %}
-  {% include 'partials/_footer-image' with { footerImage: entryFooterImage } %}
+  {% include 'partials/_footer-image' with { footerImage: entry.footerImage } %}
 {% endblock %}

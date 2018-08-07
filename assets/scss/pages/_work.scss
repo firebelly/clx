@@ -14,7 +14,7 @@
     margin: 0 -#{$mobile-inset};
   }
   #join-clx {
-    border-top: 1px dashed $black;
+    @include dashed-border('top', grid(8));
     padding-top: grid(8);
     margin-top: grid(10);
     .links {
@@ -43,9 +43,12 @@
     }
     padding: 0 0 grid(6);
     margin-bottom: grid(5);
-    border-bottom: 1px dashed $black;
+    @include dashed-border('bottom', grid(6));
     &:last-of-type {
       border-bottom: none;
+      &:after {
+        display: none;
+      }
       margin-bottom: 0;
     }
   }

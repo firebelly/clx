@@ -1,4 +1,4 @@
-{% if postMeta %}
+{% if postMeta and (postMeta.contact ~ postMeta.social ~ postMeta.links) != '' %}
   <ul class="post-meta grid user-content nowrap">
     <li class="one-third">
       {{ postMeta.contact }}

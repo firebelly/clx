@@ -16,6 +16,12 @@
     &.article-list {
       article {
         margin-bottom: grid(1);
+        a {
+          display: inline-block;
+          text-decoration: none;
+          border-bottom: 1px dashed $black;
+          transition: all 0.2s ease;
+        }
       }
       h4 {
         margin: 0;
@@ -79,6 +85,7 @@
     &:hover {
       h4 a {
         color: $red;
+        border-color: $red;
       }
     }
   }
