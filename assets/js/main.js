@@ -2,6 +2,7 @@
 /*jshint latedef:false*/
 
 //=include "../bower_components/jquery/dist/jquery.js"
+//=include "../bower_components/jquery.fitvids/jquery.fitvids.js"
 //=include "../bower_components/flickity/dist/flickity.pkgd.min.js"
 //=include "../bower_components/jquery.easing/js/jquery.easing.min.js"
 //=include "../bower_components/imagesloaded/imagesloaded.pkgd.min.js"
@@ -32,6 +33,9 @@ var CLX = (function($) {
 
     _initNav();
     _initSearch();
+
+    // Fit them vids!
+    $('.site-main').fitVids();
 
     // Keyboard navigation and esc handlers
     $(document).keyup(function(e) {
