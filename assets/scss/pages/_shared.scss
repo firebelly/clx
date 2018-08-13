@@ -1,7 +1,7 @@
 // Single entries (members, programs)
 .single-entry {
   .stats {
-    padding: grid(4) 0 grid(8);
+    padding: grid(2) 0 grid(4);
   }
   .post-meta {
     padding-top: grid(8);
@@ -22,6 +22,10 @@
     min-height: 50vh; // todo: remove this (tmp while we have no content)
     margin: 0 #{$global-padding * 2} 0 calc(#{columns(1)} + #{$global-padding});
     padding: grid(10) columns(.5) grid(10) calc(#{columns(1)} - #{$global-padding * 2});
+
+    .stats {
+      padding: 0 0 grid(6);
+    }
   }
 }
 
@@ -184,7 +188,7 @@
   .stat-label {
     display: block;
     @include type-display;
-    margin-bottom: grid(5);
+    margin-bottom: grid(2);
   }
 
   @include media-md {
