@@ -20,11 +20,19 @@
     margin: 0 0 grid(4);
   }
   blockquote {
+    margin: 0 grid(4) grid(4) grid(4);
+    padding: 0;
     position: relative;
     font: 20px/1.4 $font-header;
 
     @include media-md {
       font: 30px/1.3333 $font-header;
+    }
+  }
+  p.quote-attribution {
+    margin: -#{grid(2)} grid(4) grid(4) grid(4);
+    &:before {
+      content: '— ';
     }
   }
   .openquote,

@@ -12,6 +12,14 @@
             "tag": "p",
             "class": "button-block"
         }
+    },
+    "quote-attribution-add": {
+        "title": "Quote Attribution",
+        "api": "module.block.format",
+        "args": {
+            "tag": "p",
+            "class": "quote-attribution"
+        }
     }
   }
 }
