@@ -5,8 +5,8 @@
     {% if eventTime != '12am' %}
       @ {{ eventTime }}
     {% endif %}
-    {# Check if enddate is same as startdate #}
-    {% if event.dateEnd and event.dateEnd != event.dateStart %}
+    {# Check if enddate is later than startdate #}
+    {% if event.dateEnd and event.dateEnd > event.dateStart %}
       –
       {# Same day, just show time span #}
       {% if event.dateEnd|date('m/d/y') == event.dateStart|date('m/d/y') %}
