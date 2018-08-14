@@ -57,6 +57,11 @@
         <div class="article-info one-half">
           {% include 'partials/_news-event-header' with { newsEventPost: featuredPost } %}
           <h3><a href="{{ featuredPost.getUrl() }}">{{ featuredPost.title }}</a></h3>
+          {% if featuredPost.type == 'events' %}
+            <ul class="event-meta">
+              {% include 'partials/_event-datestart' with { event: featuredPost } %}
+            </ul>
+          {% endif %}
           <p class="read-more">
             <a href="{{ featuredPost.getUrl() }}" class="button">Read More</a>
           </p>
