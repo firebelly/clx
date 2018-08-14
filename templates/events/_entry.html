@@ -14,26 +14,7 @@
     {% include 'partials/_news-event-header' with { newsEventPost: entry } %}
     <h1>{{ entry.title }}</h1>
     <ul class="event-meta">
-      {% if entry.dateStart %}
-        <li>
-          {{ entry.dateStart|date('m/d/y') }}
-          {% set eventTime = entry.dateStart|date('ga') %}
-          {% if eventTime != '12am' %}
-            @ {{ eventTime }}
-          {% endif %}
-          {% if entry.dateEnd and entry.dateEnd != entry.dateStart %}
-            – {{ entry.dateEnd|date('m/d/y') }}
-            {% set eventTime = entry.dateEnd|date('ga') %}
-            {% if eventTime != '12am' %}
-              @ {{ eventTime }}
-            {% endif %}
-            {% if entry.dateEnd|date('Y-m-d') < now|date('Y-m-d') %}
-              {% set isActiveEvent = false %}
-            {% endif %}
-
-          {% endif %}
-        </li>
-      {% endif %}
+      {% include 'partials/_event-datestart' with { event: entry } %}
       {% if entry.venue %}
         <li>{{ entry.venue }}</li>
       {% endif %}

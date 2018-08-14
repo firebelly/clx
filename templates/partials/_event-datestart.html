@@ -1,0 +1,19 @@
+{% if event.dateStart %}
+  <li>
+    {{ event.dateStart|date('m/d/y') }}
+    {% set eventTime = event.dateStart|date('ga') %}
+    {% if eventTime != '12am' %}
+      @ {{ eventTime }}
+    {% endif %}
+    {% if event.dateEnd and event.dateEnd != event.dateStart %}
+      – {{ event.dateEnd|date('m/d/y') }}
+      {% set eventTime = event.dateEnd|date('ga') %}
+      {% if eventTime != '12am' %}
+        @ {{ eventTime }}
+      {% endif %}
+      {% if event.dateEnd|date('Y-m-d') < now|date('Y-m-d') %}
+        {% set isActiveEvent = false %}
+      {% endif %}
+    {% endif %}
+  </li>
+{% endif %}

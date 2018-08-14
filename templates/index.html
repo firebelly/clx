@@ -109,6 +109,9 @@
           <h4 class="subhead">Upcoming Event</h4>
           <h3><a href="{{ upcomingEvent.getUrl() }}">{{ upcomingEvent.title }}</a></h3>
           <p class="excerpt">{{ upcomingEvent.excerpt ? upcomingEvent.excerpt : upcomingEvent.body | chop(limit=20, unit='w', append='…') }}</p>
+          <ul class="event-meta">
+            {% include 'partials/_event-datestart' with { event: upcomingEvent } %}
+          </ul>
           <p class="read-more">
             <a href="{{ upcomingEvent.getUrl() }}" class="arrow">Learn More <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
           </p>
