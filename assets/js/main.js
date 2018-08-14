@@ -83,8 +83,11 @@ var CLX = (function($) {
     $('.select').each(function() {
       var $this = $(this);
       var tmp = $('<span>' + $this.find('select :selected').text() + '</span>').appendTo($this);
-      // Avoid firefox making select too small
-      var tmp_width = Math.max(tmp.width(), 60);
+      var tmp_width = tmp.width();
+      // Avoid Firefox making select too small
+      if (navigator.userAgent.match(/firefox/i)) {
+        tmp_width += 25;
+      }
       tmp.remove();
       $this.find('select').width(tmp_width);
       // Wait a second to apply .sized to trigger showing the icon-arrow
