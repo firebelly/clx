@@ -5,14 +5,17 @@
     {% if eventTime != '12am' %}
       @ {{ eventTime }}
     {% endif %}
+    {# Check if enddate is same as startdate #}
     {% if event.dateEnd and event.dateEnd != event.dateStart %}
-      – {{ event.dateEnd|date('m/d/y') }}
+      –
+      {# Same day, just show time span #}
+      {% if event.dateEnd|date('m/d/y') == event.dateStart|date('m/d/y') %}
+      {% else %}
+        {{ event.dateEnd|date('m/d/y') }} @
+      {% endif %}
       {% set eventTime = event.dateEnd|date('ga') %}
       {% if eventTime != '12am' %}
-        @ {{ eventTime }}
-      {% endif %}
-      {% if event.dateEnd|date('Y-m-d') < now|date('Y-m-d') %}
-        {% set isActiveEvent = false %}
+        {{ eventTime }}
       {% endif %}
     {% endif %}
   </li>
