@@ -20,7 +20,7 @@
       {% endif %}
       <li>{% include "partials/_address" with { "address": entry.address } %}</li>
       {% if entry.eventUrl and isActiveEvent %}
-        <li><a class="arrow" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register <svg class="icon-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a></li>
+        <li><a class="button" target="_blank" rel="noopener noreferrer" href="{{ entry.eventUrl }}">Register</a></li>
       {% endif %}
     </ul>
     <div class="user-content">
