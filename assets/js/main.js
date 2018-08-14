@@ -81,9 +81,10 @@ var CLX = (function($) {
 
     // Resize selects to selected item (currently always the first which is the "title") so rightside arrow is flush with text
     $('.select').each(function() {
-      var tmp = $('<span>' + $(this).find('select :selected').text() + '</span>').appendTo(this);
-      var tmp_width = tmp.width();
       var $this = $(this);
+      var tmp = $('<span>' + $this.find('select :selected').text() + '</span>').appendTo($this);
+      // Avoid firefox making select too small
+      var tmp_width = Math.max(tmp.width(), 60);
       tmp.remove();
       $this.find('select').width(tmp_width);
       // Wait a second to apply .sized to trigger showing the icon-arrow
