@@ -72,8 +72,7 @@
             {% set memberImage = memberEntry.memberImage[0] ?? null %}
             {% if memberImage %}
               {% set treatedImage = craft.imager.transformImage(memberImage, {
-                width: 500,
-                effects: { modulate: [100, 0, 100], clut: 'gradient:#222222-#ffffff' }
+                width: 500
               }) %}
               <div class="image-wrap">
                 <a href="{{ memberEntry.getUrl() }}" class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></a>
