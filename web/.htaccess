@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteRule ^joinus$ /work/#join-clx [R=301,L,NE]
+
     # Ensure consistent URL
     RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^chicagolx\.org [NC]
