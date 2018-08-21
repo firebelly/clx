@@ -1,7 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^joinus$ /work/#join-clx [R=301,L,NE]
+    # Custom redirects
+    RewriteRule ^joinus$ https://chicagolx.org/work/#join-clx [R=301,L,NE]
 
     # Ensure consistent URL
     RewriteCond %{REQUEST_URI} !\.well-known
