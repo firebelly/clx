@@ -1,10 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Custom redirects
-    RewriteRule ^joinus$ https://chicagolx.org/work/#join-clx [R=302,L,NE]
-    RewriteRule ^donate$ https://connect.clickandpledge.com/w/Form/fc158039-c4a6-4ac4-8fc9-d42b3778a4df [R=302,L,NE]
-
     # Ensure consistent URL
     RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^chicagolx\.org [NC]
