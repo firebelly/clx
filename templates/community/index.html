@@ -79,12 +79,12 @@
               </div>
             {% endif %}
           {% endif %}
-          <h4><a href="{{ memberEntry.getUrl() }}">
+          <h4><a href="{{ memberEntry.getUrl() }}"><span>
             {% if memberEntry.personName %}
               {{ memberEntry.personName }}{{ memberEntry.organizationName ? '<br>' : '' }}
             {% endif %}
             {{ memberEntry.organizationName }}
-          </a></h4>
+          </span></a></h4>
         </article>
       {% else %}
         <p class="none-found">No posts found.</p>

@@ -18,13 +18,18 @@
         margin-bottom: grid(1);
         a {
           display: inline-block;
-          text-decoration: none;
-          border-bottom: 1px dashed $black;
-          transition: all 0.2s ease;
+          // Use span for multi-line underlines
+          span {
+            background-image: linear-gradient(to right, $black 75%, transparent 75%);
+            background-position: 0 1.6em;
+            padding-bottom: .3em;
+            background-repeat: repeat-x;
+            background-size: 5px 1px;
+          }
         }
       }
       h4 {
-        margin: 0;
+        margin: 0 0 1em;
         font: normal 18px/1.5625 $font-display;
       }
     }
@@ -78,14 +83,26 @@
 
 // Hover states for member articles
 .no-touchevents {
-  .member-list article {
+  // Grid hovers
+  .member-list.article-grid article {
     h4 a {
       transition: all 0.2s ease;
     }
     &:hover {
       h4 a {
         color: $red;
-        border-color: $red;
+      }
+    }
+  }
+  // List hovers
+  .member-list.article-list {
+    a span {
+      transition: all 0.2s ease;
+    }
+    article a:hover {
+      span {
+        color: $red;
+        background-image: linear-gradient(to right, $red 75%, transparent 75%);
       }
     }
   }
