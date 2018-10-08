@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "9e42e1f926ed287bb9d3eed6771068d6",
-=======
-    "content-hash": "7dc5f213731f9d12cec286a25bd41744",
->>>>>>> 55706ca8826834294fdec409bc10583142be3195
     "packages": [
         {
             "name": "aelvan/imager",
@@ -525,19 +521,11 @@
         },
         {
             "name": "craftcms/cms",
-<<<<<<< HEAD
             "version": "3.0.26.1",
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/craftcms/cms/zipball/61fb42721fc40e65b0f6b459c8c0b47dd5d91146",
                 "reference": "61fb42721fc40e65b0f6b459c8c0b47dd5d91146",
-=======
-            "version": "3.0.25",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/30b95277d526af7aeff4a10c23b583fde0adb383",
-                "reference": "30b95277d526af7aeff4a10c23b583fde0adb383",
->>>>>>> 55706ca8826834294fdec409bc10583142be3195
                 "shasum": ""
             },
             "require": {
@@ -608,11 +596,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-<<<<<<< HEAD
             "time": "2018-09-29T22:15:04+00:00"
-=======
-            "time": "2018-09-18T16:57:29+00:00"
->>>>>>> 55706ca8826834294fdec409bc10583142be3195
         },
         {
             "name": "craftcms/oauth2-craftid",
