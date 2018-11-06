@@ -80,6 +80,6 @@
     </div>
   </div>
 
-  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo } %}
+  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo, 'extraParams' : (pastEvents == 1 ? '?past=1' : '') } %}
 
 {% endblock %}

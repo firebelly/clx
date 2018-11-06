@@ -92,6 +92,6 @@
     </div>
   </div>{# /.center-content #}
 
-  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo } %}
+  {% include "partials/_pagination" with { 'paginationInfo': paginationInfo, 'extraParams' : (mode=='list' ? '?mode=list' : '') } %}
 
 {% endblock %}
