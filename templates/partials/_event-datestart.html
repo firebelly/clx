@@ -1,6 +1,6 @@
 {% if event.dateStart %}
   <li>
-    {{ event.dateStart|date('m/d/y') }}
+    {{ event.dateStart|date('m.d.Y') }}
     {% set eventTime = event.dateStart|date('ga') %}
     {% if eventTime != '12am' %}
       @ {{ eventTime }}
@@ -11,7 +11,7 @@
       {# Same day, just show time span #}
       {% if event.dateEnd|date('m/d/y') == event.dateStart|date('m/d/y') %}
       {% else %}
-        {{ event.dateEnd|date('m/d/y') }} @
+        {{ event.dateEnd|date('m.d.Y') }} @
       {% endif %}
       {% set eventTime = event.dateEnd|date('ga') %}
       {% if eventTime != '12am' %}

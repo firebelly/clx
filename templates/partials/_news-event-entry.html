@@ -1,4 +1,4 @@
-<article>
+<article class="{{ newsOrEvents }}-entry">
   {% set newsEventImage = newsEventEntry.newsEventImage[0] ?? null %}
   {% if newsEventImage %}
     {% set treatedImage = craft.imager.transformImage(newsEventImage, {
@@ -11,11 +11,11 @@
   {% endif %}
   {% if newsOrEvents == 'news' %}
     <time datetime="{{ newsEventEntry.postDate|date('Y-m-d') }}">
-      {{ newsEventEntry.postDate|date('F d Y') }}
+      {{ newsEventEntry.postDate|date('m.d.Y') }}
     </time>
   {% else %}
     <time datetime="{{ newsEventEntry.dateStart|date('Y-m-d') }}">
-      {{ newsEventEntry.dateStart|date('F d Y') }}
+      {{ newsEventEntry.dateStart|date('m.d.Y') }}
     </time>
   {% endif %}
   <h3><a href="{{ newsEventEntry.getUrl() }}">{{ newsEventEntry.title }}</a></h3>

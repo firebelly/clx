@@ -11,8 +11,8 @@ var sourcemaps   = require('gulp-sourcemaps');
 var runSequence  = require('run-sequence');
 var notify       = require('gulp-notify');
 var browserSync  = require('browser-sync').create();
-var gutil        = require("gulp-util");
-var concat       = require("gulp-concat");
+var gutil        = require('gulp-util');
+var concat       = require('gulp-concat');
 var svgstore     = require('gulp-svgstore');
 var svgmin       = require('gulp-svgmin');
 var rename       = require('gulp-rename');
@@ -131,7 +131,7 @@ gulp.task('jshint', function() {
 // `gulp clean` - Deletes the build folder entirely.
 gulp.task('clean', require('del').bind(null, ['web/assets/dist']));
 
-// `gulp build` - Run all the build tasks but don't clean up beforehand.
+// `gulp build` - Run all the build tasks
 gulp.task('build', function(callback) {
   runSequence(
     'clean',
