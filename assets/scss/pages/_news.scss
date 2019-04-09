@@ -1,4 +1,4 @@
-// News
+// News & Events
 
 .news-posts {
   @include clearfix;
@@ -27,12 +27,38 @@
         @include aspect-ratio(480,305);
       }
       float: left;
-      width: 50%;
       padding: 0 0 0 $global-padding;
-      // margin-bottom: grid(4);
-      &:nth-child(2n+1) {
-        padding: 0 $global-padding 0 0;
-        clear: left;
+      &.news-entry {
+        width: 50%;
+        &:nth-child(2n+1) {
+          padding: 0 $global-padding 0 0;
+          clear: left;
+        }
+      }
+      &.events-entry {
+        width: 33.3%;
+        margin: 0 0 grid(4);
+        &:nth-child(3n+1) {
+          padding: 0 $global-padding 0 0;
+          clear: left;
+        }
+      }
+    }
+
+    // Events-specific
+    &.events-entry {
+      @include max-screen($breakpoint-lg) {
+        h3 {
+          font: bold 16px/1.5625 $font-display;
+        }
+      }
+      time {
+        color: $red;
+        margin: 0 0 grid(1);
+      }
+      p.excerpt,
+      .read-more {
+        display: none;
       }
     }
   }
