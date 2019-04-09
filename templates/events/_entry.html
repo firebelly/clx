@@ -5,7 +5,7 @@
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
 {% set relatedPosts = craft.entries.section('events').id('not ' ~ entry.id).limit(2) %}
-{% set isActiveEvent = (entry.dateStart and entry.dateStart|date('Y-m-d') > now|date('Y-m-d')) ? true : false %}
+{% set isActiveEvent = (entry.dateStart and date(entry.dateStart) >= date()) ? true : false %}
 
 {% block content %}
   {# (moved to footer) include "partials/_news-event-image-header" with { 'image': entry.newsEventImage } #}
