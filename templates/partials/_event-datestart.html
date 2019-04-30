@@ -9,13 +9,14 @@
     {% if event.dateEnd and event.dateEnd > event.dateStart %}
       –
       {# Same day, just show time span #}
+      {% set eventEndTime = event.dateEnd|date('g:ia') %}
       {% if event.dateEnd|date('m/d/y') == event.dateStart|date('m/d/y') %}
       {% else %}
         {{ event.dateEnd|date('m.d.Y') }}
+        {% if eventEndTime != '12:00am' %} @ {% endif %}
       {% endif %}
-      {% set eventTime = event.dateEnd|date('g:ia') %}
-      {% if eventTime != '12:00am' %}
-        @ {{ eventTime }}
+      {% if eventEndTime != '12:00am' %}
+        {{ eventEndTime }}
       {% endif %}
     {% endif %}
   </li>
