@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "485e7b7ed39150d809971916c155e973",
+    "content-hash": "8571c3d7db91c4ad8fed9e59a7e283e1",
     "packages": [
         {
             "name": "aelvan/imager",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/b8f9af372dc9fb60d778cdc1a00a6b7026bf0986",
-                "reference": "b8f9af372dc9fb60d778cdc1a00a6b7026bf0986",
+                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/f7e80a3cd8c3b3a29fd8ca8961bf452727d52a32",
+                "reference": "f7e80a3cd8c3b3a29fd8ca8961bf452727d52a32",
                 "shasum": ""
             },
             "require": {
@@ -68,15 +68,15 @@
                 "docs": "https://github.com/aelvan/Imager-Craft/blob/craft3/README.md",
                 "issues": "https://github.com/aelvan/Imager-Craft/issues"
             },
-            "time": "2019-04-04T08:29:52+00:00"
+            "time": "2019-04-13T19:47:44+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.4",
+            "version": "3.92.5",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41b67dce3c86da61137b47054d9d52c6ef57b5ec",
-                "reference": "41b67dce3c86da61137b47054d9d52c6ef57b5ec",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f334ed28b4a1be4ef9cb96becc015e67a6a31ad7",
+                "reference": "f334ed28b4a1be4ef9cb96becc015e67a6a31ad7",
                 "shasum": ""
             },
             "require": {
@@ -131,15 +131,15 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-04-05T18:10:20+00:00"
+            "time": "2019-04-29T18:08:48+00:00"
         },
         {
             "name": "barrelstrength/sprout-active",
-            "version": "2.0.9",
+            "version": "2.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-active/zipball/a24bcdfc3566d3c51716913cb7622a6c9421cddd",
-                "reference": "a24bcdfc3566d3c51716913cb7622a6c9421cddd",
+                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-active/zipball/42515d31e4f93f651e25af70ed7079adcb488ba0",
+                "reference": "42515d31e4f93f651e25af70ed7079adcb488ba0",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
                 "docs": "https://sprout.barrelstrengthdesign.com/craft-plugins/active/docs",
                 "rss": "https://github.com/barrelstrength/sprout-active/commits/v2.atom"
             },
-            "time": "2018-11-02T14:37:09+00:00"
+            "time": "2019-04-30T02:40:35+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -493,11 +493,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.1.21.1",
+            "version": "3.1.25",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/f2ef5da6693a3aa89bd2585b3a8c366ee5d7ab70",
-                "reference": "f2ef5da6693a3aa89bd2585b3a8c366ee5d7ab70",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/d63676d829074e257492f010fdcd7ccc7fe895a9",
+                "reference": "896e91d6a39952feb75d51b9220fad0b3fbf16a6",
                 "shasum": ""
             },
             "require": {
@@ -526,7 +526,7 @@
                 "seld/cli-prompt": "^1.0.3",
                 "symfony/yaml": "^3.2|^4.0",
                 "true/punycode": "^2.1.0",
-                "twig/twig": "^2.7.2",
+                "twig/twig": "~2.8.1",
                 "yii2tech/ar-softdelete": "^1.0.2",
                 "yiisoft/yii2": "~2.0.17.0",
                 "yiisoft/yii2-debug": "^2.0.10",
@@ -573,7 +573,7 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2019-04-04T19:07:09+00:00"
+            "time": "2019-04-30T17:55:16+00:00"
         },
         {
             "name": "craftcms/oauth2-craftid",
@@ -659,11 +659,11 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.3.2",
+            "version": "2.3.3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/e4d96d805af031f4a80e5742e5651f30b55e6bca",
-                "reference": "e4d96d805af031f4a80e5742e5651f30b55e6bca",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/55ee76494f6332ba5709003d2082e51d56ae8b1a",
+                "reference": "55ee76494f6332ba5709003d2082e51d56ae8b1a",
                 "shasum": ""
             },
             "require": {
@@ -672,7 +672,8 @@
             "type": "craft-plugin",
             "extra": {
                 "name": "Redactor",
-                "handle": "redactor"
+                "handle": "redactor",
+                "documentationUrl": "https://github.com/craftcms/redactor/blob/v2/README.md"
             },
             "autoload": {
                 "psr-4": {
@@ -700,9 +701,10 @@
                 "email": "support@craftcms.com",
                 "issues": "https://github.com/craftcms/redactor/issues?state=open",
                 "source": "https://github.com/craftcms/redactor",
-                "docs": "https://github.com/craftcms/redactor"
+                "docs": "https://github.com/craftcms/redactor/blob/v2/README.md",
+                "rss": "https://github.com/craftcms/redactor/commits/v2.atom"
             },
-            "time": "2019-02-21T13:34:33+00:00"
+            "time": "2019-04-29T21:39:05+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -1272,11 +1274,11 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.4.0",
+            "version": "v1.5.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/196237248e636a3554a7d9e4dfddeb97f450ab5c",
-                "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0f75e20e7392e863f5550ed2c2d3d50af21710fb",
+                "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb",
                 "shasum": ""
             },
             "require": {
@@ -1286,6 +1288,9 @@
                 "php": ">=5.4",
                 "psr/cache": "^1.0",
                 "psr/http-message": "^1.0"
+            },
+            "suggest": {
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings. Please require version ^2."
             },
             "type": "library",
             "autoload": {
@@ -1303,18 +1308,19 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2018-09-17T20:29:21+00:00"
+            "time": "2019-04-16T18:48:28+00:00"
         },
         {
             "name": "google/cloud",
-            "version": "v0.98.0",
+            "version": "v0.99.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php/zipball/807e6396f85997c12c94e905b142eb8c28582263",
-                "reference": "807e6396f85997c12c94e905b142eb8c28582263",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php/zipball/d59b72430dc2305db2bb2625183ffe1de25476a1",
+                "reference": "d59b72430dc2305db2bb2625183ffe1de25476a1",
                 "shasum": ""
             },
             "require": {
+                "google/auth": "^1.5.1",
                 "google/common-protos": "^1.0",
                 "google/gax": "^1.0",
                 "guzzlehttp/guzzle": "^5.3|^6.0",
@@ -1326,42 +1332,42 @@
                 "rize/uri-template": "~0.3"
             },
             "replace": {
-                "google/cloud-asset": "0.3.0",
-                "google/cloud-automl": "0.2.0",
-                "google/cloud-bigquery": "1.5.0",
-                "google/cloud-bigquerydatatransfer": "0.10.0",
-                "google/cloud-bigtable": "0.12.0",
+                "google/cloud-asset": "0.3.1",
+                "google/cloud-automl": "0.2.1",
+                "google/cloud-bigquery": "1.6.0",
+                "google/cloud-bigquerydatatransfer": "0.10.1",
+                "google/cloud-bigtable": "0.12.1",
                 "google/cloud-common-protos": "0.2.0",
-                "google/cloud-container": "0.10.0",
-                "google/cloud-core": "1.27.0",
-                "google/cloud-dataproc": "0.11.0",
-                "google/cloud-datastore": "1.9.0",
-                "google/cloud-debugger": "0.18.0",
-                "google/cloud-dialogflow": "0.7.0",
-                "google/cloud-dlp": "0.18.0",
-                "google/cloud-error-reporting": "0.14.0",
-                "google/cloud-firestore": "1.4.0",
-                "google/cloud-iot": "0.7.0",
-                "google/cloud-kms": "1.3.0",
-                "google/cloud-language": "0.18.0",
-                "google/cloud-logging": "1.16.0",
-                "google/cloud-monitoring": "0.16.0",
-                "google/cloud-oslogin": "0.9.0",
-                "google/cloud-pubsub": "1.11.0",
-                "google/cloud-redis": "0.7.0",
-                "google/cloud-scheduler": "0.4.0",
-                "google/cloud-security-center": "0.1.0",
-                "google/cloud-spanner": "1.14.0",
-                "google/cloud-speech": "0.23.0",
-                "google/cloud-storage": "1.11.0",
-                "google/cloud-talent": "0.3.0",
-                "google/cloud-tasks": "0.9.0",
-                "google/cloud-text-to-speech": "0.4.0",
-                "google/cloud-trace": "0.14.0",
-                "google/cloud-translate": "1.2.8",
-                "google/cloud-videointelligence": "1.5.0",
-                "google/cloud-vision": "0.21.0",
-                "google/cloud-web-risk": "0.1.0"
+                "google/cloud-container": "0.10.1",
+                "google/cloud-core": "1.28.0",
+                "google/cloud-dataproc": "0.11.1",
+                "google/cloud-datastore": "1.9.1",
+                "google/cloud-debugger": "0.18.1",
+                "google/cloud-dialogflow": "0.7.1",
+                "google/cloud-dlp": "0.18.1",
+                "google/cloud-error-reporting": "0.14.1",
+                "google/cloud-firestore": "1.4.1",
+                "google/cloud-iot": "0.7.1",
+                "google/cloud-kms": "1.3.1",
+                "google/cloud-language": "0.19.0",
+                "google/cloud-logging": "1.16.1",
+                "google/cloud-monitoring": "0.16.1",
+                "google/cloud-oslogin": "0.9.1",
+                "google/cloud-pubsub": "1.11.1",
+                "google/cloud-redis": "0.8.0",
+                "google/cloud-scheduler": "0.5.0",
+                "google/cloud-security-center": "0.1.1",
+                "google/cloud-spanner": "1.15.0",
+                "google/cloud-speech": "0.23.1",
+                "google/cloud-storage": "1.12.0",
+                "google/cloud-talent": "0.3.1",
+                "google/cloud-tasks": "0.10.0",
+                "google/cloud-text-to-speech": "0.4.1",
+                "google/cloud-trace": "0.14.1",
+                "google/cloud-translate": "1.2.9",
+                "google/cloud-videointelligence": "1.5.1",
+                "google/cloud-vision": "0.21.1",
+                "google/cloud-web-risk": "0.1.1"
             },
             "suggest": {
                 "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
@@ -1501,7 +1507,7 @@
                 "translation",
                 "vision"
             ],
-            "time": "2019-04-02T21:07:18+00:00"
+            "time": "2019-04-16T20:44:33+00:00"
         },
         {
             "name": "google/common-protos",
@@ -1534,11 +1540,11 @@
         },
         {
             "name": "google/gax",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/d346b7a3f2b31bc9f0b226faa3d32bd721111b82",
-                "reference": "d346b7a3f2b31bc9f0b226faa3d32bd721111b82",
+                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/48387fb818c6882296710a2302a0aa973b99afb2",
+                "reference": "48387fb818c6882296710a2302a0aa973b99afb2",
                 "shasum": ""
             },
             "require": {
@@ -1569,7 +1575,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-04-04T23:03:23+00:00"
+            "time": "2019-04-23T22:57:39+00:00"
         },
         {
             "name": "google/grpc-gcp",
@@ -3040,11 +3046,11 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.0",
+            "version": "v6.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
-                "reference": "6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
+                "reference": "5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
                 "shasum": ""
             },
             "require": {
@@ -3088,7 +3094,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2019-03-10T07:52:41+00:00"
+            "time": "2019-04-21T09:21:45+00:00"
         },
         {
             "name": "symfony/console",
@@ -3697,11 +3703,11 @@
         },
         {
             "name": "tde/craftplugin-geoaddress",
-            "version": "v1.0.10",
+            "version": "v1.0.11",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tdeNL/craftplugin-geoaddress/zipball/e71bec631cada523563598c59926b0b925575b1d",
-                "reference": "e71bec631cada523563598c59926b0b925575b1d",
+                "url": "https://api.github.com/repos/tdeNL/craftplugin-geoaddress/zipball/e9770d139d9095f4d89d292bdf2959650e9513df",
+                "reference": "e9770d139d9095f4d89d292bdf2959650e9513df",
                 "shasum": ""
             },
             "require": {
@@ -3739,7 +3745,7 @@
                 "docs": "https://github.com/tdeNL/craftplugin-geoaddress/blob/master/README.md",
                 "issues": "https://github.com/tdeNL/craftplugin-geoaddress/issues"
             },
-            "time": "2018-08-02T07:20:31+00:00"
+            "time": "2019-04-10T12:34:19+00:00"
         },
         {
             "name": "tinify/tinify",
@@ -3887,11 +3893,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.7.4",
+            "version": "v2.8.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ed9c49220e09bfaeb1ba4d48077c08a7b09908dd",
-                "reference": "ed9c49220e09bfaeb1ba4d48077c08a7b09908dd",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/91cc2594d3143761ce0399c1caffd0b500ffe5b9",
+                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9",
                 "shasum": ""
             },
             "require": {
@@ -3902,7 +3908,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -3939,7 +3945,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-23T14:28:58+00:00"
+            "time": "2019-04-16T17:14:24+00:00"
         },
         {
             "name": "verbb/expanded-singles",
@@ -3998,11 +4004,11 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.1.17",
+            "version": "2.1.18",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/03dadd201326af0bd93d8b37f9e099e87a057fdb",
-                "reference": "03dadd201326af0bd93d8b37f9e099e87a057fdb",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/95b05389cc200d674c54401e4a3d8b5fc70c0712",
+                "reference": "95b05389cc200d674c54401e4a3d8b5fc70c0712",
                 "shasum": ""
             },
             "require": {
@@ -4046,7 +4052,7 @@
                 "docs": "https://github.com/verbb/super-table",
                 "rss": "https://github.com/verbb/super-table/commits/v2.atom"
             },
-            "time": "2019-04-09T08:37:27+00:00"
+            "time": "2019-04-24T05:38:57+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4095,15 +4101,15 @@
         },
         {
             "name": "wbrowar/adminbar",
-            "version": "3.1.6",
+            "version": "3.1.8.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbrowar/craft-3-adminbar/zipball/1915c2dbb7e1759faea053ed0e40e41d52e8b562",
-                "reference": "1915c2dbb7e1759faea053ed0e40e41d52e8b562",
+                "url": "https://api.github.com/repos/wbrowar/craft-3-adminbar/zipball/173f6d7049a11852d1f6453eb35af0e5ea644ef2",
+                "reference": "173f6d7049a11852d1f6453eb35af0e5ea644ef2",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.7"
+                "craftcms/cms": "^3.1.22"
             },
             "type": "craft-plugin",
             "extra": {
@@ -4145,7 +4151,7 @@
                 "docs": "https://github.com/wbrowar/craft-3-adminbar/blob/master/README.md",
                 "issues": "https://github.com/wbrowar/craft-3-adminbar/issues"
             },
-            "time": "2018-05-11T01:46:55+00:00"
+            "time": "2019-04-29T13:12:58+00:00"
         },
         {
             "name": "yii2tech/ar-softdelete",
@@ -4332,11 +4338,11 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/632929c0682c6470ec838cf15d14c22418e6d07f",
-                "reference": "632929c0682c6470ec838cf15d14c22418e6d07f",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/ad90eeea4312daa5d02d9ca043743fca03571874",
+                "reference": "ad90eeea4312daa5d02d9ca043743fca03571874",
                 "shasum": ""
             },
             "require": {
@@ -4374,7 +4380,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2019-03-30T20:33:53+00:00"
+            "time": "2019-04-23T13:17:21+00:00"
         },
         {
             "name": "yiisoft/yii2-queue",
