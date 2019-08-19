@@ -44,11 +44,13 @@ return [
     'staging' => [
         // Base site URL
         'siteUrl' => 'https://staging.chicagolx.org',
+        'allowUpdates' => false,
     ],
 
     // Production environment settings
     'production' => [
         // Base site URL
         'siteUrl' => 'https://chicagolx.org',
+        'allowUpdates' => false,
     ],
 ];
