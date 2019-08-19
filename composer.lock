@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8571c3d7db91c4ad8fed9e59a7e283e1",
+    "content-hash": "78cc3509f52e83b8c042b16a41d922aa",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -970,15 +970,15 @@
         },
         {
             "name": "doublesecretagency/craft-cpcss",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doublesecretagency/craft-cpcss/zipball/aad87a4a22e29ba5a98e4c06fcaac42df876d48d",
-                "reference": "aad87a4a22e29ba5a98e4c06fcaac42df876d48d",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-cpcss/zipball/8631394156bd752ee3f56a673517cde9c3d51e14",
+                "reference": "8631394156bd752ee3f56a673517cde9c3d51e14",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.0-RC1"
+                "craftcms/cms": "^3.1.5"
             },
             "type": "craft-plugin",
             "extra": {
@@ -1015,7 +1015,7 @@
                 "docs": "https://github.com/doublesecretagency/craft-cpcss/blob/v2/README.md",
                 "issues": "https://github.com/doublesecretagency/craft-cpcss/issues"
             },
-            "time": "2018-01-01T08:04:16+00:00"
+            "time": "2019-06-24T22:25:47+00:00"
         },
         {
             "name": "egulias/email-validator",
