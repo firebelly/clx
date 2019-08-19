@@ -29,3 +29,6 @@ web/assets/dist/js/main.js
 
 # Server files
 php.ini
+
+# ignore custom logo uploads
+/storage/rebrand
