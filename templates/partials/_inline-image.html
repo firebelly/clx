@@ -7,7 +7,9 @@
     width: 1200
   }) %}
 
-  <div class="inline-image">
-    <img src="{{ treatedImage.getUrl() }}">
-  </div>
+	{% if treatedImage %}
+	<div class="inline-image">
+	  <img src="{{ treatedImage.getUrl() }}">
+	</div>
+	{% endif %}
 {% endif %}
