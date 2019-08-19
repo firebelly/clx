@@ -3,15 +3,19 @@
 // Normalize styles
 @import "main";
 
+// Simplify body
 body {
   background: white;
   color: black !important;
   margin: 0;
   padding: 0;
 }
-@page {
 
+// Page margins
+@page {
+  margin: 0.5cm;
 }
+
 // Hide stuff
 .bg-x,
 .clx-elements,
@@ -26,20 +30,29 @@ body {
 .related-posts {
   display: none !important;
 }
+
+// No colored bgs
 .page-community .single-member {
   background: none;
 }
+
+// Override body wrapper height set by js
 .body-wrapper {
   height: auto !important;
 }
+
+// No padding on wrapper
 .page-wrapper {
   padding: 0 !important;
 }
 
+// Black links
 a {
   text-decoration: none;
   color: black;
 }
+
+// Show link URLs on user content
 .user-content a:after {
   content: "( "attr(href)" )";
 }
