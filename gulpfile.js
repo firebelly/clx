@@ -40,7 +40,8 @@ var enabled = {
 // Smash CSS!
 gulp.task('styles', function() {
   return gulp.src([
-      'assets/scss/main.scss'
+      'assets/scss/main.scss',
+      'assets/scss/print.scss'
     ])
     .pipe(gulpif(enabled.maps, sourcemaps.init()))
     .pipe(sass())

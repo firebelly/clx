@@ -1,0 +1,45 @@
+// Print styles
+
+// Normalize styles
+@import "main";
+
+body {
+  background: white;
+  color: black !important;
+  margin: 0;
+  padding: 0;
+}
+@page {
+
+}
+// Hide stuff
+.bg-x,
+.clx-elements,
+.site-header,
+.site-footer,
+.footer-image,
+.share,
+.filters,
+.image-wrap,
+.pagination,
+.return-crumb,
+.related-posts {
+  display: none !important;
+}
+.page-community .single-member {
+  background: none;
+}
+.body-wrapper {
+  height: auto !important;
+}
+.page-wrapper {
+  padding: 0 !important;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+.user-content a:after {
+  content: "( "attr(href)" )";
+}
