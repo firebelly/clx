@@ -32,7 +32,7 @@
     "tde/craftplugin-geoaddress": "v1.0.11",
     "aelvan/imager": "v2.1.10",
     "doublesecretagency/craft-cpcss": "2.2.0",
-    "dolphiq/redirect": "v1.0.18"
+    "dolphiq/redirect": "v1.0.23"
   },
   "autoload": {
     "psr-4": {
