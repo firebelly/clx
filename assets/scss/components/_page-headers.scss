@@ -37,6 +37,10 @@
       margin: 0 calc(#{columns(1)} - #{$global-padding}) 0 calc(#{columns(2)} - #{$global-padding});
       padding: grid(10) 0;
     }
+    &.no-statement .page-header-info {
+      padding-bottom: 0;
+    }
+
 
     .image-wrap {
       z-index: -1;

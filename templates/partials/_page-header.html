@@ -1,8 +1,9 @@
-{# if gradientColor is not defined #}
-  {% set gradientColor = '#222222' %}
-{# endif #}
+{% set gradientColor = '#222222' %}
+{% set hasImage = ' no-image' %}
+{% set hasStatement = pageHeader.statement=='' ? ' no-statement' : '' %}
 
 {% if pageHeader.image|length %}
+  {% set hasImage = ' has-image' %}
   {% set headerImage = pageHeader.image.one() %}
   {% set treatedImage = craft.imager.transformImage(headerImage, {
     width: 1000,
@@ -13,7 +14,7 @@
   }) %}
 {% endif %}
 
-<div class="page-header">
+<div class="page-header{{ hasImage }}{{ hasStatement }}">
   <div class="image-wrap">
     {% if pageHeader.image|length %}
     <div class="image" style="background-image: url({{ treatedImage ? treatedImage.getUrl() : '' }});"></div>
